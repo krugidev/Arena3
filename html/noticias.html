@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <link rel="stylesheet" type="text/css" href="../css/noticias.css" /> 
+  <title>Arena 360 — Notícias</title>
+</head>
+<body>
+
+  <!-- Botão do menu -->
+  <button id="toggle-menu" class="menu-btn">☰</button>
+
+  <!-- Sidebar -->
+  <div class="sidebar" id="sidebar">
+      
+    <a href="../html/homepage.html">
+      <img src="../icons/image-removebg-preview (11).png" style="margin-left: 6%; list-style-type: none;">
+    </a>
+      <div class="divider"></div>
+
+      <ul class="menu" style="list-style-type: none;">
+        <li><img src="../icons/2560px-UFC_Logo.svg.png" class="icon"><strong></strong>
+          <ul>
+            <li><a href="../html/reservabilhetesteste.html" onclick="selecionarModalidade('UFC')">Reservar Bilhetes</a></li>
+            <li><a href="../html/lutadoresatletasdefteste.html" onclick="definirModalidade('UFC')">Lutadores</a></li>
+            <li><a href="../html/resultadosteste.html">Resultados</a></li>
+            <li><a href="../html/noticias.html">Notícias</a></li>
+          </ul>
+        </li>
+        <li><img src="../icons/WWE_Logo.svg.png" class="icon"><strong></strong>
+          <ul>
+            <li><a href="../html/reservabilhetesteste.html" onclick="selecionarModalidade('WWE')">Reservar Bilhetes</a></li>
+            <li><a href="../html/lutadoresatletasdefteste.html" onclick="definirModalidade('WWE')">Lutadores</a></li>
+            <li><a href="../html/resultadosteste.html">Resultados</a></li>
+            <li><a href="../html/noticias.html">Notícias</a></li>
+          </ul>
+        </li>
+        <li><img src="../icons/Professional_Bull_Riders_logo.png" class="icon"><strong></strong>
+          <ul>
+            <li><a href="../html/reservabilhetesteste.html" onclick="selecionarModalidade('PBR')">Reservar Bilhetes</a></li>
+            <li><a href="../html/lutadoresatletasdefteste.html" onclick="definirModalidade('PBR')">Atletas</a></li>
+            <li><a href="../html/resultadosteste.html">Resultados</a></li>
+            <li><a href="../html/noticias.html">Notícias</a></li>
+          </ul>
+        </li>
+        <li><strong>Lojas Oficiais</strong>
+        
+          <ul>
+            <li><a href="../html/testesotres.html">Lojas</a></li>
+          </ul>
+        </li>
+      </ul>
+    </div>
+
+
+  <div class="filtro-modalidade">
+    <label for="seletor-modalidade">Seleciona a modalidade:</label>
+    <select id="seletor-modalidade">
+      <option value="UFC">UFC</option>
+      <option value="WWE">WWE</option>
+      <option value="PBR">PBR</option>
+    </select>
+  </div>
+  
+
+  <!-- Conteúdo Principal -->
+  <main class="noticias-container">
+    <h1>Notícias Recentes</h1>
+    <p class="sub">As últimas novidades sobre UFC, WWE e PBR</p>
+    <div id="noticias-lista" class="noticias-lista">
+      <!-- Aqui serão carregadas as notícias via JS -->
+    </div>
+  </main>
+
+  <div class="paginacao">
+    <button id="anterior">Anterior</button>
+    <span id="pagina-atual">1</span>
+    <button id="proximo">Próxima</button>
+  </div>
+  
+
+  <div id="modal-noticia" class="modal hidden">
+    <div class="modal-content">
+      <span class="fechar-modal" onclick="fecharModal()">×</span>
+      <img id="modal-img" src="" alt="" class="modal-img">
+      <h2 id="modal-titulo"></h2>
+      <p id="modal-desc"></p>
+      <a id="modal-link" href="#" target="_blank" class="ler-mais">Ler notícia completa</a>
+    </div>
+  </div>
+  
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="footer-container">
+      <div class="footer-section">
+        <h3>Arena 360</h3>
+        <p>&copy; 2025 — Todos os direitos reservados.</p>
+      </div>
+      <div class="footer-section">
+        <h4>Links</h4>
+        <ul>
+          <li><a href="#">Política de Privacidade</a></li>
+          <li><a href="#">Termos de Uso</a></li>
+          <li><a href="#">FAQ</a></li>
+          <li><a href="#">Suporte</a></li>
+        </ul>
+      </div>
+      <div class="footer-section">
+        <h4>Contactos</h4>
+        <p>📧 suporte@arena360.com</p>
+        <p>📞 +351 912 345 678</p>
+      </div>
+      <div class="footer-section">
+        <h4>Segue-nos</h4>
+        <div class="social-icons">
+          <a href="#"><img src="../icons/instagram-new--v2.png" alt="Instagram"></a>
+          <a href="#"><img src="../icons/twitterx--v2.png" alt="Twitter"></a>
+          <a href="#"><img src="../icons/youtube-play.png" alt="YouTube"></a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    const toggleBtn = document.getElementById('toggle-menu');
+    const sidebar = document.getElementById('sidebar');
+
+    toggleBtn.addEventListener('click', () => {
+      sidebar.classList.toggle('active');
+    });
+
+    document.querySelectorAll('.sidebar a').forEach(link => {
+      link.addEventListener('click', () => {
+        sidebar.classList.remove('active');
+      });
+    });
+
+
+    document.addEventListener("DOMContentLoaded", () => {
+  const container = document.getElementById("noticias-lista");
+  const seletor = document.getElementById("seletor-modalidade");
+  const anterior = document.getElementById("anterior");
+  const proximo = document.getElementById("proximo");
+  const pagEl = document.getElementById("pagina-atual");
+
+  const apiKey = "72ee178667a9439f8c43dd2b2ce048bc";
+  let paginaAtual = 1;
+  let modalidadeAtual = localStorage.getItem("modalidadeSelecionada") || "UFC";
+
+  const termos = {
+    UFC: "UFC OR MMA OR 'Ultimate Fighting Championship'",
+    WWE: "WWE OR wrestling OR SmackDown OR Raw",
+    PBR: "PBR OR rodeio OR 'Professional Bull Riders'"
+  };
+
+  function carregarNoticias() {
+    const query = encodeURIComponent(termos[modalidadeAtual]);
+    container.innerHTML = `<p style="text-align:center;">Carregando...</p>`;
+
+    fetch(`https://newsapi.org/v2/everything?q=${query}&language=en&sortBy=publishedAt&pageSize=50&page=${paginaAtual}&apiKey=${apiKey}`)
+      .then(res => res.json())
+      .then(data => {
+        container.innerHTML = "";
+        const termo = modalidadeAtual.toLowerCase();
+
+        const artigos = data.articles.filter(a =>
+          a.title?.toLowerCase().includes(termo) &&
+          a.description &&
+          a.urlToImage &&
+          a.url
+        );
+
+        if (artigos.length === 0) {
+          container.innerHTML = `<p style="text-align:center;">Sem notícias específicas nesta página.</p>`;
+          return;
+        }
+
+        artigos.forEach(article => {
+          const card = document.createElement("div");
+          card.className = "noticia-card";
+          card.innerHTML = `
+  <img src="${article.urlToImage}" alt="Notícia" class="noticia-img">
+  <h3>${article.title}</h3>
+  <p>${article.description}</p>
+  <button class="btn-abrir">Ler mais</button>
+`;
+
+          container.appendChild(card);
+          card.querySelector(".btn-abrir").addEventListener("click", (e) => {
+              e.stopPropagation(); // Impede que o clique no botão feche o modal
+                abrirModal(article);
+            });
+
+         // card.addEventListener("click", () => abrirModal(article));
+
+        });
+
+        pagEl.textContent = paginaAtual;
+      })
+      .catch(() => {
+        container.innerHTML = `<p style="text-align:center;">Erro ao carregar notícias.</p>`;
+      });
+  }
+
+  function abrirModal(article) {
+  document.getElementById("modal-img").src = article.urlToImage || "";
+  document.getElementById("modal-titulo").textContent = article.title || "Sem título";
+  document.getElementById("modal-desc").textContent = article.description || "Sem descrição disponível.";
+  document.getElementById("modal-link").href = article.url;
+
+  document.getElementById("modal-noticia").classList.remove("hidden");
+}
+
+
+
+  seletor.value = modalidadeAtual;
+
+  seletor.addEventListener("change", () => {
+    modalidadeAtual = seletor.value;
+    paginaAtual = 1;
+    localStorage.setItem("modalidadeSelecionada", modalidadeAtual);
+    carregarNoticias();
+  });
+
+  anterior.addEventListener("click", () => {
+    if (paginaAtual > 1) {
+      paginaAtual--;
+      carregarNoticias();
+    }
+  });
+
+  proximo.addEventListener("click", () => {
+    paginaAtual++;
+    carregarNoticias();
+  });
+
+  carregarNoticias();
+});
+
+
+
+function fecharModal() {
+  document.getElementById("modal-noticia").classList.add("hidden");
+}
+
+
+//Página de seleção de eventos.
+function selecionarModalidade(modalidade) {
+  localStorage.setItem("modalidadeSelecionada", modalidade);
+}
+
+function definirModalidade(modalidade) {
+  localStorage.setItem("modalidadeSelecionada", modalidade);
+}
+  </script>
+</body>
+</html>

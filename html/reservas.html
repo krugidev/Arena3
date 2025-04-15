@@ -1,0 +1,375 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Minhas Reservas — Arena 360</title>
+  <link rel="stylesheet" type="text/css" href="../css/verreservas.css" /> 
+
+
+  <!--BIBLIOTECAS PARA SIMULAR -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+
+</head>
+<body>
+
+
+    <button id="toggle-menu" class="menu-btn">☰</button>
+
+    
+      
+    <div class="sidebar" id="sidebar">
+      
+      <a href="../html/homepage.html">
+        <img src="../icons/image-removebg-preview (11).png" style="margin-left: 6%; list-style-type: none;">
+      </a>
+        <div class="divider"></div>
+
+        <ul class="menu" style="list-style-type: none;">
+          <li><img src="../icons/2560px-UFC_Logo.svg.png" class="icon"><strong></strong>
+            <ul>
+              <li><a href="../html/reservabilhetesteste.html" onclick="selecionarModalidade('UFC')">Reservar Bilhetes</a></li>
+              <li><a href="../html/lutadoresatletasdefteste.html" onclick="definirModalidade('UFC')">Lutadores</a></li>
+              <li><a href="../html/resultadosteste.html">Resultados</a></li>
+              <li><a href="../html/noticias.html">Notícias</a></li>
+            </ul>
+          </li>
+          <li><img src="../icons/WWE_Logo.svg.png" class="icon"><strong></strong>
+            <ul>
+              <li><a href="../html/reservabilhetesteste.html" onclick="selecionarModalidade('WWE')">Reservar Bilhetes</a></li>
+              <li><a href="../html/lutadoresatletasdefteste.html" onclick="definirModalidade('WWE')">Lutadores</a></li>
+              <li><a href="../html/resultadosteste.html">Resultados</a></li>
+              <li><a href="../html/noticias.html">Notícias</a></li>
+            </ul>
+          </li>
+          <li><img src="../icons/Professional_Bull_Riders_logo.png" class="icon"><strong></strong>
+            <ul>
+              <li><a href="../html/reservabilhetesteste.html" onclick="selecionarModalidade('PBR')">Reservar Bilhetes</a></li>
+              <li><a href="../html/lutadoresatletasdefteste.html" onclick="definirModalidade('PBR')">Atletas</a></li>
+              <li><a href="../html/resultadosteste.html">Resultados</a></li>
+              <li><a href="../html/noticias.html">Notícias</a></li>
+            </ul>
+          </li>
+          <li><strong>Lojas Oficiais</strong>
+          
+            <ul>
+              <li><a href="../html/testesotres.html">Lojas</a></li>
+            </ul>
+          </li>
+        </ul>
+      </div>
+
+
+
+
+
+    <div class="header">
+        <h1>AS MINHAS RESERVAS</h1>
+      </div>
+
+
+
+      <!--FILTROS DE RESERVAS-->
+
+      <div class="reserva-filtros">
+        <label for="filtro-status">Filtrar por:</label>
+        <select id="filtro-status">
+          <option value="todos">Todos</option>
+          <option value="futuros">Eventos Futuros</option>
+          <option value="passados">Eventos Passados</option>
+        </select>
+      </div>
+      
+    
+      <div class="tabs">
+        <button class="tab-btn active" onclick="abrirAba('ufc')">UFC</button>
+        <button class="tab-btn" onclick="abrirAba('wwe')">WWE</button>
+        <button class="tab-btn" onclick="abrirAba('pbr')">PBR</button>
+      </div>
+
+
+
+       <!-- UFC -->
+  <div id="ufc" class="tab-content active">
+
+
+    <!-- + outras reservas UFC -->
+  </div>
+
+  <!-- WWE -->
+  <div id="wwe" class="tab-content">
+
+  </div>
+
+  <!-- PBR -->
+  <div id="pbr" class="tab-content">
+
+  </div>
+
+
+
+
+    <footer class="footer">
+        <div class="footer-container">
+          <div class="footer-section">
+            <h3>Arena 360</h3>
+            <p>&copy; 2025 — Todos os direitos reservados.</p>
+          </div>
+          
+          <div class="footer-section">
+            <h4>Links</h4>
+            <ul>
+              <li><a href="#">Política de Privacidade</a></li>
+              <li><a href="#">Termos de Uso</a></li>
+              <li><a href="#">FAQ</a></li>
+              <li><a href="#">Suporte</a></li>
+            </ul>
+          </div>
+          
+          <div class="footer-section">
+            <h4>Contactos</h4>
+            <p>📧 suporte@arena360.com</p>
+            <p>📞 +351 912 345 678</p>
+          </div>
+          
+          <div class="footer-section">
+            <h4>Segue-nos</h4>
+            <div class="social-icons">
+              <a href="#"><img src="../icons/instagram-new--v2.png" alt="Instagram"></a>
+              <a href="#"><img src="../icons/twitterx--v2.png" alt="Twitter"></a>
+              <a href="#"><img src="../icons/youtube-play.png" alt="YouTube"></a>
+            </div>
+          </div>
+        </div>
+      </footer>
+
+
+      <!-- No final da tua página reservas.html -->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+      <script src="https://cdn.jsdelivr.net/npm/qrious@4.0.2/dist/qrious.min.js"></script>
+
+      <script>
+        function abrirAba(id) {
+          const tabs = document.querySelectorAll('.tab-btn');
+          const contents = document.querySelectorAll('.tab-content');
+    
+          tabs.forEach(btn => btn.classList.remove('active'));
+          contents.forEach(content => content.classList.remove('active'));
+    
+          document.querySelector(`#${id}`).classList.add('active');
+          event.target.classList.add('active');
+        }
+
+
+
+  //A Página, ao ser carregada, puxa os dados do utilizador que está loggado e dos dados das várias reservas que tem.
+  document.addEventListener("DOMContentLoaded", () => {
+  const user = JSON.parse(localStorage.getItem("userLogado"));
+  const reservas = JSON.parse(localStorage.getItem("reservas")) || [];
+
+  if (!user) {
+    alert("Faz login primeiro.");
+    window.location.href = "login.html";
+    return;
+  }
+
+
+  
+  // Filtrar só as reservas deste utilizador
+  const selectFiltro = document.getElementById("filtro-status");
+  selectFiltro.addEventListener("change", () => renderizarReservas(selectFiltro.value));
+
+  renderizarReservas("todos");
+
+});
+
+function renderizarReservas(filtro = "todos") {
+  const user = JSON.parse(localStorage.getItem("userLogado"));
+  const reservas = JSON.parse(localStorage.getItem("reservas")) || [];
+
+  const minhasReservas = reservas.filter(r => r.email === user.email);
+  const hoje = new Date();
+  hoje.setHours(0, 0, 0, 0);
+
+  const filtradas = minhasReservas.filter(res => {
+    const [dia, mes, ano] = res.data.split("/").map(Number);
+    const dataEvento = new Date(ano, mes - 1, dia);
+
+    if (filtro === "futuros") return dataEvento >= hoje;
+    if (filtro === "passados") return dataEvento < hoje;
+    return true;
+  });
+
+  // Limpar os conteúdos anteriores
+  const ufcDiv = document.getElementById("ufc");
+  const wweDiv = document.getElementById("wwe");
+  const pbrDiv = document.getElementById("pbr");
+
+  ufcDiv.innerHTML = "";
+  wweDiv.innerHTML = "";
+  pbrDiv.innerHTML = "";
+
+  // Repreencher
+  filtradas.forEach((res, index) => {
+    const dataEvento = new Date(...res.data.split("/").reverse());
+
+    const card = document.createElement("div");
+    card.className = "reserva-card";
+    card.innerHTML = `
+      <h3>${res.nome}</h3>
+      <p><strong>Data:</strong> ${res.data}</p>
+      <p><strong>Local:</strong> ${res.arena}, ${res.cidade}</p>
+      <p><strong>Lugar:</strong> ${res.anel.replace("ring", "Anel")} — ${res.lugar}</p>
+      <button class="ver-eventos-btn" onclick="irParaEventos('${res.modalidade.toLowerCase()}')">Ver Mais Eventos ${res.modalidade}</button>
+      ${dataEvento >= hoje ? `<button class="bilhete-btn" onclick="gerarBilhetePDF(${index})">🎟️ Gerar Bilhete</button>` : `<p class="evento-passado">Este evento já decorreu.</p>`}
+    `;
+
+    switch (res.modalidade?.toUpperCase()) {
+      case "UFC":
+        ufcDiv.appendChild(card);
+        break;
+      case "WWE":
+        wweDiv.appendChild(card);
+        break;
+      case "PBR":
+        pbrDiv.appendChild(card);
+        break;
+    }
+  });
+
+  const checkIfEmpty = (div, modalidade) => {
+    if (div.children.length === 0) {
+      const msg = document.createElement("p");
+      msg.className = "no-reservas-msg";
+      msg.textContent = `Ainda não tens reservas de ${modalidade}.`;
+      div.appendChild(msg);
+    }
+  };
+
+  checkIfEmpty(ufcDiv, "UFC");
+  checkIfEmpty(wweDiv, "WWE");
+  checkIfEmpty(pbrDiv, "PBR");
+}
+
+
+
+function irParaEventos(modalidade) {
+  // Simples redirecionamento (podes ajustar para o teu caso real)
+  window.location.href = "verreservastest.html#" + modalidade;
+}
+
+
+  //SIDEBAR
+  const toggleBtn = document.getElementById('toggle-menu');
+    const sidebar = document.getElementById('sidebar');
+  
+    toggleBtn.addEventListener('click', () => {
+      sidebar.classList.toggle('active');
+    });
+
+    const links = document.querySelectorAll('.sidebar a');
+      links.forEach(link => {
+        link.addEventListener('click', () => {
+        sidebar.classList.remove('active');
+        });
+      });
+
+
+    //Página de seleção de eventos.
+    function selecionarModalidade(modalidade) {
+      localStorage.setItem("modalidadeSelecionada", modalidade);
+    }
+
+    function definirModalidade(modalidade) {
+      localStorage.setItem("modalidadeSelecionada", modalidade);
+    }
+
+
+
+    const logosModalidades = {
+     WWE: "../icons/WWE_Logo.svg.png",
+     UFC: "../icons/2560px-UFC_Logo.svg.png",
+     PBR: "../icons/Professional_Bull_Riders_logo.png"
+    };
+
+
+
+    //GERAR BILHETES//
+    async function gerarBilhetePDF(index) {
+  const reservas = JSON.parse(localStorage.getItem("reservas")) || [];
+  const user = JSON.parse(localStorage.getItem("userLogado"));
+  const minhas = reservas.filter(r => r.email === user.email);
+  const res = minhas[index];
+
+  if (!res) {
+    alert("Reserva não encontrada!");
+    return;
+  }
+
+  const dadosQRCode = `
+    Evento: ${res.nome}
+    Modalidade: ${res.modalidade}
+    Data: ${res.data}
+    Local: ${res.arena}, ${res.cidade}
+    Lugar: ${res.anel.replace("ring", "Anel")} — ${res.lugar}
+    Utilizador: ${user.nome} (${user.email})
+  `;
+
+  // QR Code
+  const qr = new QRious({
+    value: dadosQRCode,
+    size: 100
+  });
+
+  const { jsPDF } = window.jspdf;
+  const doc = new jsPDF();
+
+  // 🔴 Estilo do bilhete
+  doc.setDrawColor(229, 9, 20);
+  doc.setLineWidth(1.5);
+  doc.rect(10, 10, 190, 130, 'S'); // Borda
+
+  // 🔗 Modalidade & logo
+  const logoUrl = logosModalidades[res.modalidade];
+  const img = new Image();
+  img.crossOrigin = "anonymous"; // evitar problemas de CORS
+  img.src = logoUrl;
+
+  img.onload = () => {
+    doc.addImage(img, "PNG", 150, 15, 40, 20);
+
+    // 🎟️ Cabeçalho
+    doc.setFontSize(16);
+    doc.setTextColor(229, 9, 20);
+    doc.text("Bilhete de Entrada", 20, 25);
+
+    doc.setFontSize(12);
+    doc.setTextColor(0);
+
+    let y = 45;
+    const gap = 8;
+
+    doc.text(`Evento: ${res.nome}`, 20, y); y += gap;
+    doc.text(`Modalidade: ${res.modalidade}`, 20, y); y += gap;
+    doc.text(`Data: ${res.data}`, 20, y); y += gap;
+    doc.text(`Local: ${res.arena}, ${res.cidade}`, 20, y); y += gap;
+    doc.text(`Lugar: ${res.anel.replace("ring", "Anel")} — ${res.lugar}`, 20, y); y += gap;
+    doc.text(`Titular: ${user.nome}`, 20, y); y += gap;
+    doc.text(`Email: ${user.email}`, 20, y); y += gap;
+
+    // 📎 Inserir QR code
+    doc.addImage(qr.toDataURL(), 'PNG', 145, 70, 45, 45);
+
+    // 📥 Guardar bilhete
+    doc.save(`Bilhete_${res.nome.replace(/\s/g, "_")}.pdf`);
+  };
+}
+
+
+      </script>
+
+
+
+</body>
+</html>

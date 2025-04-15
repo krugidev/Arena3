@@ -3,552 +3,17 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <link rel="stylesheet" type="text/css" href="../css/homepage.css" /> 
+
+
+  <!-- Swiper CSS -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+
+  <!-- Swiper JS -->
+  <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+
   <title>Arena 360 — Home</title>
-  <style>
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-      font-family: Arial, sans-serif;
-    }
 
-    body {
-      background: linear-gradient(135deg, #1e1e1e, #333);
-      color: #fff;
-    }
-
-
-
-
-
-    .sidebar {
-  width: 250px;
-  background: #111;
-  padding: 20px;
-  height: 100vh;
-  position: fixed;
-  left: 0;
-  top: 0;
-  overflow-y: auto;
-  border-right: 2px solid #e50914;
-}
-
-.sidebar h2 {
-  color: #e50914;
-  margin-bottom: 20px;
-  text-align: center;
-}
-
-.sidebar .menu > li {
-  margin-bottom: 15px;
-}
-
-.sidebar .menu > li > strong {
-  color: #fff;
-  display: block;
-  margin-bottom: 5px;
-}
-
-.sidebar ul ul {
-  list-style: none;
-  padding-left: 15px;
-}
-
-.sidebar ul ul li {
-  margin: 5px 0;
-}
-
-.sidebar ul ul li a {
-  color: #ccc;
-  text-decoration: none;
-  font-size: 0.9em;
-  transition: color 0.3s;
-}
-
-.sidebar ul ul li a:hover {
-  color: #e50914;
-}
-
-/* Conteúdo Principal deslocado pra direita */
-.main-content {
-  margin-left: 250px;
-  padding: 20px;
-  width: calc(100% - 250px);
-}
-
-/* Responsivo - Sidebar colapsável (opcional para mobile) */
-@media (max-width: 768px) {
-  .sidebar {
-    position: relative;
-    width: 100%;
-    height: auto;
-    border-right: none;
-    border-bottom: 2px solid #e50914;
-  }
-}
-
-
-    /* HERO SECTION */
-    .hero {
-      background: url('../images/arena-hero.jpg') no-repeat center center/cover;
-      height: 100vh;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      text-align: center;
-      padding: 20px;
-    }
-
-    .hero h1 {
-      font-size: 3em;
-      color: #fff;
-      margin-bottom: 20px;
-    }
-
-    .hero p {
-      font-size: 1.2em;
-      color: #ccc;
-      margin-bottom: 30px;
-    }
-
-    .hero button {
-      padding: 15px 25px;
-      font-size: 1em;
-      background: #e50914;
-      border: none;
-      color: white;
-      border-radius: 5px;
-      cursor: pointer;
-      transition: background 0.3s;
-    }
-
-    .hero button:hover {
-      background: #c10810;
-    }
-
-    /* EVENTOS DESTAQUE */
-    .eventos {
-      padding: 50px 20px;
-      text-align: center;
-    }
-
-    .eventos h2 {
-      font-size: 2em;
-      margin-bottom: 30px;
-      color: #e50914;
-    }
-
-    .cards {
-      display: flex;
-      justify-content: center;
-      gap: 20px;
-      flex-wrap: wrap;
-      margin-left: 10%;
-    }
-
-    .card {
-  background: #111;
-  padding: 20px;
-  border-radius: 12px;
-  width: 280px;
-  height: 400px; /* Altura fixa */
-  box-shadow: 0 0 10px rgba(0,0,0,0.5);
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between; /* Importante! */
-  transition: transform 0.3s, box-shadow 0.3s;
-  min-height: 400px; 
-}
-
-
-    .card img {
-      width: 100%;
-      border-radius: 5px;
-      margin-bottom: 15px;
-    }
-
-    .card h3 {
-      margin-bottom: 10px;
-      font-size: 1.2em;
-    }
-
-    .card p {
-      font-size: 0.9em;
-      margin-bottom: 15px;
-      color: #ccc;
-    }
-
-    .card button {
-      padding: 10px;
-      width: 100%;
-      background: #e50914;
-      border: none;
-      border-radius: 5px;
-      color: white;
-      font-weight: bold;
-      cursor: pointer;
-    }
-
-    .card button:hover {
-      background: #c10810;
-    }
-
-
-    .logo-evento {
-  width: 80px;
-  margin: 0 auto 15px auto;
-  display: block;
-  filter: drop-shadow(0 0 4px rgba(0,0,0,0.5));
-  transition: transform 0.3s;
-  background: #111;
-  border-radius: 10px;
-  padding: 5px;
-  border-color: #c10810;
-}
-
-.card:hover .logo-evento {
-  transform: scale(1.1);
-}
-
-
-
-
-    /* FOOTER */
-    .site-footer {
-      background: #111;
-      color: #ccc;
-      text-align: center;
-      padding: 30px 20px;
-      border-top: 2px solid #e50914;
-      margin-top: 40px;
-    }
-
-    .icon {
-  width: 35px;
-  vertical-align: middle;
-  margin-right: 5px;
-}
-
-.menu-btn {
-  position: fixed;
-  top: 20px;
-  left: 20px;
-  z-index: 1000;
-  background: #e50914;
-  color: white;
-  border: none;
-  padding: 10px 15px;
-  border-radius: 5px;
-  font-size: 1.2em;
-  cursor: pointer;
-  display: none;
-}
-
-/* Mostrar botão só no mobile */
-@media (max-width: 768px) {
-  .menu-btn {
-    display: block;
-  }
-
-  .sidebar {
-    display: none;
-    width: 100%;
-    height: auto;
-    position: relative;
-    border-right: none;
-    border-bottom: 2px solid #e50914;
-  }
-
-  .sidebar.active {
-    display: block;
-  }
-
-  .main-content {
-    margin-left: 0;
-    width: 100%;
-  }
-}
-
-.divider {
-  height: 2px;
-  background: #e50914;
-  margin: 15px 0 20px 0;
-  border-radius: 1px;
-}
-
-
-
-/*MAPA 2D PARA SELECIONAR EVENTOS*/
-.mapa-section {
-  padding: 50px 20px;
-  text-align: center;
-}
-
-.mapa-section h2 {
-  font-size: 2em;
-  color: #e50914;
-  margin-bottom: 30px;
-}
-
-.mapa-container {
-  display: flex;
-  justify-content: center;
-  gap: 40px;
-  flex-wrap: wrap;
-}
-
-.mapa-svg svg {
-  width: 1000px;
-  height: auto;
-  cursor: pointer;
-}
-
-.mapa-svg path {
-  transition: fill 0.3s;
-}
-
-.mapa-svg path:hover {
-  fill: #e50914;
-}
-
-.eventos-lista {
-  background: #222;
-  padding: 20px;
-  border-radius: 10px;
-  width: 300px;
-  text-align: left;
-  box-shadow: 0 0 10px rgba(0,0,0,0.5);
-}
-
-.mapa-svg path, .mapa-svg g {
-  fill: #fff;
-  stroke: #e50914;
-  transition: fill 0.3s;
-  cursor: pointer;
-}
-
-.mapa-svg path:hover, .mapa-svg g:hover {
-  fill: #e50914;
-}
-
-
-.mapa-svg g {
-  fill: #fff; /* Branco base */
-  stroke: #e50914; /* Borda vermelha */
-  transition: fill 0.3s, transform 0.3s;
-  cursor: pointer;
-}
-
-.mapa-svg g:hover {
-  fill: #e50914; /* Vermelho ao hover */
-  transform: scale(1.02); /* Pequeno zoom ao passar */
-}
-
-.mapa-svg {
-  background: rgba(0,0,0,0.2); /* leve escurecido */
-  padding: 20px;
-  border-radius: 10px;
-}
-
-.tooltip {
-  position: absolute;
-  background: #e50914;
-  color: white;
-  padding: 5px 10px;
-  border-radius: 5px;
-  pointer-events: none;
-  opacity: 0;
-  transition: opacity 0.2s;
-  font-size: 0.9em;
-  z-index: 999;
-}
-
-
-
-
-.user-profile {
-  position: fixed;
-  top: 20px;
-  right: 20px;
-  cursor: pointer;
-}
-
-
-
-.user-profile {
-  position: fixed;
-  top: 20px;
-  right: 20px;
-  cursor: pointer;
-}
-
-.profile-icon {
-  width: 40px;
-  transition: transform 0.3s;
-}
-
-
-
-.profile-btn {
- position: fixed;
-  top: 20px;
-  right: 20px;
-  background: white;
-  border: 2px solid white;
-  border-radius: 8px;
-  padding: 5px 10px;
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  cursor: pointer;
-  transition: border 0.3s, transform 0.3s;
-  z-index: 1000;
-}
-
-.profile-btn:hover {
-  border: 2px solid #e50914;
-  transform: scale(1.05);
-}
-
-.profile-icon {
-  width: 30px;
-  height: 30px;
-}
-
-.profile-text {
-  color: #111;
-  font-weight: bold;
-  font-size: 0.9em;
-  letter-spacing: 1px;
-}
-
-
-
-/*RESERVAS BUTTON*/
-.reservas-btn {
- position: fixed;
-  top: 20px;
-  right: 200px;
-  background: white;
-  border: 2px solid white;
-  border-radius: 8px;
-  padding: 5px 10px;
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  cursor: pointer;
-  transition: border 0.3s, transform 0.3s;
-  z-index: 1000;
-}
-
-.reservas-btn:hover {
-  border: 2px solid #e50914;
-  transform: scale(1.05);
-}
-
-
-
-/*POPUP PROFILE*/
-.modal-overlay {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: rgba(0, 0, 0, 0.8);
-  display: none; /* Oculto por padrão */
-  justify-content: center;
-  align-items: center;
-  z-index: 2000;
-}
-
-.modal-content {
-  background: #1e1e1e;
-  border: 2px solid #e50914;
-  border-radius: 10px;
-  padding: 30px;
-  width: 500px;
-  color: white;
-  box-shadow: 0 0 20px rgba(229, 9, 20, 0.5);
-  position: relative;
-  text-align: center;
-}
-
-.modal-content h2 {
-  color: #e50914;
-  margin-bottom: 20px;
-}
-
-.profile-details p {
-  margin: 10px 0;
-  font-size: 1em;
-}
-
-.logout-btn {
-  margin-top: 20px;
-  padding: 10px 20px;
-  background: #e50914;
-  border: none;
-  color: white;
-  border-radius: 5px;
-  cursor: pointer;
-  transition: background 0.3s;
-}
-
-.logout-btn:hover {
-  background: #c10810;
-}
-
-.close-btn {
-  position: absolute;
-  top: 10px;
-  right: 15px;
-  font-size: 1.5em;
-  color: #e50914;
-  cursor: pointer;
-}
-
-.modal-content h2 {
-  color: #e50914;
-  margin-bottom: 10px;
-}
-
-.modal-divider {
-  width: 60%;
-  height: 3px;
-  background-color: #e50914;
-  margin: 0 auto 20px auto;
-  border-radius: 2px;
-}
-
-.profile-field {
-  border: 1px solid #e50914;
-  border-radius: 5px;
-  padding: 10px;
-  margin: 10px 0;
-  background-color: #111;
-  font-size: 0.95em;
-}
-
-.event-btn {
-  margin-top: 10px;
-  padding: 6px 12px;
-  background: #e50914;
-  color: white;
-  border: none;
-  border-radius: 4px;
-  cursor: pointer;
-  font-size: 0.85em;
-}
-
-.event-btn:hover {
-  background: #c10810;
-}
-
-
-
-  </style>
 </head>
 <body>
 
@@ -565,46 +30,49 @@
       </div>
 
       <div class="reservas-btn">
+        
         <img src="../icons/booking-icon-png-10.jpg" alt="Perfil" class="profile-icon" id="openProfile">
-
+    
        <!--- <img src="../icons/profile-icon.png" alt="Perfil" class="profile-icon"> -->
         <span class="profile-text">VER RESERVAS</span>
       </div>
       
     <div class="sidebar" id="sidebar">
-
+      
+      <a href="../html/homepage.html">
         <img src="../icons/image-removebg-preview (11).png" style="margin-left: 6%; list-style-type: none;">
+      </a>
         <div class="divider"></div>
 
         <ul class="menu" style="list-style-type: none;">
           <li><img src="../icons/2560px-UFC_Logo.svg.png" class="icon"><strong></strong>
             <ul>
-              <li><a href="../html/reservabilhetes.html">Reservar Bilhetes</a></li>
-              <li><a href="../html/lutadoresatletasdef.html">Lutadores</a></li>
-              <li><a href="../html/resultados.html">Resultados</a></li>
-              <li><a href="#">Notícias</a></li>
+              <li><a href="../html/reservabilhetesteste.html" onclick="selecionarModalidade('UFC')">Reservar Bilhetes</a></li>
+              <li><a href="../html/lutadoresatletasdefteste.html" onclick="definirModalidade('UFC')">Lutadores</a></li>
+              <li><a href="../html/resultadosteste.html">Resultados</a></li>
+              <li><a href="../html/noticias.html">Notícias</a></li>
             </ul>
           </li>
           <li><img src="../icons/WWE_Logo.svg.png" class="icon"><strong></strong>
             <ul>
-              <li><a href="../html/reservabilhetes.html">Reservar Bilhetes</a></li>
-              <li><a href="../html/lutadoresatletasdef.html">Lutadores</a></li>
-              <li><a href="../html/resultados.html">Resultados</a></li>
-              <li><a href="#">Notícias</a></li>
+              <li><a href="../html/reservabilhetesteste.html" onclick="selecionarModalidade('WWE')">Reservar Bilhetes</a></li>
+              <li><a href="../html/lutadoresatletasdefteste.html" onclick="definirModalidade('WWE')">Lutadores</a></li>
+              <li><a href="../html/resultadosteste.html">Resultados</a></li>
+              <li><a href="../html/noticias.html">Notícias</a></li>
             </ul>
           </li>
           <li><img src="../icons/Professional_Bull_Riders_logo.png" class="icon"><strong></strong>
             <ul>
-              <li><a href="../html/reservabilhetes.html">Reservar Bilhetes</a></li>
-              <li><a href="../html/lutadoresatletasdef.html">Atletas</a></li>
-              <li><a href="../html/resultados.html">Resultados</a></li>
-              <li><a href="#">Notícias</a></li>
+              <li><a href="../html/reservabilhetesteste.html" onclick="selecionarModalidade('PBR')">Reservar Bilhetes</a></li>
+              <li><a href="../html/lutadoresatletasdefteste.html" onclick="definirModalidade('PBR')">Atletas</a></li>
+              <li><a href="../html/resultadosteste.html">Resultados</a></li>
+              <li><a href="../html/noticias.html">Notícias</a></li>
             </ul>
           </li>
           <li><strong>Lojas Oficiais</strong>
           
             <ul>
-              <li><a href="../html/stores.html">Lojas</a></li>
+              <li><a href="../html/testesotres.html">Lojas</a></li>
             </ul>
           </li>
         </ul>
@@ -1093,7 +561,7 @@
                 <path d="M1402.9 474.8l0 0.2-0.2-0.1 0.2-0.2 0 0.1z" id="MV" name="Maldives">
                 </path>
                 </g>
-                <g id="america-sul">
+                <g id="americasul">
                 <path class="Argentina" d="M 669.1 851.7 666.1 851.5 661.1 851.5 655.1 837.9 658.2 840.7 662.5 845.3 670.3 849 677.6 850.5 676.8 853.5 672.4 853.8 669.1 851.7 Z">
                 </path>
                 <path class="Argentina" d="M 638.6 644.7 649.9 655.1 654.5 656.1 661.8 660.9 667.7 663.4 668.8 666.2 664.6 676 670.4 677.7 676.7 678.7 680.9 677.7 685.2 672.7 685.5 667.1 688.1 665.8 691.3 669.6 691.7 674.7 687.5 678.2 684.2 680.8 678.9 687.1 672.9 695.8 672.4 701 672 707.6 673.2 714 672.3 715.4 672.7 719.5 673 722.9 680.8 728.4 681 732.8 684.9 735.6 685.2 738.7 681.9 746.9 674.9 750.4 664.7 751.7 658.7 751 660.8 754.9 660.9 759.6 662.7 762.8 660.2 765.1 655.1 766 649.5 763.6 648 765.3 650.5 771.6 654.5 773.5 656.8 771.5 659.3 774.8 655.1 776.8 652.2 780.8 653.4 787.1 653.3 790.5 648.5 790.5 645.5 793.7 645.6 798.5 652.1 803.1 657.3 804.3 657.5 810 652.9 813.5 652.3 820.8 648.8 823.2 647.9 826.1 652.1 832.6 656.7 836.1 654.6 835.8 649.7 834.8 637.6 834 634.1 830.4 632.2 825.8 629.1 826.2 626.5 823.9 623.4 817.4 626.1 814.6 626.2 810.7 624.4 807.5 625.1 802.1 624 793.8 622.2 790.1 624 788.9 622.6 786.5 619.8 785.3 620.6 782.6 617.5 780.2 613.8 772.9 615.5 771.6 612.2 763.8 611.4 757.3 611.2 751.6 613.7 749.3 610.4 743 608.8 737.2 611.8 733 610.4 727.6 612 721.4 610.6 715.5 609 714.3 604.1 703.2 606.2 696.6 604.5 690.4 605.4 684.5 608 678.5 611.3 674.5 609.3 672 610.1 669.9 608.5 659.2 614.1 656.1 615.3 649.4 614.4 647.8 618.4 642 625.9 643.6 629.6 648.2 631.2 643 637.6 643.3 638.6 644.7 Z">
@@ -1413,7 +881,7 @@
                 <path class="Fiji" d="M 1994.4 606 1994 606.4 1993.2 607.5 1992.9 607.6 1992.2 608 1992 608.6 1991.6 608.8 1991.4 609.1 1991.3 609.3 1991.6 609.4 1992.2 609.1 1992.3 609 1992.6 608.7 1992.8 608.4 1993.4 608.1 1993.7 607.8 1994.3 607.5 1994.3 607.8 1993.8 608.5 1993.6 608.6 1993.7 609.2 1993.4 609.5 1993.1 609.2 1992.7 609.2 1992.2 609.3 1991.8 609.6 1991.1 609.7 1990.1 609.7 1990.6 609.2 1990.2 609 1989.6 609.2 1989.2 609.4 1989.2 609.6 1988.9 609.7 1988.7 609.8 1988.6 610.2 1988.4 610.5 1988.1 610.4 1988.1 610.2 1987.7 610.1 1987.3 610.3 1987.1 610.8 1986.8 611 1986.5 611 1986.5 610.7 1986.5 610.3 1986.3 609.9 1986.4 609.7 1986.3 609.6 1985.7 609.8 1985.7 609.4 1986.1 609.1 1986.2 609.1 1986.1 608.6 1986.4 608.5 1986.9 608.8 1987.5 608.4 1987.7 608.4 1988 608.1 1988.2 608.1 1988.5 607.8 1988.5 607.6 1989.3 607.5 1990.2 607.2 1990.5 607.1 1990.9 607.2 1991.4 607 1991.6 606.6 1991.8 606.6 1992 606.2 1992.4 606.3 1992.5 606.1 1992.7 606.2 1993.7 605.7 1993.8 606 1994 605.9 1994.2 606 1994.5 605.7 1995 605.5 1995.1 605.6 1994.6 606 1994.4 606 Z">
                 </path>
                 </g>
-                <g id="america-norte">
+                <g id="americanorte">
 
                     <path class="Canada" d="M 665.9 203.6 669.3 204.5 674 204.3 670.7 206.9 668.7 207.3 663.2 204.6 662.6 202.5 665.1 200.6 665.9 203.6 Z">
                     </path>
@@ -1620,17 +1088,17 @@
         <h2 style="color: white;">O TEU PERFIL</h2>
         <div class="modal-divider"></div>
         <div class="profile-details">
-            <div class="profile-field"><strong>Nome:</strong> JoãoKombat</div>
-            <div class="profile-field"><strong>Email:</strong> joao@email.com</div>
-            <div class="profile-field"><strong>Reservas Feitas:</strong> 5</div>
-            <div class="profile-field">
+            <div class="profile-field" id="perfil-nome"><strong>Nome:</strong> JoãoKombat</div>
+            <div class="profile-field" id="perfil-email"><strong>Email:</strong> joao@email.com</div>
+            <div class="profile-field" id="perfil-reservas"><strong>Reservas Feitas:</strong> 5</div>
+            <div class="profile-field" id="perfil-proximo">
               <strong>Próximo Evento:</strong> WWE SmackDown — 28/04/2025 <br>
               <button class="event-btn">Ver Evento</button>
             </div>
-            <div class="profile-field"><strong>Modalidade Favorita:</strong> UFC 🥊</div>
+            <div class="profile-field" id="perfil-modalidade"><strong>Modalidade Favorita:</strong> UFC 🥊</div>
           </div>
       
-       <button class="logout-btn">Sair</button>
+       <button class="logout-btn"><strong>LOGOUT</strong></button>
       </div>
     </div>
   
@@ -1643,44 +1111,44 @@
 
     <h2>PRÓXIMOS EVENTOS</h2>
     <div class="cards">
-        <div class="card">
-            <img src="../icons/2560px-UFC_Logo.svg.png" alt="UFC Logo" class="logo-evento">
-            <h3>UFC 300</h3>
-            <p>Data: 10/05/2025 — Las Vegas</p>
-            <button>Reservar</button>
-          </div>
-      <div class="card">
-        <img src="../icons/WWE_Logo.svg.png" alt="WrestleMania" class="logo-evento">
-        <h3>WrestleMania</h3>
-        <p>Data: 20/06/2025 — Los Angeles</p>
-        <button>Reservar</button>
-      </div>
-      <div class="card">
-        <img src="../icons/Professional_Bull_Riders_logo.png" alt="PBR Finals" class="logo-evento">
-        <h3>PBR World Finals</h3>
-        <p>Data: 15/07/2025 — Dallas</p>
-        <button>Reservar</button>
-      </div>
-      <div class="card">
-        <img src="../icons/Professional_Bull_Riders_logo.png" alt="PBR Finals" class="logo-evento">
-        <h3>PBR World Finals</h3>
-        <p>Data: 15/07/2025 — Dallas</p>
-        <button>Reservar</button>
-      </div>
-      <div class="card">
-        <img src="../icons/Professional_Bull_Riders_logo.png" alt="PBR Finals" class="logo-evento">
-        <h3>PBR World Finals</h3>
-        <p>Data: 15/07/2025 — Dallas</p>
-        <button>Reservar</button>
-      </div>
-      <div class="card">
-        <img src="../icons/Professional_Bull_Riders_logo.png" alt="PBR Finals" class="logo-evento">
-        <h3>PBR World Finals</h3>
-        <p>Data: 15/07/2025 — Dallas</p>
-        <button>Reservar</button>
-      </div>
+ 
     </div>
   </section>
+
+
+
+  <!--CARROSSELS PARA HIGHLIGHTS DA WWE/UFC/PBR-->
+
+  <section class="highlights-section">
+    <h2>Destaques WWE</h2>
+    <div class="swiper wwe-carousel">
+      <div class="swiper-wrapper" id="wwe-videos"></div>
+
+        <!-- Botões de navegação -->
+      <div class="swiper-button-prev wwe-prev"></div>
+      <div class="swiper-button-next wwe-next"></div>
+    </div>
+  
+    <h2>Destaques UFC</h2>
+    <div class="swiper ufc-carousel">
+      <div class="swiper-wrapper" id="ufc-videos"></div>
+
+      <div class="swiper-button-prev ufc-prev"></div>
+      <div class="swiper-button-next ufc-next"></div>
+    </div>
+  
+    <h2>Destaques PBR</h2>
+    <div class="swiper pbr-carousel">
+      <div class="swiper-wrapper" id="pbr-videos"></div>
+
+      <div class="swiper-button-prev pbr-prev"></div>
+      <div class="swiper-button-next pbr-next"></div>
+    </div>
+  </section>
+  
+
+  <!--------------------------------------------->
+
 
   <!-- FOOTER -->
   <footer class="site-footer">
@@ -1690,10 +1158,94 @@
 
   <div class="tooltip" id="mapTooltip">Continente</div>
 
+  <!-- BOTÃO PARA ABRIR FAVORITOS -->
+
+
+<button id="abrir-favoritos" class="menu-favoritos-btn">
+  <img src="../icons/like-empty.png" alt="Favoritos" width="24" />
+</button>
+
+<!-- PAINEL DE FAVORITOS -->
+<div id="menu-favoritos" class="menu-favoritos hidden">
+  <button id="fechar-favoritos" class="fechar-favoritos-btn">✖</button>
+  <h4>Favoritos</h4>
+  <div id="lista-favoritos"></div>
+</div>
+
+
 
 </body>
 
 <script>
+
+
+//CARROSSELS DE HIGHLIGHTS DA WWE/PBR/UFC//
+
+const apiKey = 'AIzaSyB-776EnqD3vnOoTj5cQQr4JhYQik0MhUg'; // <- substitui aqui
+const canais = {
+  WWE: 'UCJ5v_MCY6GNUBTO8-D3XoAg',
+  UFC: 'UCvgfXK4nTYKudb0rFR6noLA',
+  PBR: 'UCG4XUaXP0uhE27acYsJ0Xlg'
+};
+
+function carregarVideos(canal, elementoDestino) {
+  fetch(`https://www.googleapis.com/youtube/v3/search?key=${apiKey}&channelId=${canais[canal]}&part=snippet,id&order=date&maxResults=10`)
+    .then(res => res.json())
+    .then(data => {
+      const wrapper = document.getElementById(elementoDestino);
+      data.items.forEach(video => {
+        if (video.id.kind === "youtube#video") {
+          const slide = document.createElement("div");
+          slide.className = "swiper-slide";
+          slide.innerHTML = `
+            <iframe width="100%" height="200" src="https://www.youtube.com/embed/${video.id.videoId}" frameborder="0" allowfullscreen></iframe>
+            <p style="text-align:center; font-size: 0.9em;">${video.snippet.title}</p>
+          `;
+          wrapper.appendChild(slide);
+        }
+      });
+
+      new Swiper(`.${elementoDestino.split('-')[0]}-carousel`, {
+  effect: 'coverflow',
+  grabCursor: true,
+  centeredSlides: true,
+  slidesPerView: 'auto',
+  coverflowEffect: {
+    rotate: 30,
+    stretch: 0,
+    depth: 120,
+    modifier: 1,
+    slideShadows: true,
+  },
+     loop: true,
+     navigation: {
+       nextEl: `.${elementoDestino.split('-')[0]}-next`,
+       prevEl: `.${elementoDestino.split('-')[0]}-prev`,
+     },
+     });
+    })
+    .catch(err => console.error("Erro ao carregar vídeos:", err));
+}
+
+// Chamar para cada canal
+carregarVideos('WWE', 'wwe-videos');
+carregarVideos('UFC', 'ufc-videos');
+carregarVideos('PBR', 'pbr-videos');
+
+
+
+
+
+const userLogado = JSON.parse(localStorage.getItem("userLogado"));
+
+if (userLogado) {
+  console.log("User: " + userLogado.nome);
+  //document.querySelector("#nome-utilizador").innerText = `Bem-vindo, ${userLogado.nome}`;
+} else {
+  // Redirecionar se não estiver logado
+  window.location.href = "signuplogin.html";
+}
+
     const toggleBtn = document.getElementById('toggle-menu');
     const sidebar = document.getElementById('sidebar');
   
@@ -1710,24 +1262,212 @@
 
 
 
-      //selecionar continente no mapa
-      
-      const eventosPorContinente = {
-  america: ['UFC 300 — Las Vegas', 'PBR Finals — Dallas'],
-  europa: ['WWE London Show — Londres'],
-  asia: ['UFC 301 — Tokyo'],
-  africa: ['WWE Live — Johannesburg']
+
+      const logosModalidades = {
+  UFC: "../icons/2560px-UFC_Logo.svg.png",
+  WWE: "../icons/WWE_Logo.svg.png",
+  PBR: "../icons/Professional_Bull_Riders_logo.png"
 };
 
-document.querySelectorAll('.mapa-svg path, .mapa-svg g').forEach(region => {
-  region.addEventListener('click', () => {
-    const id = region.id;
-    const eventos = eventosPorContinente[id] || ['Nenhum evento disponível.'];
-    document.getElementById('eventosLista').innerHTML =
-      `<h3>Eventos em ${id.toUpperCase()}</h3><ul>` +
-      eventos.map(ev => `<li>${ev}</li>`).join('') + `</ul>`;
+  const eventos = [
+  {
+    nome: "WWE London Show",
+    cidade: "Londres",
+    continente: "EUROPA",
+    data: "15/06/2025",
+    modalidade: "WWE",
+    arena: "O2 Arena"
+  },
+  {
+    nome: "UFC 300",
+    cidade: "Las Vegas",
+    continente: "AMÉRICA DO NORTE",
+    data: "10/05/2025",
+    modalidade: "UFC",
+    arena: "T-Mobile Arena"
+  },
+  {
+    nome: "PBR Brazil Finals",
+    cidade: "São Paulo",
+    continente: "AMÉRICA DO SUL",
+    data: "12/08/2025",
+    modalidade: "PBR",
+    arena: "Ginásio do Ibirapuera"
+  },
+  {
+    nome: "WWE Tokyo Slam",
+    cidade: "Tóquio",
+    continente: "ÁSIA",
+    data: "24/09/2025",
+    modalidade: "WWE",
+    arena: "Saitama Super Arena"
+  },
+  {
+    nome: "UFC Africa Clash",
+    cidade: "Joanesburgo",
+    continente: "ÁFRICA",
+    data: "27/09/2025",
+    modalidade: "UFC",
+    arena: "Kigali Arena"
+  },
+  {
+    nome: "PBR Outback Rodeo",
+    cidade: "Sydney",
+    continente: "OCEANIA",
+    data: "04/11/2025",
+    modalidade: "PBR",
+    arena: "Qudos Bank Arena"
+  },
+  {
+    nome: "PBR Outback Rodeo",
+    cidade: "Sydney",
+    continente: "OCEANIA",
+    data: "03/04/2025",
+    modalidade: "PBR",
+    arena: "Qudos Bank Arena"
+  }
+
+];
+
+// Guardar os eventos no localStorage para acesso global nas outras páginas
+localStorage.setItem("eventos", JSON.stringify(eventos));
+
+//Os próximos eventos só mostrarão os eventos futuros..não os que já passaram. A função a seguir faz essa filtragem.
+
+function filtrarEventosFuturos(listaEventos) {
+  const hoje = new Date();
+  hoje.setHours(0, 0, 0, 0); // garantir comparação só por data (sem horas)
+
+  return listaEventos.filter(ev => {
+    const [dia, mes, ano] = ev.data.split("/");
+    const dataEvento = new Date(ano, mes - 1, dia);
+    return dataEvento >= hoje;
+  });
+}
+
+
+// eventos array
+// logosModalidades map
+
+// Gerar os cards
+const containerCards = document.querySelector('.cards');
+const eventosFuturos = filtrarEventosFuturos(eventos);
+
+const favoritosKey = `favoritosEventos_${userLogado.email}`; //Associar um evento favorito a um utilizador.
+const favoritos = JSON.parse(localStorage.getItem(favoritosKey)) || [];
+
+
+eventosFuturos.forEach(evento => {
+  const logo = logosModalidades[evento.modalidade] || "../icons/default.png";
+  const isFavorito = favoritos.some(e => e.nome === evento.nome);
+
+  const card = document.createElement('div');
+  card.classList.add('card');
+
+  card.innerHTML = `
+    <img src="${logo}" alt="${evento.modalidade} Logo" class="logo-evento">
+    <h3>${evento.nome}</h3>
+    <p><strong>Data:</strong> ${evento.data} — ${evento.cidade}</p>
+    <button class="reservareventobtn">Reservar</button>
+    <button class="favorito-btn" data-nome="${evento.nome}">
+      <img src="../icons/${isFavorito ? 'heart-filled' : 'like-empty'}.png" 
+           alt="Favoritar" class="icone-favorito" width="24" />
+    </button>
+  `;
+
+  containerCards.appendChild(card);
+});
+
+
+const mapaContinentes = {
+  americanorte: ["AMÉRICA DO NORTE"], //Associar IDs de continentes aos NOMES DOS CONTINENTES pertencentes ao array que contém os eventos, para exibi-los por continente no mapa mundo.
+  americasul: ["AMÉRICA DO SUL"],
+  europa: ["EUROPA"],
+  asia: ["ÁSIA"],
+  africa: ["ÁFRICA"],
+  oceania: ["OCEANIA"],
+  independente: ["INDEPENDENTE"]
+};
+
+
+function mostrarEventosPorContinente(continenteId) {
+  const container = document.getElementById('eventosLista');
+  container.innerHTML = "";
+
+  const nomesContinente = mapaContinentes[continenteId] || [];
+
+  // 💡 Aqui filtramos primeiro os eventos futuros:
+  const eventosFuturos = filtrarEventosFuturos(eventos);
+
+  // 🔍 Depois filtramos apenas os que são daquele continente:
+  const eventosFiltrados = eventosFuturos.filter(ev => nomesContinente.includes(ev.continente));
+
+  const nomeContinenteFormatado = continenteId.toUpperCase().replace(/_/g, ' ');
+
+  if (eventosFiltrados.length === 0) {
+    container.innerHTML = `<h3>Eventos em ${nomeContinenteFormatado}</h3><p>Nenhum evento disponível.</p>`;
+    return;
+  }
+
+  let html = `<h3>Eventos em ${nomeContinenteFormatado}</h3>`;
+  eventosFiltrados.forEach((ev, index) => {
+    html += `
+      <div class="evento-card">
+        <h4>${ev.nome}</h4>
+        <p><strong>Local:</strong> ${ev.cidade}</p>
+        <button class="reservar-btn" data-index="${index}">Reservar Lugar</button>
+      </div>
+    `;
+  });
+
+  container.innerHTML = html;
+
+  // 👇 Atualizar os botões de reserva
+  document.querySelectorAll('.reservar-btn').forEach(btn => {
+    btn.addEventListener('click', function () {
+      const eventoIndex = this.dataset.index;
+      const eventoSelecionado = eventosFiltrados[eventoIndex];
+
+      localStorage.setItem("eventoSelecionado", JSON.stringify(eventoSelecionado));
+      window.location.href = "eventosreservatest.html";
+    });
+  });
+}
+
+
+    // Adicionar funcionalidade aos botões
+document.querySelectorAll('.reservar-btn').forEach(btn => {
+  btn.addEventListener('click', function () {
+    const eventoIndex = this.dataset.index;
+    const eventoSelecionado = eventosFiltrados[eventoIndex];
+
+    // Guardar no localStorage para a próxima página
+    localStorage.setItem("eventoSelecionado", JSON.stringify(eventoSelecionado));
+
+    // Redirecionar para a página de reserva
+    window.location.href = "eventosreservatest.html"; 
   });
 });
+
+
+
+
+
+
+
+
+
+
+      //selecionar continente no mapa
+
+
+      document.querySelectorAll('.mapa-svg path, .mapa-svg g').forEach(region => {
+        region.addEventListener('click', () => {
+        const id = region.id;
+        mostrarEventosPorContinente(id);
+       });
+      });
+
 
 const tooltip = document.getElementById('mapTooltip');
 
@@ -1748,9 +1488,18 @@ document.querySelectorAll('.mapa-svg g').forEach(region => {
 const profileBtn = document.querySelector('.profile-btn');
   const modal = document.getElementById('profileModal');
   const closeBtn = document.getElementById('closeModal');
+  const reservaBtn = document.querySelector('.reservas-btn')
 
   profileBtn.addEventListener('click', () => {
+    atualizarPopupPerfil();
     modal.style.display = 'flex';
+  });
+
+
+  reservaBtn.addEventListener('click', () => {
+
+    window.location.href = "reservas.html";
+
   });
 
   closeBtn.addEventListener('click', () => {
@@ -1765,8 +1514,244 @@ const profileBtn = document.querySelector('.profile-btn');
   });
 
     document.getElementById("verEventosBtn").addEventListener("click", function() {
-    window.location.href = "reservabilhetes.html"; // Caminho da página de destino
+    window.location.href = "reservabilhetesteste.html"; // Caminho da página de destino
   });
+
+ // document.getElementById("reservareventobtn").addEventListener("click", function(){
+   // window.location.href = "eventosreservatest.html"; // Caminho da página de destino
+  //});
+
+
+
+  //Definição de um array com as capacidades de acordo com a arena. 
+
+  const capacidadePorArena = {
+  "T-Mobile Arena": {
+    ring1: 50,
+    ring2: 35,
+    ring3: 20
+  },
+  "O2 Arena": {
+    ring1: 45,
+    ring2: 30,
+    ring3: 25
+  },
+  "Ginásio do Ibirapuera": {
+    ring1: 40,
+    ring2: 30,
+    ring3: 30
+  },
+  "Saitama Super Arena": {
+    ring1: 60,
+    ring2: 40,
+    ring3: 30
+  },
+  "Kigali Arena": {
+    ring1: 35,
+    ring2: 25,
+    ring3: 15
+  },
+  "Qudos Bank Arena": {
+    ring1: 40,
+    ring2: 35,
+    ring3: 25
+  }
+};
+
+
+  //Botão de Reservar que passa o evento especifico para a página de reserva de bilhetes.
+  document.querySelectorAll('.reservareventobtn').forEach((btn, index) => {
+  btn.addEventListener('click', () => {
+    const eventoSelecionado = eventos[index];
+    const capacidades = capacidadePorArena[eventoSelecionado.arena];
+    eventoSelecionado.capacidade = capacidades; // Correção aqui
+    localStorage.setItem("eventoSelecionado", JSON.stringify(eventoSelecionado));
+    window.location.href = "eventosreservatest.html"; 
+  });
+
+
+});
+
+
+
+
+//Atualizar dados do POPUP de 'VER PERFIL'
+// Referência ao popup
+function atualizarPopupPerfil() {
+  const user = JSON.parse(localStorage.getItem("userLogado"));
+  const reservas = JSON.parse(localStorage.getItem("reservas")) || [];
+
+  // Nome & Email do utilizador loggado
+  document.getElementById("perfil-nome").innerHTML = `<strong>Nome:</strong> ${user.nome || "N/A"}`;
+  document.getElementById("perfil-email").innerHTML = `<strong>Email:</strong> ${user.email || "N/A"}`;
+
+
+  // Total de reservas feitas pelo utilizador
+  document.getElementById("perfil-reservas").innerHTML = `<strong>Reservas Feitas:</strong> ${reservas.length}`;
+
+
+
+  // Próximo Evento (com base na data atual e a data do evento)
+  if (reservas.length > 0) {
+    const hoje = new Date();
+    const proximos = reservas
+      .filter(r => new Date(r.data) > hoje)
+      .sort((a, b) => new Date(a.data) - new Date(b.data));
+
+    const proximo = proximos[0];
+    if (proximo) {
+      document.getElementById("perfil-proximo").innerHTML = `<strong>Próximo Evento:</strong> ${proximo.nome} — ${proximo.data}<br><button class="event-btn">Ver Evento</button>`;
+
+      document.querySelector(".event-btn").addEventListener("click", () => {
+        localStorage.setItem("eventoSelecionado", JSON.stringify(proximo));
+        window.location.href = "eventosreservatest.html";
+      });
+    } else {
+      document.getElementById("perfil-proximo").innerHTML = `<strong>Próximo Evento:</strong> Sem eventos futuros.`;
+    }
+  } else {
+    document.getElementById("perfil-reservas").innerText = "Sem reservas.";
+  }
+
+  // Modalidade favorita (com base nas modalidades que mais aparecem nas reservas do utilizador (considerando que fazer uma reserva revela interesse do utilizador naquela modalidade especifica))
+  if (reservas.length > 0) {
+    const contagem = {};
+    reservas.forEach(r => {
+      contagem[r.modalidade] = (contagem[r.modalidade] || 0) + 1;
+    });
+
+    const favorita = Object.entries(contagem).sort((a, b) => b[1] - a[1])[0][0];
+    document.getElementById("perfil-modalidade").innerHTML = `<strong>Modalidade Favorita:</strong> ${favorita}`;
+  } else {
+    document.getElementById("perfil-modalidade").innerText = "Sem Modalidades Preferidas.";
+  }
+
+  //Botão de Logout (remover a instancia do utilizador logado do local storage)
+document.querySelector(".logout-btn").addEventListener("click", () => {
+  localStorage.removeItem("userLogado"); // Limpa os dados do login
+  window.location.href = "signuplogin.html"; // Redireciona para login
+});
+}
+
+
+//Caso o utilizador pretenda consultar os lutadores/atletas de uma modalidade
+
+function definirModalidade(modalidade) {
+  localStorage.setItem("modalidadeSelecionada", modalidade);
+}
+
+
+//Página de seleção de eventos.
+function selecionarModalidade(modalidade) {
+  localStorage.setItem("modalidadeSelecionada", modalidade);
+}
+
+
+
+
+
+
+//Toggle de Favoritos
+document.addEventListener('click', function(e) {
+  if (e.target.closest('.favorito-btn')) {
+    const btn = e.target.closest('.favorito-btn');
+    const nomeEvento = btn.dataset.nome;
+    const icone = btn.querySelector('img');
+
+    let favoritos = JSON.parse(localStorage.getItem(favoritosKey)) || [];
+    const eventos = JSON.parse(localStorage.getItem("eventos")) || [];
+    const evento = eventos.find(e => e.nome === nomeEvento);
+
+    const index = favoritos.findIndex(e => e.nome === nomeEvento);
+    if (index === -1) {
+      favoritos.push(evento);
+      icone.src = "../icons/heart-filled.png";
+    } else {
+      favoritos.splice(index, 1);
+      icone.src = "../icons/like-empty.png";
+    }
+
+    localStorage.setItem(favoritosKey, JSON.stringify(favoritos));
+    atualizarFavoritosPainel();
+  }
+});
+
+
+
+
+
+//Arir e Fechar Favoritos
+const btnAbrirFavoritos = document.getElementById("abrir-favoritos");
+const btnFecharFavoritos = document.getElementById("fechar-favoritos");
+const menuFavoritos = document.getElementById("menu-favoritos");
+const listaFavoritos = document.getElementById("lista-favoritos");
+
+btnAbrirFavoritos.addEventListener("click", () => {
+  menuFavoritos.classList.add("active");
+  atualizarFavoritosPainel();
+});
+
+btnFecharFavoritos.addEventListener("click", () => {
+  menuFavoritos.classList.remove("active");
+});
+
+function atualizarFavoritosPainel() {
+  const favoritos = JSON.parse(localStorage.getItem(favoritosKey)) || [];
+  listaFavoritos.innerHTML = "";
+
+  if (favoritos.length === 0) {
+    listaFavoritos.innerHTML = "<p style='text-align:center;'>Nenhum favorito ainda.</p>";
+    return;
+  }
+
+  favoritos.forEach(ev => {
+    const item = document.createElement("div");
+    item.classList.add("favorito-item");
+
+    item.innerHTML = `
+      <div>
+        <strong>${ev.nome}</strong><br>
+        <small>${ev.data} — ${ev.cidade}</small>
+      </div>
+      <div style="display: flex; flex-direction: column; gap: 5px;">
+        <button onclick="irParaReserva('${ev.nome}')">Reservar</button>
+        <button onclick="removerFavorito('${ev.nome}')">Remover</button>
+      </div>
+    `;
+
+    listaFavoritos.appendChild(item);
+  });
+}
+
+
+function removerFavorito(nome) {
+  let favoritos = JSON.parse(localStorage.getItem(favoritosKey)) || [];
+  favoritos = favoritos.filter(e => e.nome !== nome);
+  localStorage.setItem(favoritosKey, JSON.stringify(favoritos));
+  atualizarFavoritosPainel();
+  atualizarIconesFavoritos();
+}
+
+function atualizarIconesFavoritos() {
+  const favoritos = JSON.parse(localStorage.getItem(favoritosKey)) || [];
+
+  document.querySelectorAll(".favorito-btn").forEach(btn => {
+    const nome = btn.dataset.nome;
+    const icone = btn.querySelector('img');
+    const isFavorito = favoritos.some(e => e.nome === nome);
+    icone.src = `../icons/${isFavorito ? 'heart-filled' : 'like-empty'}.png`;
+  });
+}
+
+
+function irParaReserva(nomeEvento) {
+  const eventos = JSON.parse(localStorage.getItem("eventos")) || [];
+  const eventoSelecionado = eventos.find(ev => ev.nome === nomeEvento);
+  if (!eventoSelecionado) return;
+
+  localStorage.setItem("eventoSelecionado", JSON.stringify(eventoSelecionado));
+  window.location.href = "eventosreservatest.html";
+}
 
   </script>
   

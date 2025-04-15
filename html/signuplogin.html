@@ -3,280 +3,12 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" type="text/css" href="../css/signuplogin.css" /> 
   <title>Login / Registro - TKO Sports</title>
-  <style>
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-      font-family: Arial, sans-serif;
-    }
-
-    body {
-  background: linear-gradient(135deg, #1e1e1e, #333);
-  color: #fff;
-  display: flex;
-  flex-direction: column;  /* Faz os elementos ficarem empilhados verticalmente */
-  align-items: center;
-  padding: 20px;
-  /* REMOVER ISSO SE QUISER SCROLL NATURAL */
-height: 100vh;
-
-}
-
-
-    .container {
-      background: #222;
-      padding: 30px;
-      border-radius: 10px;
-      box-shadow: 0 0 10px rgba(0,0,0,0.5);
-      width: 100%;
-      max-width: 400px;
-    }
-
-    .tabs {
-      display: flex;
-      justify-content: space-between;
-      margin-bottom: 20px;
-    }
-
-    .tab {
-      cursor: pointer;
-      flex: 1;
-      padding: 10px;
-      text-align: center;
-      background: #444;
-      border-radius: 5px;
-      transition: background 0.3s;
-    }
-
-    .tab.active {
-      background: #e50914;
-    }
-
-    form {
-      display: none;
-      flex-direction: column;
-    }
-
-    form.active {
-      display: flex;
-    }
-
-    input {
-      padding: 10px;
-      margin-bottom: 15px;
-      border: none;
-      border-radius: 5px;
-      font-size: 1em;
-    }
-
-    button {
-      padding: 10px;
-      background: #e50914;
-      border: none;
-      border-radius: 5px;
-      font-size: 1em;
-      cursor: pointer;
-      transition: background 0.3s;
-    }
-
-    button:hover {
-      background: #c10810;
-    }
-
-    @media (max-width: 500px) {
-      .container {
-        padding: 20px;
-      }
-    }
-
-    .experience-section {
-  margin-top: 60px;
-  text-align: center;
-  color: white;
-  padding: 20px;
-}
-
-.experience-section h2 {
-  font-size: 2em;
-  margin-bottom: 30px;
-}
-
-.white-bold {
-  font-weight: bold;
-  color: white;
-}
-
-.red-italic {
-  font-weight: bold;
-  color: #e50914;
-  font-style: italic;
-}
-
-.modalities {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-wrap: nowrap; /* Não quebra linha */
-}
-
-.image-box {
-  padding: 0;
-  border: none;
-  box-shadow: none;
-}
-
-.image-box img {
-  width: 650px;
-  height: auto;
-  border-radius: 0;
-  display: block;
-}
-
-/* Bordas vermelhas ENTRE imagens */
-.image-box:not(:first-child) {
-  border-left: 4px solid #e50914;
-}
-
-
-
-/* Responsivo */
-@media (max-width: 800px) {
-  .modalities {
-    flex-direction: column;
-  }
-
-  .image-box {
-    border: none;
-    border-top: 4px solid #e50914;
-    border-bottom: 4px solid #e50914;
-  }
-}
-
-.ticket-section {
-  margin-top: 60px;
-  text-align: center;
-  padding: 30px;
-  background: #111;
-  border-radius: 10px;
-  box-shadow: 0 0 10px rgba(0,0,0,0.5);
-  max-width: 800px;
-  margin-left: auto;
-  margin-right: auto;
-}
-
-.ticket-section h2 {
-  font-size: 1.8em;
-  color: #e50914;
-  margin-bottom: 10px;
-}
-
-.ticket-section p {
-  color: #ccc;
-  font-size: 1em;
-  margin-bottom: 20px;
-}
-
-.email-form {
-  display: flex;
-  justify-content: center;
-  gap: 10px;
-  margin-bottom: 20px;
-}
-
-.email-form input {
-  text-align: center; /* Centraliza texto dentro do input */
-}
-
-
-.email-form button {
-  padding: 10px 20px; /* menor padding horizontal */
-  background: #e50914;
-  border: none;
-  color: white;
-  font-weight: bold;
-  border-radius: 5px;
-  cursor: pointer;
-  transition: background 0.3s;
-  width: auto; /* deixa o tamanho conforme o texto */
-}
-
-.email-form button:hover {
-  background: #c10810;
-}
-
-
-.cta-button {
-  padding: 12px 20px;
-  font-size: 1em;
-  background: transparent;
-  border: 2px solid #e50914;
-  color: white;
-  border-radius: 5px;
-  cursor: pointer;
-  transition: background 0.3s, color 0.3s;
-}
-
-.cta-button:hover {
-  background: #e50914;
-  color: white;
-}
-
-
-
-
-
-
-.site-footer {
-    width: 103%;
-  background: #111;
-  color: #ccc;
-  text-align: center;
-  padding: 40px 20px;  /* aumentamos o padding */
-  margin-top: 60px;    /* respiro acima */
-  border-top: 2px solid #e50914;
-}
-
-.footer-content p {
-  margin-bottom: 15px;
-  font-size: 1em;
-}
-
-.footer-links {
-  margin-bottom: 15px;
-}
-
-.footer-links a {
-  margin: 0 12px;
-  color: #e50914;
-  text-decoration: none;
-  font-weight: bold;
-  font-size: 0.95em;
-}
-
-.footer-links a:hover {
-  text-decoration: underline;
-}
-
-.social-icons a img {
-  width: 24px;
-  margin: 0 8px;
-  filter: brightness(0) invert(1);
-  transition: transform 0.3s;
-}
-
-.social-icons a img:hover {
-  transform: scale(1.2);
-}
-
-
-
-  </style>
 </head>
 <body>
 
-  <div class="container">
+  <div id="login-box" class="container">
 
     <img src="../images/image-removebg-preview (10).png" style="margin-left: 9%;">
 
@@ -326,9 +58,10 @@ height: 100vh;
     <p>Compra bilhetes para eventos da <strong>UFC</strong>, <strong>WWE</strong> e <strong>PBR</strong> diretamente pela Arena 360. <br>Simples, rápido e seguro.</p>
     
     <form class="email-form">
-      <input type="email" placeholder="Insere o teu email..." required>
-      <button type="submit">Quero Saber Mais</button>
+      <input id="newsletter-email" type="email" placeholder="Insere o teu email..." required>
+      <button id="newsletter-submit" type="submit">Quero Saber Mais</button>
     </form>
+    
   
     <button class="cta-button">Ver Eventos Disponíveis</button>
   </div>
@@ -351,5 +84,138 @@ height: 100vh;
   </footer>
   
 
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+
+  <script>
+    $(document).ready(function () {
+    
+      // Alternar entre as tabs de Login e Registo
+      $(".tab").click(function () {
+        $(".tab").removeClass("active");
+        $(this).addClass("active");
+    
+        if ($(this).attr("id") === "login-tab") {
+          $("#register-form").hide();
+          $("#login-form").show();
+        } else {
+          $("#login-form").hide();
+          $("#register-form").show();
+        }
+      });
+    
+      // Inicializar com login visível e registo oculto
+      $("#register-form").hide();
+    
+      // Registo
+      $("#register-form").submit(function (e) {
+        e.preventDefault();
+        const name = $(this).find('input[type="text"]').val();
+        const email = $(this).find('input[type="email"]').val();
+        const password = $(this).find('input[type="password"]').val();
+    
+        // Guardar no localStorage
+        
+        // Gerar ID simples (timestamp)
+        const userId = Date.now();
+
+        // Criar utilizador
+        const novoUtilizador = {
+           id: userId,
+           nome: name,
+           email: email,
+           password: password
+        };
+
+// Buscar utilizadores existentes (se houver)
+let utilizadores = JSON.parse(localStorage.getItem("utilizadores")) || [];
+
+// Adicionar novo
+utilizadores.push(novoUtilizador);
+
+// Guardar no localStorage
+localStorage.setItem("utilizadores", JSON.stringify(utilizadores));
+
+// Guardar info do utilizador atualmente logado
+localStorage.setItem("userLogado", JSON.stringify(novoUtilizador));
+
+
+        alert("Registo efetuado com sucesso! Pode agora iniciar sessão.");
+        
+        // Trocar para o formulário de login
+        $("#register-tab").removeClass("active");
+        $("#login-tab").addClass("active");
+        $("#register-form").hide();
+        $("#login-form").show();
+      });
+    
+      // Login
+
+
+       $("#login-form").submit(function (e) {
+         e.preventDefault();
+
+         const email = $(this).find('input[type="email"]').val();
+         const password = $(this).find('input[type="password"]').val();
+
+        // Buscar utilizadores do localStorage
+        const utilizadores = JSON.parse(localStorage.getItem("utilizadores")) || [];
+
+        // Verificar se existe algum utilizador com estas credenciais
+        const userEncontrado = utilizadores.find(
+          (user) => user.email === email && user.password === password
+        );
+
+  
+        if (userEncontrado) {
+        // Guardar utilizador logado
+           localStorage.setItem("userLogado", JSON.stringify(userEncontrado));
+
+           alert("Login efetuado com sucesso!");
+           window.location.href = "homepage.html";
+        } else {
+           alert("Email ou password incorretos.");
+        }
+      });
+
+
+      //NEWSLETTER DE NOVIDADES
+
+      $("#newsletter-submit").click(function (e) {
+      e.preventDefault();
+      const email = $("#newsletter-email").val().trim();
+
+      if (email === "") {
+        alert("Por favor, insere o teu email para receber novidades.");
+      } else if (!validateEmail(email)) {
+        alert("Insere um email válido.");
+      } else {
+        alert("Obrigado por te inscreveres!");
+        $("#newsletter-email").val(""); // limpar o campo
+      }
+    });
+
+    function validateEmail(email) {
+      // Verificação simples de formato de email - ajuda do CHATGPT para a formatação
+      const regex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+      return regex.test(email);
+    }
+
+    });
+
+
+
+    $(".cta-button").click(function () {
+      $("html, body").animate(
+        {
+          scrollTop: $("#login-box").offset().top,
+        },
+        800 // duração em ms
+      );
+    });
+
+
+    </script>
+    
 </body>
 </html>
