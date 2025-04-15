@@ -1,0 +1,698 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Arena 360 — Home</title>
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: Arial, sans-serif;
+    }
+
+    body {
+      background: linear-gradient(135deg, #1e1e1e, #333);
+      color: #fff;
+    }
+
+
+    h1 {
+      text-align: center;
+    }
+
+
+    .sidebar {
+  width: 250px;
+  background: #111;
+  padding: 20px;
+  height: 100vh;
+  position: fixed;
+  left: 0;
+  top: 0;
+  overflow-y: auto;
+  border-right: 2px solid #e50914;
+}
+
+.sidebar h2 {
+  color: #e50914;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+.sidebar .menu > li {
+  margin-bottom: 15px;
+}
+
+.sidebar .menu > li > strong {
+  color: #fff;
+  display: block;
+  margin-bottom: 5px;
+}
+
+.sidebar ul ul {
+  list-style: none;
+  padding-left: 15px;
+}
+
+.sidebar ul ul li {
+  margin: 5px 0;
+}
+
+.sidebar ul ul li a {
+  color: #ccc;
+  text-decoration: none;
+  font-size: 0.9em;
+  transition: color 0.3s;
+}
+
+.sidebar ul ul li a:hover {
+  color: #e50914;
+}
+
+
+
+
+
+
+    /* FOOTER */
+    .site-footer {
+      background: #111;
+      color: #ccc;
+      text-align: center;
+      padding: 30px 20px;
+      border-top: 2px solid #e50914;
+      margin-top: 40px;
+    }
+
+    .icon {
+  width: 35px;
+  vertical-align: middle;
+  margin-right: 5px;
+}
+
+.menu-btn {
+  position: fixed;
+  top: 20px;
+  left: 20px;
+  z-index: 1000;
+  background: #e50914;
+  color: white;
+  border: none;
+  padding: 10px 15px;
+  border-radius: 5px;
+  font-size: 1.2em;
+  cursor: pointer;
+  display: none;
+}
+
+/* Mostrar botão só no mobile */
+@media (max-width: 768px) {
+  .menu-btn {
+    display: block;
+  }
+
+  .sidebar {
+    display: none;
+    width: 100%;
+    height: auto;
+    position: relative;
+    border-right: none;
+    border-bottom: 2px solid #e50914;
+  }
+
+  .sidebar.active {
+    display: block;
+  }
+
+  .main-content {
+    margin-left: 0;
+    width: 100%;
+  }
+}
+
+.divider {
+  height: 2px;
+  background: #e50914;
+  margin: 15px 0 20px 0;
+  border-radius: 1px;
+}
+
+.page-container {
+      display: flex;
+      justify-content: center;
+      align-items: flex-start;
+      gap: 40px;
+      margin-top: 30px;
+      flex-wrap: wrap;
+    }
+
+    .arena-wrapper {
+      position: relative;
+      width: 500px;
+      height: 500px;
+      border-radius: 50%;
+      background: #111;
+      box-shadow: 0 0 15px rgba(0,0,0,0.5);
+    }
+
+    .ring {
+      position: absolute;
+      border-radius: 50%;
+    }
+
+    .ring1 {
+      width: 100%;
+      height: 100%;
+      top: 0; left: 0;
+      background: rgba(0,0,0,0.2);
+    }
+
+    .ring2 {
+      width: 70%;
+      height: 70%;
+      top: 15%; left: 15%;
+      background: rgba(0,0,0,0.4);
+    }
+
+    .ring3 {
+      width: 40%;
+      height: 40%;
+      top: 30%; left: 30%;
+      background: rgba(0,0,0,0.6);
+    }
+
+    .ringue {
+      position: absolute;
+      width: 80px;
+      height: 80px;
+      background: #e50914;
+      border: 3px solid white;
+      top: 50%; left: 50%;
+      transform: translate(-50%, -50%);
+      text-align: center;
+      line-height: 80px;
+      font-weight: bold;
+    }
+
+    .legend {
+      margin-top: 15px;
+      text-align: center;
+    }
+
+    .legend span {
+      display: inline-block;
+      margin: 0 10px;
+    }
+
+    .legend .box {
+      width: 20px;
+      height: 20px;
+      display: inline-block;
+      border-radius: 3px;
+      margin-right: 5px;
+    }
+
+    .available { background: #28a745; }
+    .premium { background: #e50914; }
+    .occupied { background: #6c757d; }
+
+    .filters-panel {
+      background: #222;
+      padding: 20px;
+      border-radius: 10px;
+      width: 300px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.5);
+    }
+
+    .filters-panel h2 {
+      color: #e50914;
+      margin-bottom: 10px;
+    }
+
+    .divider {
+      height: 2px;
+      background: #e50914;
+      margin: 10px 0 15px;
+    }
+
+    .filters-panel label {
+      display: block;
+      margin-top: 10px;
+      margin-bottom: 5px;
+      font-weight: bold;
+    }
+
+    .filters-panel select,
+    .filters-panel input[type="text"] {
+      width: 100%;
+      padding: 8px;
+      margin-bottom: 10px;
+      border-radius: 5px;
+      border: none;
+    }
+
+    .reserve-btn {
+      width: 100%;
+      padding: 12px;
+      background: #e50914;
+      border: none;
+      color: white;
+      font-weight: bold;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: background 0.3s;
+    }
+
+    .reserve-btn:hover {
+      background: #c10810;
+    }
+
+    .event-info {
+      background: #111;
+      padding: 15px;
+      border-radius: 8px;
+      margin-bottom: 15px;
+      box-shadow: 0 0 5px rgba(0,0,0,0.4);
+    }
+
+    .event-info h3 {
+      color: #e50914;
+      margin-bottom: 5px;
+    }
+
+    .available-spots {
+      margin-top: 10px;
+      font-size: 0.95em;
+    }
+
+    .available-spots span {
+      display: block;
+      margin: 3px 0;
+    }
+
+
+
+    /*FOOTER*/
+    .footer {
+  background: #111;
+  color: #ccc;
+  padding: 30px 20px;
+  margin-top: 110px;
+  width: 100%;
+  margin-left: -1%;
+  border-top: 2px solid #e50914;
+}
+
+.footer-container {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  max-width: 1200px;
+  margin: auto;
+}
+
+.footer-section {
+  flex: 1 1 200px;
+  margin: 10px;
+}
+
+.footer-section h3, .footer-section h4 {
+  color: #e50914;
+  margin-bottom: 10px;
+}
+
+.footer-section ul {
+  list-style: none;
+  padding: 0;
+}
+
+.footer-section ul li {
+  margin-bottom: 8px;
+}
+
+.footer-section ul li a {
+  color: #ccc;
+  text-decoration: none;
+  transition: color 0.3s;
+}
+
+.footer-section ul li a:hover {
+  color: #e50914;
+}
+
+.social-icons a img {
+  width: 24px;
+  margin-right: 10px;
+  filter: grayscale(1);
+  transition: filter 0.3s;
+}
+
+.social-icons a img:hover {
+  filter: grayscale(0) brightness(1.2);
+}
+
+
+
+
+
+
+
+
+
+
+.popup {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.8);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 999;
+  transition: opacity 0.3s ease;
+}
+
+.popup.hidden {
+  display: none;
+}
+
+.popup-content {
+  background: #111;
+  padding: 30px;
+  border-radius: 10px;
+  text-align: center;
+  color: white;
+  border: 2px solid #e50914;
+  box-shadow: 0 0 15px #e50914;
+  min-width: 300px;
+  position: relative;
+}
+
+.popup-content h2 {
+  color: #e50914;
+  margin-bottom: 20px;
+}
+
+.confirm-btn {
+  background: #e50914;
+  color: white;
+  border: none;
+  padding: 12px 20px;
+  margin-top: 20px;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+.confirm-btn:hover {
+  background: #c10810;
+}
+
+.sucesso h2 {
+  color: #00ff88;
+}
+
+
+.countdown {
+  position: absolute;
+  right: 20px;
+  top: 100px;
+  width: 200px;
+  height: 65px;
+  background: rgba(0,0,0,0.4);
+  padding: 10px 20px;
+  border-radius: 8px;
+  border: 1px solid #e50914;
+  color: white;
+  text-align: center;
+  font-family: monospace;
+  font-size: 1em;
+  z-index: 10;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  line-height: 1.2; /* Aproxima as linhas */
+}
+
+.countdown span {
+  margin: 0; /* Remove espaçamento extra */
+}
+
+#timer {
+  color: #e50914;
+  font-size: 1.2em;
+  font-weight: bold;
+  margin-top: 4px; /* Tira esse valor se quiser ainda mais perto */
+}
+
+/* Responsividade refinada */
+@media (max-width: 768px) {
+  .countdown {
+    position: static;
+    margin: 15px auto 30px auto;
+    width: 90%;
+    max-width: 300px;
+    height: auto;
+    font-size: 0.95em;
+    padding: 12px 16px;
+  }
+
+  #timer {
+    font-size: 1.1em;
+  }
+}
+
+.close-btn {
+  position: absolute;
+  top: 10px;
+  right: 15px;
+  color: #e50914;
+  font-size: 1.5em;
+  cursor: pointer;
+  transition: color 0.3s;
+}
+
+.close-btn:hover {
+  color: #ff4444;
+}
+
+
+  </style>
+</head>
+<body>
+
+  <!--CONTEUDO-->
+  
+    <button id="toggle-menu" class="menu-btn">☰</button>
+
+    
+      
+    <div class="sidebar" id="sidebar">
+
+        <img src="../icons/image-removebg-preview (11).png" style="margin-left: 6%; list-style-type: none;">
+        <div class="divider"></div>
+
+        <ul class="menu" style="list-style-type: none;">
+          <li><img src="../icons/2560px-UFC_Logo.svg.png" class="icon"><strong></strong>
+            <ul>
+              <li><a href="../html/reservabilhetes.html">Reservar Bilhetes</a></li>
+              <li><a href="../html/lutadoresatletasdef.html">Lutadores</a></li>
+              <li><a href="../html/resultados.html">Resultados</a></li>
+              <li><a href="#">Notícias</a></li>
+            </ul>
+          </li>
+          <li><img src="../icons/WWE_Logo.svg.png" class="icon"><strong></strong>
+            <ul>
+              <li><a href="../html/reservabilhetes.html">Reservar Bilhetes</a></li>
+              <li><a href="../html/lutadoresatletasdef.html">Lutadores</a></li>
+              <li><a href="../html/resultados.html">Resultados</a></li>
+              <li><a href="#">Notícias</a></li>
+            </ul>
+          </li>
+          <li><img src="../icons/Professional_Bull_Riders_logo.png" class="icon"><strong></strong>
+            <ul>
+              <li><a href="../html/reservabilhetes.html">Reservar Bilhetes</a></li>
+              <li><a href="../html/lutadoresatletasdef.html">Atletas</a></li>
+              <li><a href="../html/resultados.html">Resultados</a></li>
+              <li><a href="#">Notícias</a></li>
+            </ul>
+          </li>
+          <li><strong>Lojas Oficiais</strong>
+          
+            <ul>
+              <li><a href="../html/stores.html">Lojas</a></li>
+            </ul>
+          </li>
+        </ul>
+      </div>
+
+
+
+
+  
+  <h1>RESERVA DE BILHETES</h1>
+    
+  <div class="page-container">
+
+
+    <div id="countdown" class="countdown">
+        <p>Começa em:</p>
+        <span id="timer">12d 06h 23m</span>
+      </div>
+      
+
+    <!-- Arena Visual -->
+    <div>
+      <div class="arena-wrapper">
+        <div class="ring ring1"></div>
+        <div class="ring ring2"></div>
+        <div class="ring ring3"></div>
+        <div class="ringue">RING</div>
+      </div>
+
+      <div class="legend">
+        <span><div class="box available"></div>Disponível</span>
+        <span><div class="box premium"></div>Premium</span>
+        <span><div class="box occupied"></div>Ocupado</span>
+      </div>
+    </div>
+
+    <!-- Filtros e Info -->
+    <div class="filters-panel">
+      <div class="event-info">
+        <h3>UFC 300</h3>
+        <p><strong>Data:</strong> 10/05/2025 — Las Vegas</p>
+        <p><strong>Arena:</strong> T-Mobile Arena</p>
+      </div>
+
+      <div class="divider"></div>
+
+      <h2>Filtrar Lugares</h2>
+
+      <label for="anel">Anel</label>
+      <select id="anel">
+        <option value="ring1">Anel 1</option>
+        <option value="ring2">Anel 2</option>
+        <option value="ring3">Anel 3</option>
+      </select>
+
+      <label for="lugar">Lugar</label>
+      <input type="text" id="lugar" style="width: 95%;" placeholder="Digite número do lugar"/>
+
+      <button class="reserve-btn">Confirmar Reserva</button>
+
+      <div class="available-spots">
+        <span><strong>Anel 1:</strong> 40 disponíveis</span>
+        <span><strong>Anel 2:</strong> 35 disponíveis</span>
+        <span><strong>Anel 3:</strong> 20 disponíveis</span>
+      </div>
+    </div>
+
+  </div>
+
+
+  <footer class="footer">
+    <div class="footer-container">
+      <div class="footer-section">
+        <h3>Arena 360</h3>
+        <p>&copy; 2025 — Todos os direitos reservados.</p>
+      </div>
+      
+      <div class="footer-section">
+        <h4>Links</h4>
+        <ul>
+          <li><a href="#">Política de Privacidade</a></li>
+          <li><a href="#">Termos de Uso</a></li>
+          <li><a href="#">FAQ</a></li>
+          <li><a href="#">Suporte</a></li>
+        </ul>
+      </div>
+      
+      <div class="footer-section">
+        <h4>Contactos</h4>
+        <p>📧 suporte@arena360.com</p>
+        <p>📞 +351 912 345 678</p>
+      </div>
+      
+      <div class="footer-section">
+        <h4>Segue-nos</h4>
+        <div class="social-icons">
+          <a href="#"><img src="../icons/instagram-new--v2.png" alt="Instagram"></a>
+          <a href="#"><img src="../icons/twitterx--v2.png" alt="Twitter"></a>
+          <a href="#"><img src="../icons/youtube-play.png" alt="YouTube"></a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Popup Resumo da Reserva -->
+  <div id="resumoPopup" class="popup hidden">
+    <div class="popup-content">
+      <span class="close-btn" onclick="fecharPopup()">&times;</span>
+      <h2>Resumo da Reserva</h2>
+      <p><strong>Anel:</strong> Anel 2</p>
+      <p><strong>Lugar:</strong> 15B</p>
+      <p><strong>Preço:</strong> €120</p>
+      <button class="confirm-btn" onclick="mostrarSucesso()">Finalizar Pagamento</button>
+    </div>
+  </div>
+  
+  <!-- Popup Sucesso -->
+  <div id="sucessoPopup" class="popup hidden">
+    <div class="popup-content sucesso">
+      <h2>✅ Compra Confirmada!</h2>
+      <p>O teu lugar está garantido.</p>
+      <button class="confirm-btn">Ver Reservas</button>
+    </div>
+  </div>
+
+</body>
+
+<script>
+// Abrir Resumo
+function abrirResumo() {
+    document.getElementById('resumoPopup').classList.remove('hidden');
+  }
+
+  // Mostrar Sucesso e Fechar Resumo
+  function mostrarSucesso() {
+    document.getElementById('resumoPopup').classList.add('hidden');
+    document.getElementById('sucessoPopup').classList.remove('hidden');
+  }
+
+  // Fechar Sucesso
+  document.querySelector('#sucessoPopup .confirm-btn').addEventListener('click', () => {
+    document.getElementById('sucessoPopup').classList.add('hidden');
+  });
+
+  // Teste: Ao clicar em "Confirmar Reserva", abre o Resumo
+  document.querySelector('.reserve-btn').addEventListener('click', abrirResumo);
+
+
+  function fecharPopup() {
+   document.getElementById('resumoPopup').classList.add('hidden');
+  }
+
+
+
+  //SIDEBAR
+  const toggleBtn = document.getElementById('toggle-menu');
+    const sidebar = document.getElementById('sidebar');
+  
+    toggleBtn.addEventListener('click', () => {
+      sidebar.classList.toggle('active');
+    });
+
+    const links = document.querySelectorAll('.sidebar a');
+      links.forEach(link => {
+        link.addEventListener('click', () => {
+        sidebar.classList.remove('active');
+        });
+      });
+  </script>
+  
+</html>

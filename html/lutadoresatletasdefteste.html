@@ -1,0 +1,696 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Arena 360 — Home</title>
+  <style>
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+  }
+  
+  body {
+    background: linear-gradient(135deg, rgba(30,30,30,0.95), rgba(51,51,51,0.95)), 
+                url('../icons/WWE_Logo.svg.png') no-repeat center center/cover;
+    color: #fff;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+  }
+
+  h1 {
+      text-align: center;
+    }
+
+
+    .sidebar {
+  width: 250px;
+  background: #111;
+  padding: 20px;
+  height: 100vh;
+  position: fixed;
+  left: 0;
+  top: 0;
+  overflow-y: auto;
+  border-right: 2px solid #e50914;
+}
+
+.sidebar h2 {
+  color: #e50914;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+.sidebar .menu > li {
+  margin-bottom: 15px;
+}
+
+.sidebar .menu > li > strong {
+  color: #fff;
+  display: block;
+  margin-bottom: 5px;
+}
+
+.sidebar ul ul {
+  list-style: none;
+  padding-left: 15px;
+}
+
+.sidebar ul ul li {
+  margin: 5px 0;
+}
+
+.sidebar ul ul li a {
+  color: #ccc;
+  text-decoration: none;
+  font-size: 0.9em;
+  transition: color 0.3s;
+}
+
+.sidebar ul ul li a:hover {
+  color: #e50914;
+}
+
+
+
+
+
+
+    /* FOOTER */
+    .site-footer {
+      background: #111;
+      color: #ccc;
+      text-align: center;
+      padding: 30px 20px;
+      border-top: 2px solid #e50914;
+      margin-top: 40px;
+    }
+
+    .icon {
+  width: 35px;
+  vertical-align: middle;
+  margin-right: 5px;
+}
+
+.menu-btn {
+  position: fixed;
+  top: 20px;
+  left: 20px;
+  z-index: 1000;
+  background: #e50914;
+  color: white;
+  border: none;
+  padding: 10px 15px;
+  border-radius: 5px;
+  font-size: 1.2em;
+  cursor: pointer;
+  display: none;
+}
+
+/* Mostrar botão só no mobile */
+@media (max-width: 768px) {
+  .menu-btn {
+    display: block;
+  }
+
+  .sidebar {
+    display: none;
+    width: 100%;
+    height: auto;
+    position: relative;
+    border-right: none;
+    border-bottom: 2px solid #e50914;
+  }
+
+  .sidebar.active {
+    display: block;
+  }
+
+  .main-content {
+    margin-left: 0;
+    width: 100%;
+  }
+}
+
+.divider {
+  height: 2px;
+  background: #e50914;
+  margin: 15px 0 20px 0;
+  border-radius: 1px;
+}
+
+
+  /*FOOTER*/
+  .footer {
+  background: #111;
+  color: #ccc;
+  padding: 30px 20px;
+  margin-top: 110px;
+  width: 100%;
+  margin-left: -1%;
+  border-top: 2px solid #e50914;
+}
+
+.footer-container {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  max-width: 1200px;
+  margin: auto;
+}
+
+.footer-section {
+  flex: 1 1 200px;
+  margin: 10px;
+}
+
+.footer-section h3, .footer-section h4 {
+  color: #e50914;
+  margin-bottom: 10px;
+}
+
+.footer-section ul {
+  list-style: none;
+  padding: 0;
+}
+
+.footer-section ul li {
+  margin-bottom: 8px;
+}
+
+.footer-section ul li a {
+  color: #ccc;
+  text-decoration: none;
+  transition: color 0.3s;
+}
+
+.footer-section ul li a:hover {
+  color: #e50914;
+}
+
+.social-icons a img {
+  width: 24px;
+  margin-right: 10px;
+  filter: grayscale(1);
+  transition: filter 0.3s;
+}
+
+.social-icons a img:hover {
+  filter: grayscale(0) brightness(1.2);
+}
+
+
+
+/*header info*/
+/* Header da Empresa */
+.empresa-header {
+    text-align: center;
+    padding: 30px 20px 20px;
+  }
+  
+  .empresa-logo {
+    width: 150px;
+    margin-bottom: 10px;
+  }
+  
+  .empresa-header h1 {
+    font-size: 2em;
+    color: #e50914;
+    margin-bottom: 10px;
+  }
+  
+  .empresa-header p {
+    font-size: 1em;
+    color: #ccc;
+    max-width: 600px;
+    margin: 0 auto 20px;
+  }
+  
+  .header-divider {
+    border: none;
+    height: 3px;
+    background-color: #e50914;
+    width: 80%;
+    margin: 0 auto;
+  }
+  
+
+
+   /* Container de Eventos */
+   .eventos-container {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 20px;
+    padding: 40px 20px;
+  }
+  
+  /* Card do Evento */
+  .evento-card {
+    background: #1a1a1a;
+    border-radius: 10px;
+    padding: 20px;
+    width: 300px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.5);
+    border: 2px solid #e50914;
+    text-align: center;
+    transition: transform 0.3s, box-shadow 0.3s;
+  }
+  
+  .evento-card:hover {
+    transform: scale(1.03);
+    box-shadow: 0 0 15px #e50914;
+  }
+  
+  .evento-card h2 {
+    color: #e50914;
+    margin-bottom: 10px;
+  }
+  
+  .evento-card p {
+    color: #ccc;
+    margin-bottom: 10px;
+    font-size: 0.95em;
+  }
+  
+  .evento-card button {
+    padding: 10px;
+    width: 100%;
+    background: #e50914;
+    border: none;
+    border-radius: 5px;
+    color: white;
+    font-weight: bold;
+    cursor: pointer;
+  }
+  
+  .evento-card button:hover {
+    background: #c10810;
+  }
+
+
+   /* Footer */
+   .site-footer {
+    background: #111;
+    color: #ccc;
+    text-align: center;
+    padding: 20px;
+    border-top: 2px solid #e50914;
+    margin-top: auto;
+  }
+  
+
+
+  .filtros-container {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin-top: 30px;
+  flex-wrap: wrap;
+}
+
+.filtros-container input,
+.filtros-container select {
+  padding: 10px;
+  border: 1px solid #e50914;
+  border-radius: 5px;
+  background: #1a1a1a;
+  color: #fff;
+}
+
+.filtros-container button {
+  padding: 10px 15px;
+  background: #e50914;
+  border: none;
+  border-radius: 5px;
+  color: white;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+.filtros-container button:hover {
+  background: #c10810;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+@media (max-width: 768px) {
+    .fade-logo {
+      background-size: 90%;
+    }
+  }
+  
+  
+      h1 {
+        text-align: center;
+        margin-top: 30px;
+        color: #e50914;
+      }
+  
+      .athlete-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+        gap: 20px;
+        padding: 30px 20px;
+        max-width: 1200px;
+        margin: 0 auto;
+        justify-items: center;
+      }
+      
+      .athlete-card {
+        width: 100%;
+        max-width: 180px;
+        position: relative;
+        overflow: hidden;
+        border-radius: 10px;
+        box-shadow: 0 0 10px rgba(0,0,0,0.5);
+        transition: transform 0.3s;
+        cursor: pointer;
+        background: #111;
+      }
+
+
+     .athlete-card:hover {
+  transform: scale(1.05);
+}
+
+.athlete-card img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+ 
+      
+      @media (max-width: 600px) {
+        .athlete-grid {
+          grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+          padding: 20px;
+        }
+      
+        .athlete-card {
+          max-width: 150px;
+        }
+      
+        .popup-content {
+          padding: 20px;
+        }
+      
+        .popup-img {
+          width: 80px;
+        }
+      
+        .name-overlay {
+          font-size: 0.9em;
+        }
+      }
+      
+  
+      .name-overlay {
+        position: absolute;
+        bottom: 0;
+        width: 100%;
+        padding: 12px 10px;
+        background: rgba(0,0,0,0.8);
+        color: white;
+        font-weight: bold;
+        font-size: 1em;
+        text-align: center;
+      }
+           
+  
+      .modalidade-label {
+        text-align: center;
+        margin-bottom: 20px;
+        font-size: 1.2em;
+        color: #ccc;
+      }
+
+
+      .popup {
+        position: fixed;
+        top: 0; left: 0;
+        width: 100%; height: 100%;
+        background: rgba(0,0,0,0.85);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        z-index: 999;
+      }
+      
+      .popup.hidden {
+        display: none;
+      }
+      
+      .popup-content {
+        background: #1a1a1a;
+        padding: 25px;
+        border-radius: 10px;
+        border: 2px solid #e50914;
+        text-align: center;
+        color: white;
+        width: 90%;
+        max-width: 400px;
+        position: relative;
+        box-shadow: 0 0 20px #e50914;
+      }
+      
+      .popup-img {
+        width: 100px;
+        border-radius: 50%;
+        border: 3px solid #e50914;
+        margin-bottom: 15px;
+      }
+      
+      .popup-content h2 {
+        margin-bottom: 15px;
+        color: #e50914;
+      }
+      
+      .popup-content p {
+        margin: 6px 0;
+        font-size: 0.95em;
+        color: #ccc;
+      }
+      
+      .close-btn {
+        position: absolute;
+        top: 12px;
+        right: 15px;
+        color: #e50914;
+        font-size: 1.5em;
+        cursor: pointer;
+        transition: color 0.3s;
+      }
+      
+      .close-btn:hover {
+        color: #ff4444;
+      }
+      
+      /* Responsivo */
+      @media (max-width: 600px) {
+        .popup-content {
+          padding: 20px;
+        }
+      
+        .popup-img {
+          width: 80px;
+        }
+      }
+  </style>
+</head>
+<body>
+
+    <button id="toggle-menu" class="menu-btn">☰</button>
+
+      
+    <div class="sidebar" id="sidebar">
+
+        <img src="../icons/image-removebg-preview (11).png" style="margin-left: 6%; list-style-type: none;">
+        <div class="divider"></div>
+
+        <ul class="menu" style="list-style-type: none;">
+          <li><img src="../icons/2560px-UFC_Logo.svg.png" class="icon"><strong></strong>
+            <ul>
+              <li><a href="../html/reservabilhetes.html">Reservar Bilhetes</a></li>
+              <li><a href="../html/lutadoresatletasdef.html">Lutadores</a></li>
+              <li><a href="../html/resultados.html">Resultados</a></li>
+              <li><a href="#">Notícias</a></li>
+            </ul>
+          </li>
+          <li><img src="../icons/WWE_Logo.svg.png" class="icon"><strong></strong>
+            <ul>
+              <li><a href="../html/reservabilhetes.html">Reservar Bilhetes</a></li>
+              <li><a href="../html/lutadoresatletasdef.html">Lutadores</a></li>
+              <li><a href="../html/resultados.html">Resultados</a></li>
+              <li><a href="#">Notícias</a></li>
+            </ul>
+          </li>
+          <li><img src="../icons/Professional_Bull_Riders_logo.png" class="icon"><strong></strong>
+            <ul>
+              <li><a href="../html/reservabilhetes.html">Reservar Bilhetes</a></li>
+              <li><a href="../html/lutadoresatletasdef.html">Atletas</a></li>
+              <li><a href="../html/resultados.html">Resultados</a></li>
+              <li><a href="#">Notícias</a></li>
+            </ul>
+          </li>
+          <li><strong>Lojas Oficiais</strong>
+          
+            <ul>
+              <li><a href="../html/stores.html">Lojas</a></li>
+            </ul>
+          </li>
+        </ul>
+      </div>
+
+    
+
+
+
+
+
+
+      <header class="empresa-header">
+        <img src="../icons/WWE_Logo.svg.png" alt="WWE Logo" class="empresa-logo" />
+        <h1>LUTADORES</h1>
+        <hr class="header-divider" />
+      </header>
+    
+      <p class="modalidade-label">Escolha um atleta para ver detalhes</p>
+
+      <div class="athlete-grid">
+        <div class="athlete-card" onclick="abrirPopup()">
+          <img src="../images/Brock_Lesnar_09102021rf_056_Profile--c2d758d7cd3478c2aaa0fe79120b673e.png" alt="Brock Lesnar">
+          <div class="name-overlay">Brock Lesnar</div>
+        </div>
+        <div class="athlete-card" onclick="abrirPopup()">
+            <img src="../images/Brinley-Rice_02062024br_6514_Profile--9a9125353ce26d3d34f69f1598f04bfb.png" alt="Brinley Reece">
+            <div class="name-overlay">Brinley Reece</div>
+          </div>
+      
+          <div class="athlete-card" onclick="abrirPopup()">
+            <img src="../images/Bron_Breaker_Profile--013ff6d04b736086cc15a92c68eccd84.png" alt="Bron Breakker">
+            <div class="name-overlay">Bron Breakker</div>
+          </div>
+      
+          <div class="athlete-card" onclick="abrirPopup()">
+            <img src="../images/Bronco_Nima_PROFILE--202bbd77e17b0c41967e8a2a66870412.png" alt="Bronco Nima">
+            <div class="name-overlay">Bronco Nima</div>
+          </div>
+      
+          <div class="athlete-card" onclick="abrirPopup()">
+            <img src="../images/TIFFANY_01032025sb_0110_Profile--0a672dbe496c3cbdc45e9d0dce132bf4.png" alt="Tiffany Stratton">
+            <div class="name-overlay">Tiffany Stratton</div>
+          </div>
+      
+          <div class="athlete-card" onclick="abrirPopup()">
+            <img src="../images/Bronson_Reed_PROFILE--0ff0270b2431f0938140d6dbaf76f203.png" alt="Bronson Reed">
+            <div class="name-overlay">Bronson Reed</div>
+          </div>
+      
+          <div class="athlete-card" onclick="abrirPopup()">
+            <img src="../images/Brooks_Jensen_PROFILE--71d9cb260015c0e223c78af680224849.png" alt="Brooks Jensen">
+            <div class="name-overlay">Brooks Jensen</div>
+          </div>
+        <!-- ... Outros cards semelhantes ... -->
+      </div>
+    
+      <div id="popup-lutador" class="popup hidden">
+        <div class="popup-content">
+          <span class="close-btn" onclick="fecharPopup()">×</span>
+          <img src="../images/Brock_Lesnar_09102021rf_056_Profile--c2d758d7cd3478c2aaa0fe79120b673e.png" alt="Brock Lesnar" class="popup-img">
+          <h2>Brock Lesnar</h2>
+          <p><strong>Idade:</strong> 46 anos</p>
+          <p><strong>Peso:</strong> 130kg</p>
+          <p><strong>Altura:</strong> 1.91m</p>
+          <p><strong>Estreia:</strong> 2002</p>
+          <p><strong>Títulos:</strong> 10x Campeão Mundial</p>
+          <p><strong>Finalizador:</strong> F-5</p>
+          <p><strong>Brand:</strong> SmackDown</p>
+        </div>
+      </div>
+
+
+
+  <!--FOOTER-->
+  <footer class="footer">
+    <div class="footer-container">
+      <div class="footer-section">
+        <h3>Arena 360</h3>
+        <p>&copy; 2025 — Todos os direitos reservados.</p>
+      </div>
+      
+      <div class="footer-section">
+        <h4>Links</h4>
+        <ul>
+          <li><a href="#">Política de Privacidade</a></li>
+          <li><a href="#">Termos de Uso</a></li>
+          <li><a href="#">FAQ</a></li>
+          <li><a href="#">Suporte</a></li>
+        </ul>
+      </div>
+      
+      <div class="footer-section">
+        <h4>Contactos</h4>
+        <p>📧 suporte@arena360.com</p>
+        <p>📞 +351 912 345 678</p>
+      </div>
+      
+      <div class="footer-section">
+        <h4>Segue-nos</h4>
+        <div class="social-icons">
+          <a href="#"><img src="../icons/instagram-new--v2.png" alt="Instagram"></a>
+          <a href="#"><img src="../icons/twitterx--v2.png" alt="Twitter"></a>
+          <a href="#"><img src="../icons/youtube-play.png" alt="YouTube"></a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+
+
+</body>
+
+<script>
+    const toggleBtn = document.getElementById('toggle-menu');
+    const sidebar = document.getElementById('sidebar');
+  
+    toggleBtn.addEventListener('click', () => {
+      sidebar.classList.toggle('active');
+    });
+
+    const links = document.querySelectorAll('.sidebar a');
+      links.forEach(link => {
+        link.addEventListener('click', () => {
+        sidebar.classList.remove('active');
+        });
+      });
+
+
+      function abrirPopup() {
+      document.getElementById('popup-lutador').classList.remove('hidden');
+    }
+
+    function fecharPopup() {
+      document.getElementById('popup-lutador').classList.add('hidden');
+    }
+
+  </script>
+  
+</html>

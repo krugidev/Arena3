@@ -1,0 +1,507 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Resultados | Arena 360</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: Arial, sans-serif;
+    }
+
+    body {
+      background: linear-gradient(135deg, #1e1e1e, #333);
+      color: white;
+      min-height: 100vh;
+      padding: 20px;
+    }
+
+    h1 {
+      text-align: center;
+      color: #e50914;
+      margin-bottom: 20px;
+    }
+
+
+
+    .sidebar {
+  width: 250px;
+  background: #111;
+  padding: 20px;
+  height: 100vh;
+  position: fixed;
+  left: 0;
+  top: 0;
+  overflow-y: auto;
+  border-right: 2px solid #e50914;
+}
+
+.sidebar h2 {
+  color: #e50914;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+.sidebar .menu > li {
+  margin-bottom: 15px;
+}
+
+.sidebar .menu > li > strong {
+  color: #fff;
+  display: block;
+  margin-bottom: 5px;
+}
+
+.sidebar ul ul {
+  list-style: none;
+  padding-left: 15px;
+}
+
+.sidebar ul ul li {
+  margin: 5px 0;
+}
+
+.sidebar ul ul li a {
+  color: #ccc;
+  text-decoration: none;
+  font-size: 0.9em;
+  transition: color 0.3s;
+}
+
+.sidebar ul ul li a:hover {
+  color: #e50914;
+}
+
+   /* FOOTER */
+   .site-footer {
+      background: #111;
+      color: #ccc;
+      text-align: center;
+      padding: 30px 20px;
+      border-top: 2px solid #e50914;
+      margin-top: 40px;
+    }
+
+    .icon {
+  width: 35px;
+  vertical-align: middle;
+  margin-right: 5px;
+}
+
+.menu-btn {
+  position: fixed;
+  top: 20px;
+  left: 20px;
+  z-index: 1000;
+  background: #e50914;
+  color: white;
+  border: none;
+  padding: 10px 15px;
+  border-radius: 5px;
+  font-size: 1.2em;
+  cursor: pointer;
+  display: none;
+}
+
+/* Mostrar botão só no mobile */
+@media (max-width: 768px) {
+  .menu-btn {
+    display: block;
+  }
+
+  .sidebar {
+    display: none;
+    width: 100%;
+    height: auto;
+    position: relative;
+    border-right: none;
+    border-bottom: 2px solid #e50914;
+  }
+
+  .sidebar.active {
+    display: block;
+  }
+
+  .main-content {
+    margin-left: 0;
+    width: 100%;
+  }
+}
+
+.divider {
+  height: 2px;
+  background: #e50914;
+  margin: 15px 0 20px 0;
+  border-radius: 1px;
+}
+
+
+  /*FOOTER*/
+  .footer {
+  background: #111;
+  color: #ccc;
+  padding: 30px 20px;
+  margin-top: 380px;
+  width: 100%;
+  margin-left: -1%;
+  border-top: 2px solid #e50914;
+}
+
+.footer-container {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  max-width: 1200px;
+  margin: auto;
+}
+
+.footer-section {
+  flex: 1 1 200px;
+  margin: 10px;
+}
+
+.footer-section h3, .footer-section h4 {
+  color: #e50914;
+  margin-bottom: 10px;
+}
+
+.footer-section ul {
+  list-style: none;
+  padding: 0;
+}
+
+.footer-section ul li {
+  margin-bottom: 8px;
+}
+
+.footer-section ul li a {
+  color: #ccc;
+  text-decoration: none;
+  transition: color 0.3s;
+}
+
+.footer-section ul li a:hover {
+  color: #e50914;
+}
+
+.social-icons a img {
+  width: 24px;
+  margin-right: 10px;
+  filter: grayscale(1);
+  transition: filter 0.3s;
+}
+
+.social-icons a img:hover {
+  filter: grayscale(0) brightness(1.2);
+}
+
+
+
+
+
+.tabs {
+      display: flex;
+      justify-content: center;
+      margin-bottom: 30px;
+      gap: 10px;
+      background: #111;
+      border: 1px solid #e50914;
+      border-radius: 8px;
+      padding: 5px;
+      max-width: 350px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .tab-btn {
+      padding: 10px 18px;
+      border: none;
+      background: transparent;
+      color: white;
+      cursor: pointer;
+      border-radius: 5px;
+      font-weight: bold;
+      transition: background 0.3s, color 0.3s;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .tab-btn img {
+      width: 20px;
+      height: 20px;
+    }
+
+    .tab-btn.active {
+      background: #e50914;
+      color: #fff;
+      box-shadow: 0 0 8px #e50914;
+    }
+
+    .tab-btn:hover:not(.active) {
+      background: rgba(229, 9, 20, 0.2);
+      color: #e50914;
+    }
+
+    .result-card {
+      background: #111;
+      border-left: 4px solid #e50914;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.5);
+      padding: 20px;
+      display: flex;
+      align-items: center;
+      margin: 15px auto;
+      max-width: 800px;
+      gap: 20px;
+    }
+
+    .modalidade-logo {
+      width: 50px;
+    }
+
+    .vencedor-img {
+      width: 80px;
+      height: 80px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 2px solid #e50914;
+    }
+
+    .result-info {
+      flex: 1;
+    }
+
+    .result-info h3 {
+      color: #e50914;
+      margin-bottom: 10px;
+    }
+
+    .result-info p {
+      margin: 4px 0;
+      font-size: 0.95em;
+    }
+
+    .result-info .winner {
+      color: #00ff88;
+      font-weight: bold;
+    }
+
+    .more-btn {
+      margin-top: 10px;
+      padding: 8px 12px;
+      background: #e50914;
+      border: none;
+      border-radius: 5px;
+      color: white;
+      cursor: pointer;
+      font-size: 0.9em;
+    }
+
+    .more-btn:hover {
+      background: #c10810;
+    }
+
+    @media (max-width: 600px) {
+      .result-card {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      .modalidade-logo {
+        width: 40px;
+      }
+
+      .vencedor-img {
+        width: 60px;
+        height: 60px;
+      }
+    }
+
+  </style>
+</head>
+<body>
+
+    <button id="toggle-menu" class="menu-btn">☰</button>
+
+    <div class="sidebar" id="sidebar">
+  
+        <img src="../icons/image-removebg-preview (11).png" style="margin-left: 6%; list-style-type: none;">
+        <div class="divider"></div>
+
+        <ul class="menu" style="list-style-type: none;">
+          <li><img src="../icons/2560px-UFC_Logo.svg.png" class="icon"><strong></strong>
+            <ul>
+              <li><a href="../html/reservabilhetes.html">Reservar Bilhetes</a></li>
+              <li><a href="../html/lutadoresatletasdef.html">Lutadores</a></li>
+              <li><a href="../html/resultados.html">Resultados</a></li>
+              <li><a href="#">Notícias</a></li>
+            </ul>
+          </li>
+          <li><img src="../icons/WWE_Logo.svg.png" class="icon"><strong></strong>
+            <ul>
+              <li><a href="../html/reservabilhetes.html">Reservar Bilhetes</a></li>
+              <li><a href="../html/lutadoresatletasdef.html">Lutadores</a></li>
+              <li><a href="../html/resultados.html">Resultados</a></li>
+              <li><a href="#">Notícias</a></li>
+            </ul>
+          </li>
+          <li><img src="../icons/Professional_Bull_Riders_logo.png" class="icon"><strong></strong>
+            <ul>
+              <li><a href="../html/reservabilhetes.html">Reservar Bilhetes</a></li>
+              <li><a href="../html/lutadoresatletasdef.html">Atletas</a></li>
+              <li><a href="../html/resultados.html">Resultados</a></li>
+              <li><a href="#">Notícias</a></li>
+            </ul>
+          </li>
+          <li><strong>Lojas Oficiais</strong>
+          
+            <ul>
+              <li><a href="../html/stores.html">Lojas</a></li>
+            </ul>
+          </li>
+        </ul>
+      </div>
+
+
+
+    <h1>RESULTADOS</h1>
+      <!--CONTEUDO-->
+
+
+      <div class="tabs">
+        <button class="tab-btn active" onclick="mostrarResultados('ufc', this)">
+          <img src="../icons/2560px-UFC_Logo.svg.png" alt="UFC" style="width: 20px; height: 10px;"> UFC
+        </button>
+        <button class="tab-btn" onclick="mostrarResultados('wwe', this)">
+          <img src="../icons/WWE_Logo.svg.png" alt="WWE"> WWE
+        </button>
+        <button class="tab-btn" onclick="mostrarResultados('pbr', this)">
+          <img src="../icons/Professional_Bull_Riders_logo.png" alt="PBR"> PBR
+        </button>
+      </div>
+    
+      
+
+      <div class="resultados-container" id="ufc">
+        <div class="result-card">
+            <img src="../icons/2560px-UFC_Logo.svg.png" alt="Logo UFC" class="modalidade-logo">
+            <img src="../images/JONES_JON_L_BELT_11-16.avif" alt="Jon Jones" class="vencedor-img">
+        
+            <div class="result-info">
+              <h3>UFC 300</h3>
+              <p><strong>Data:</strong> 10/05/2025 — Las Vegas</p>
+              <p><strong>Local:</strong> T-Mobile Arena</p>
+              <p><span class="winner">Jon Jones</span> venceu Ciryl Gane — <em>TKO (1º round)</em></p>
+              <button class="more-btn">Ver Mais Eventos UFC</button>
+            </div>
+          </div>
+      </div>
+    
+      <div class="resultados-container" id="wwe" style="display:none">
+        
+        <div class="result-card">
+            <img src="../icons/WWE_Logo.svg.png" alt="Logo WWE" class="modalidade-logo">
+            <img src="../images/CODY_04262024gd_0100_headSawp_(1)--9614b63ab3bbb8c9bedcfac02908b9d0.png" alt="Cody Rhodes" class="vencedor-img">
+    
+         <div class="result-info">
+          <h3>WrestleMania 41</h3>
+          <p><strong>Data:</strong> 15/04/2025 — New York</p>
+          <p><strong>Local:</strong> MSG Arena</p>
+       
+       <p><span class="winner">Cody Rhodes</span> venceu Roman Reigns — <em>Pin</em></p>
+          
+          <button class="more-btn">Ver Mais Eventos WWE</button>
+        </div>
+    
+        </div>
+      </div>
+    
+      <div class="resultados-container" id="pbr" style="display:none">
+        <div class="result-card">
+            <img src="../icons/Professional_Bull_Riders_logo.png" alt="Logo PBR" class="modalidade-logo">
+            <img src="../images/josevitorleme_513x600.png" alt="Jose Vitor Leme" class="vencedor-img">
+        
+         <div class="result-info">
+          <h3>PBR Global Cup</h3>
+          <p><strong>Data:</strong> 05/03/2025 — Texas</p>
+          <p><strong>Local:</strong> AT&T Stadium</p>
+        
+        <p><span class="winner">José Vitor Leme</span> 94 pts — <em>1º lugar</em></p>
+          
+          <button class="more-btn">Ver Mais Eventos PBR</button>
+        </div>
+        
+        </div>
+
+        
+      </div>
+
+
+
+
+    <footer class="footer">
+        <div class="footer-container">
+          <div class="footer-section">
+            <h3>Arena 360</h3>
+            <p>&copy; 2025 — Todos os direitos reservados.</p>
+          </div>
+          
+          <div class="footer-section">
+            <h4>Links</h4>
+            <ul>
+              <li><a href="#">Política de Privacidade</a></li>
+              <li><a href="#">Termos de Uso</a></li>
+              <li><a href="#">FAQ</a></li>
+              <li><a href="#">Suporte</a></li>
+            </ul>
+          </div>
+          
+          <div class="footer-section">
+            <h4>Contactos</h4>
+            <p>📧 suporte@arena360.com</p>
+            <p>📞 +351 912 345 678</p>
+          </div>
+          
+          <div class="footer-section">
+            <h4>Segue-nos</h4>
+            <div class="social-icons">
+              <a href="#"><img src="../icons/instagram-new--v2.png" alt="Instagram"></a>
+              <a href="#"><img src="../icons/twitterx--v2.png" alt="Twitter"></a>
+              <a href="#"><img src="../icons/youtube-play.png" alt="YouTube"></a>
+            </div>
+          </div>
+        </div>
+      </footer>
+
+  <script>
+function mostrarResultados(modalidade, btnElement) {
+  ['ufc', 'wwe', 'pbr'].forEach(id => {
+    document.getElementById(id).style.display = id === modalidade ? 'block' : 'none';
+  });
+
+  document.querySelectorAll('.tab-btn').forEach(btn => btn.classList.remove('active'));
+  btnElement.classList.add('active');
+}
+
+      //SIDEBAR
+      const toggleBtn = document.getElementById('toggle-menu');
+    const sidebar = document.getElementById('sidebar');
+  
+    toggleBtn.addEventListener('click', () => {
+      sidebar.classList.toggle('active');
+    });
+
+    const links = document.querySelectorAll('.sidebar a');
+      links.forEach(link => {
+        link.addEventListener('click', () => {
+        sidebar.classList.remove('active');
+        });
+      });
+
+  </script>
+</body>
+</html>

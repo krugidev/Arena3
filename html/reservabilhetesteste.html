@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Eventos — UFC</title>
+  <link rel="stylesheet" href="../css/eventos.css" />
+  <style>
+    * {
+   box-sizing: border-box;
+   margin: 0;
+   padding: 0;
+   font-family: Arial, sans-serif;
+ }
+
+
+
+
+ h1 {
+   text-align: center;
+ }
+
+
+ .sidebar {
+  width: 250px;
+  background: #111;
+  padding: 20px;
+  height: 100vh;
+  position: fixed;
+  left: 0;
+  top: 0;
+  overflow-y: auto;
+  border-right: 2px solid #e50914;
+}
+
+.sidebar h2 {
+  color: #e50914;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+.sidebar .menu > li {
+  margin-bottom: 15px;
+}
+
+.sidebar .menu > li > strong {
+  color: #fff;
+  display: block;
+  margin-bottom: 5px;
+}
+
+.sidebar ul ul {
+  list-style: none;
+  padding-left: 15px;
+}
+
+.sidebar ul ul li {
+  margin: 5px 0;
+}
+
+.sidebar ul ul li a {
+  color: #ccc;
+  text-decoration: none;
+  font-size: 0.9em;
+  transition: color 0.3s;
+}
+
+.sidebar ul ul li a:hover {
+  color: #e50914;
+}
+
+
+
+
+
+
+    /* FOOTER */
+    .site-footer {
+      background: #111;
+      color: #ccc;
+      text-align: center;
+      padding: 30px 20px;
+      border-top: 2px solid #e50914;
+      margin-top: 40px;
+    }
+
+    .icon {
+  width: 35px;
+  vertical-align: middle;
+  margin-right: 5px;
+}
+
+.menu-btn {
+  position: fixed;
+  top: 20px;
+  left: 20px;
+  z-index: 1000;
+  background: #e50914;
+  color: white;
+  border: none;
+  padding: 10px 15px;
+  border-radius: 5px;
+  font-size: 1.2em;
+  cursor: pointer;
+  display: none;
+}
+
+/* Mostrar botão só no mobile */
+@media (max-width: 768px) {
+  .menu-btn {
+    display: block;
+  }
+
+  .sidebar {
+    display: none;
+    width: 100%;
+    height: auto;
+    position: relative;
+    border-right: none;
+    border-bottom: 2px solid #e50914;
+  }
+
+  .sidebar.active {
+    display: block;
+  }
+
+  .main-content {
+    margin-left: 0;
+    width: 100%;
+  }
+}
+
+.divider {
+  height: 2px;
+  background: #e50914;
+  margin: 15px 0 20px 0;
+  border-radius: 1px;
+}
+
+
+  /*FOOTER*/
+  .footer {
+  background: #111;
+  color: #ccc;
+  padding: 30px 20px;
+  margin-top: 190px;
+  width: 100%;
+  margin-left: -1%;
+  border-top: 2px solid #e50914;
+}
+
+.footer-container {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  max-width: 1200px;
+  margin: auto;
+}
+
+.footer-section {
+  flex: 1 1 200px;
+  margin: 10px;
+}
+
+.footer-section h3, .footer-section h4 {
+  color: #e50914;
+  margin-bottom: 10px;
+}
+
+.footer-section ul {
+  list-style: none;
+  padding: 0;
+}
+
+.footer-section ul li {
+  margin-bottom: 8px;
+}
+
+.footer-section ul li a {
+  color: #ccc;
+  text-decoration: none;
+  transition: color 0.3s;
+}
+
+.footer-section ul li a:hover {
+  color: #e50914;
+}
+
+.social-icons a img {
+  width: 24px;
+  margin-right: 10px;
+  filter: grayscale(1);
+  transition: filter 0.3s;
+}
+
+.social-icons a img:hover {
+  filter: grayscale(0) brightness(1.2);
+}
+</style>
+</head>
+
+<body>
+
+
+      <!--CONTEUDO-->
+  
+      <button id="toggle-menu" class="menu-btn">☰</button>
+
+    
+      
+      <div class="sidebar" id="sidebar">
+  
+          <img src="../icons/image-removebg-preview (11).png" style="margin-left: 6%; list-style-type: none;">
+          <div class="divider"></div>
+  
+          <ul class="menu" style="list-style-type: none;">
+            <li><img src="../icons/2560px-UFC_Logo.svg.png" class="icon"><strong></strong>
+              <ul>
+                <li><a href="../html/reservabilhetes.html">Reservar Bilhetes</a></li>
+                <li><a href="../html/lutadoresatletasdef.html">Lutadores</a></li>
+                <li><a href="../html/resultados.html">Resultados</a></li>
+                <li><a href="#">Notícias</a></li>
+              </ul>
+            </li>
+            <li><img src="../icons/WWE_Logo.svg.png" class="icon"><strong></strong>
+              <ul>
+                <li><a href="../html/reservabilhetes.html">Reservar Bilhetes</a></li>
+                <li><a href="../html/lutadoresatletasdef.html">Lutadores</a></li>
+                <li><a href="../html/resultados.html">Resultados</a></li>
+                <li><a href="#">Notícias</a></li>
+              </ul>
+            </li>
+            <li><img src="../icons/Professional_Bull_Riders_logo.png" class="icon"><strong></strong>
+              <ul>
+                <li><a href="../html/reservabilhetes.html">Reservar Bilhetes</a></li>
+                <li><a href="../html/lutadoresatletasdef.html">Atletas</a></li>
+                <li><a href="../html/resultados.html">Resultados</a></li>
+                <li><a href="#">Notícias</a></li>
+              </ul>
+            </li>
+            <li><strong>Lojas Oficiais</strong>
+            
+              <ul>
+                <li><a href="../html/stores.html">Lojas</a></li>
+              </ul>
+            </li>
+          </ul>
+        </div>
+
+
+ <!-- Header com logo da empresa -->
+ <header class="empresa-header">
+    <img src="../icons/2560px-UFC_Logo.svg.png" alt="UFC Logo" class="empresa-logo" />
+    <h1>Eventos UFC</h1>
+    <p>Sinta a emoção dos maiores combates ao vivo. <br>Escolha seu evento e garanta seu lugar na arena.</p>
+    <hr class="header-divider" />
+  </header>
+
+   <!--FILTRO DE CIDADE, DATA e PAÍS-->
+   <div class="filtros-container">
+    <input type="text" placeholder="Pesquisar cidade..." />
+    <input type="date" />
+    <select>
+      <option value="">País</option>
+      <option value="t-mobile">Estados Unidos</option>
+      <option value="etihad">Arábia Saudita</option>
+    </select>
+    <button>Filtrar</button>
+  </div>
+  
+  <!-- Cards dos Eventos -->
+  <section class="eventos-container">
+    <div class="evento-card">
+      <h2>UFC 300</h2>
+      <p><strong>Data:</strong> 10/05/2025 — Las Vegas</p>
+      <p><strong>Arena:</strong> T-Mobile Arena</p>
+      <button>Reservar Lugar</button>
+    </div>
+
+    <div class="evento-card">
+      <h2>UFC Fight Night</h2>
+      <p><strong>Data:</strong> 25/06/2025 — Abu Dhabi</p>
+      <p><strong>Arena:</strong> Etihad Arena</p>
+      <button>Reservar Lugar</button>
+    </div>
+  </section>
+
+
+  <footer class="footer">
+    <div class="footer-container">
+      <div class="footer-section">
+        <h3>Arena 360</h3>
+        <p>&copy; 2025 — Todos os direitos reservados.</p>
+      </div>
+      
+      <div class="footer-section">
+        <h4>Links</h4>
+        <ul>
+          <li><a href="#">Política de Privacidade</a></li>
+          <li><a href="#">Termos de Uso</a></li>
+          <li><a href="#">FAQ</a></li>
+          <li><a href="#">Suporte</a></li>
+        </ul>
+      </div>
+      
+      <div class="footer-section">
+        <h4>Contactos</h4>
+        <p>📧 suporte@arena360.com</p>
+        <p>📞 +351 912 345 678</p>
+      </div>
+      
+      <div class="footer-section">
+        <h4>Segue-nos</h4>
+        <div class="social-icons">
+          <a href="#"><img src="../icons/instagram-new--v2.png" alt="Instagram"></a>
+          <a href="#"><img src="../icons/twitterx--v2.png" alt="Twitter"></a>
+          <a href="#"><img src="../icons/youtube-play.png" alt="YouTube"></a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+
+  <script>
+      //SIDEBAR
+  const toggleBtn = document.getElementById('toggle-menu');
+    const sidebar = document.getElementById('sidebar');
+  
+    toggleBtn.addEventListener('click', () => {
+      sidebar.classList.toggle('active');
+    });
+
+    const links = document.querySelectorAll('.sidebar a');
+      links.forEach(link => {
+        link.addEventListener('click', () => {
+        sidebar.classList.remove('active');
+        });
+      });
+  </script>
+</body>
+</html>
