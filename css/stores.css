@@ -84,7 +84,7 @@ border-bottom: 2px solid #e50914;
 /* HERO SECTION */
 .hero {
   background: url('../images/arena-hero.jpg') no-repeat center center/cover;
-  height: 100vh;
+  min-height: 100vh;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -92,6 +92,14 @@ border-bottom: 2px solid #e50914;
   text-align: center;
   padding: 20px;
 }
+
+
+@media (min-width: 769px) {
+  .hero {
+    padding-left: 270px; /* 250px sidebar + 20px de respiro */
+  }
+}
+
 
 .hero h1 {
   font-size: 3em;
@@ -559,11 +567,12 @@ h1 span {
 .store-wrapper {
   display: flex;
   justify-content: center;
-  align-items: flex-start;
+  align-items: stretch; /* <-- Garante altura igual */
   gap: 40px;
   flex-wrap: wrap;
   margin-bottom: 40px;
 }
+
 
 .store-card {
   background: #111;
@@ -572,18 +581,21 @@ h1 span {
   box-shadow: 0 0 10px rgba(0,0,0,0.5);
   padding: 20px;
   width: 280px;
+  min-height: 280px; /* <-- altura mínima igual para todos */
   text-align: center;
   display: flex;
   flex-direction: column;
+  justify-content: space-between; /* <-- força espaço entre imagem e botão */
   align-items: center;
-  gap: 15px;
 }
 
 .store-card img {
-  width: 120px;
-  padding: 10px;
-  border-radius: 8px;
+  height: 80px;
+  object-fit: contain;
+  margin-bottom: 15px;
 }
+
+
 
 .store-card a {
   background: #e50914;
@@ -606,9 +618,14 @@ h1 span {
   margin: 30px 0;
 }
 
-@media (max-width: 900px) {
+@media (max-width: 768px) {
   .store-wrapper {
     flex-direction: column;
     align-items: center;
+  }
+
+  .store-card {
+    width: 90%; /* mais largo no mobile */
+    max-width: 400px;
   }
 }
