@@ -101,7 +101,7 @@ display: none;
 }
 
 /* Mostrar botão só no mobile */
-@media (max-width: 768px) {
+@media (max-width: 898px) {
 .menu-btn {
   display: block;
 }
@@ -496,4 +496,115 @@ color: #ff4444;
 
 .ring {
   transition: background-color 0.3s ease, opacity 0.3s ease;
+}
+
+
+
+
+/*RESOLUÇÃO TABLET*/
+@media (max-width: 1024px) {
+  .page-container {
+    flex-direction: column;
+    align-items: center;
+    gap: 30px;
+    margin-left: 0;
+    margin-right: 0;
+  }
+
+  .arena-wrapper {
+    width: 90vw;
+    height: 90vw;
+    max-width: 400px;
+    max-height: 400px;
+  }
+
+  .filters-panel {
+    width: 90%;
+    max-width: 400px;
+  }
+}
+
+
+@media (max-width: 1024px) {
+  .countdown {
+    position: static;
+    margin: 0 auto;
+    margin-top: 10px;
+  }
+}
+
+
+@media (max-width: 1024px) {
+  .ringue {
+    width: 60px;
+    height: 60px;
+    font-size: 0.9em;
+    line-height: 60px;
+  }
+}
+
+
+
+
+
+
+
+
+
+
+
+/* RESPONSIVIDADE PARA TABLETS */
+@media (min-width: 600px) and (max-width: 1324px) {
+
+  .page-container {
+    flex-direction: column;
+    align-items: center;
+    gap: 30px;
+    margin-top: 20px;
+  }
+
+  .arena-wrapper {
+    width: 350px;
+    height: 350px;
+  }
+
+  .ringue {
+    width: 60px;
+    height: 60px;
+    font-size: 1em;
+    line-height: 60px;
+  }
+
+  .filters-panel {
+    width: 90%;
+    max-width: 400px;
+  }
+
+  .countdown {
+    position: static;
+    margin: 15px auto 0 auto;
+    width: 90%;
+    max-width: 400px;
+    font-size: 0.95em;
+  }
+
+  .legend {
+    margin-top: 15px;
+  }
+
+  .footer {
+    margin-left: 0;
+    padding: 20px;
+  }
+
+  .footer-container {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 20px;
+  }
+
+  .footer-section {
+    margin: 10px 0;
+  }
 }
