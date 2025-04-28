@@ -20,16 +20,31 @@
     <!-- Login Form -->
     <form id="login-form" class="active">
       <input type="email" placeholder="Email" required />
-      <input type="password" placeholder="Password" required />
+      <div class="password-container">
+        <input type="password" placeholder="Password" id="login-password" required />
+        <span class="toggle-password"
+          onmousedown="mostrarPassword('login-password')"
+          onmouseup="esconderPassword('login-password')"
+          onmouseleave="esconderPassword('login-password')"
+        >👁️</span>
+      </div>
+      
       <button style="color: white;" type="submit"><b>ENTRAR</b></button>
     </form>
 
     <!-- Register Form -->
     <form id="register-form">
-      <input type="text" placeholder="Nome" required />
-      <input type="email" placeholder="Email" required />
-      <input type="password" placeholder="Senha" required />
-      <button type="submit">Registar</button>
+      <input type="text" placeholder="Nome" required style="width: 100%;"/>
+      <input type="email" placeholder="Email" required style="width: 100%;"/>
+      <div class="password-container">
+        <input type="password" placeholder="Senha" id="register-password" required />
+        <span class="toggle-password"
+          onmousedown="mostrarPassword('register-password')"
+          onmouseup="esconderPassword('register-password')"
+          onmouseleave="esconderPassword('register-password')"
+        >👁️</span>
+      </div>
+      <button type="submit" style="width: 100%;">REGISTAR</button>
     </form>
   </div>
 
@@ -213,6 +228,17 @@ localStorage.setItem("userLogado", JSON.stringify(novoUtilizador));
         800 // duração em ms
       );
     });
+
+
+    function mostrarPassword(id) {
+  const input = document.getElementById(id);
+  input.type = "text";
+}
+
+function esconderPassword(id) {
+  const input = document.getElementById(id);
+  input.type = "password";
+}
 
 
     </script>

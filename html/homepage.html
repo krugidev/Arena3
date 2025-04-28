@@ -17,10 +17,11 @@
 </head>
 <body>
 
+  <div class="mobile-header">
     <button id="toggle-menu" class="menu-btn">☰</button>
+  </div>
 
-
-
+    <div class="top-actions">
     
       <div class="profile-btn">
         <img src="../icons/pngtree-user-flat-red-color-rounded-vector-icon-flat-personal-isolated-vector-png-image_19495794.png" alt="Perfil" class="profile-icon" id="openProfile">
@@ -36,6 +37,7 @@
        <!--- <img src="../icons/profile-icon.png" alt="Perfil" class="profile-icon"> -->
         <span class="profile-text">VER RESERVAS</span>
       </div>
+    </div>
       
     <div class="sidebar" id="sidebar">
       
@@ -1110,9 +1112,9 @@
   <section class="eventos">
 
     <h2>PRÓXIMOS EVENTOS</h2>
-    <div class="cards">
- 
-    </div>
+  <div class="eventos-wrapper">
+    <div class="cards"></div>
+  </div>
   </section>
 
 
@@ -1161,9 +1163,9 @@
   <!-- BOTÃO PARA ABRIR FAVORITOS -->
 
 
-<button id="abrir-favoritos" class="menu-favoritos-btn">
+<button id="abrir-favoritos" class="menu-favoritos-btn" style="background-color: red;">
   <img src="../icons/like-empty.png" alt="Favoritos" width="24" />
-</button>
+  Favoritos</button>
 
 <!-- PAINEL DE FAVORITOS -->
 <div id="menu-favoritos" class="menu-favoritos hidden">
@@ -1369,7 +1371,7 @@ eventosFuturos.forEach(evento => {
     <h3>${evento.nome}</h3>
     <p><strong>Data:</strong> ${evento.data} — ${evento.cidade}</p>
     <button class="reservareventobtn">Reservar</button>
-    <button class="favorito-btn" data-nome="${evento.nome}">
+    <button class="favorito-btn" data-nome="${evento.nome}" style="color:white;">
       <img src="../icons/${isFavorito ? 'heart-filled' : 'like-empty'}.png" 
            alt="Favoritar" class="icone-favorito" width="24" />
     </button>

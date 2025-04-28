@@ -9,10 +9,15 @@
     background: linear-gradient(135deg, #1e1e1e, #333);
     color: white;
     min-height: 100vh;
+    display: flex;
+    flex-direction: column;
     padding: 20px;
-    padding-top: 0; /* <--- isto resolve para todos */
+    padding-top: 0;
   }
 
+  .main-content {
+    flex: 1;
+  }
 
   /* Espaço para a sidebar no desktop */
 @media (min-width: 769px) {
@@ -205,6 +210,9 @@ width: 100%;
 margin-left: -1%;
 border-top: 2px solid #e50914;
 }
+
+
+
 
 .footer-container {
 display: flex;
@@ -561,9 +569,8 @@ textarea#novo-comentario {
 }
 
 #toggle-emoji {
-  background-color: #e50914;
+  border-color: #e50914;
   color: white;
-  border: none;
   padding: 8px 12px;
   border-radius: 5px;
   font-size: 1.2em;

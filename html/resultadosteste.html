@@ -52,7 +52,7 @@
         </ul>
       </div>
   
-
+<div class="main-content">
       <h1>RESULTADOS</h1>
 
       <div class="tabs">
@@ -71,6 +71,11 @@
       <div class="resultados-container" id="wwe" style="display:none"></div>
       <div class="resultados-container" id="pbr" style="display:none"></div>
     
+
+      <div id="mensagem-sem-resultados" style="display: none; text-align: center; margin-top: 30px; color: #aaa; font-size: 1.2em;">
+        Atualmente não existem resultados disponíveis para esta modalidade.
+      </div>
+      
       <!-- Popup -->
       <div id="popupResultados" class="popup hidden">
         <div class="popup-content">
@@ -81,7 +86,7 @@
       </div>
 
 
-
+</div>
 
 
 
@@ -224,14 +229,37 @@ localStorage.setItem("resultados", JSON.stringify(resultadosMock));
       });
     });
 
-    function mostrarResultados(modalidade, btn) {
+    /*function mostrarResultados(modalidade, btn) {
       ['ufc', 'wwe', 'pbr'].forEach(id => {
         document.getElementById(id).style.display = id === modalidade ? 'block' : 'none';
       });
       document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
       btn.classList.add('active');
-    }
+    }*/
 
+
+    function mostrarResultados(modalidade, btn) {
+  ['ufc', 'wwe', 'pbr'].forEach(id => {
+    const container = document.getElementById(id);
+    if (id === modalidade) {
+      container.style.display = 'flex';
+
+      // Verifica se há eventos dentro
+      if (container.children.length === 0) {
+        document.getElementById("mensagem-sem-resultados").style.display = "block";
+      } else {
+        document.getElementById("mensagem-sem-resultados").style.display = "none";
+      }
+    } else {
+      container.style.display = 'none';
+    }
+  });
+
+  document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+}
+
+    
     function abrirResultados(nomeEvento) {
       const resultados = JSON.parse(localStorage.getItem("resultados")) || [];
       const evento = resultados.find(ev => ev.nomeEvento === nomeEvento);

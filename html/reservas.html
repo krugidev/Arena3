@@ -63,7 +63,7 @@
 
 
 
-
+<div class="main-content">
     <div class="header">
         <h1>AS MINHAS RESERVAS</h1>
       </div>
@@ -107,7 +107,7 @@
 
   </div>
 
-
+</div>
 
 
     <footer class="footer">
@@ -255,9 +255,13 @@ function renderizarReservas(filtro = "todos") {
 
 
 function irParaEventos(modalidade) {
-  // Simples redirecionamento (podes ajustar para o teu caso real)
-  window.location.href = "verreservastest.html#" + modalidade;
+  // Atualiza o localStorage com a modalidade
+  localStorage.setItem("modalidadeSelecionada", modalidade.toUpperCase());
+  
+  // Redireciona normalmente
+  window.location.href = "reservabilhetesteste.html#" + modalidade.toLowerCase();
 }
+
 
 
   //SIDEBAR

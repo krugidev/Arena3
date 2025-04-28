@@ -293,3 +293,43 @@ transition: transform 0.3s;
 transform: scale(1.2);
 }
 
+
+
+
+#register-form button {
+  background-color: #e50914;
+  color: white;
+  font-weight: bold;
+  font-size: 1em;
+  padding: 12px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background-color 0.3s, transform 0.2s;
+}
+
+#register-form button:hover {
+  background-color: #c10810;
+}
+
+
+.password-container {
+  position: relative;
+  width: 100%;
+}
+
+.password-container input {
+  width: 100%;
+  padding-right: 40px; /* Espaço reservado para o olho */
+}
+
+.toggle-password {
+  position: absolute;
+  right: 10px;
+  top: 35%;
+  transform: translateY(-50%);
+  cursor: pointer;
+  font-size: 1.2em;
+  color: #ccc;
+  user-select: none;
+}

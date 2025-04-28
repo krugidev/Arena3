@@ -141,11 +141,27 @@
       localStorage.setItem("modalidadeSelecionada", modalidade);
     }
 
-    document.addEventListener("DOMContentLoaded", () => {
+   /* document.addEventListener("DOMContentLoaded", () => {
       const modalidade = localStorage.getItem("modalidadeSelecionada") || "UFC";
       atualizarLayoutComBaseNaModalidade(modalidade);
       filtrarEventosPorModalidade(modalidade);
-    });
+    });*/
+
+    document.addEventListener("DOMContentLoaded", () => {
+  let modalidade = "UFC"; // Valor padrão
+
+  // Verifica se existe hash (#ufc, #wwe, #pbr) na URL
+  if (window.location.hash) {
+    modalidade = window.location.hash.substring(1).toUpperCase();
+    localStorage.setItem("modalidadeSelecionada", modalidade);
+  } else {
+    modalidade = localStorage.getItem("modalidadeSelecionada") || "UFC";
+  }
+
+  atualizarLayoutComBaseNaModalidade(modalidade);
+  filtrarEventosPorModalidade(modalidade);
+});
+
 
     function atualizarLayoutComBaseNaModalidade(modalidade) {
       const titulo = document.querySelector(".titulo-modalidade");

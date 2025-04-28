@@ -140,6 +140,17 @@ width: calc(100% - 250px);
     margin-left: 10%;
   }
 
+
+  .eventos-wrapper {
+    background: rgba(17, 17, 17, 0.85); /* fundo escuro semi-transparente */
+    padding: 40px;
+    border-radius: 12px;
+    box-shadow: 0 0 20px rgba(229, 9, 20, 0.3); /* glow vermelho suave */
+    max-width: 1300px;
+    margin: 0 auto; /* centraliza */
+  }
+  
+
   .card {
 background: #111;
 padding: 20px;
@@ -229,24 +240,37 @@ margin-right: 5px;
 }
 
 .menu-btn {
-position: fixed;
-top: 20px;
-left: 20px;
-z-index: 1000;
-background: #e50914;
-color: white;
-border: none;
-padding: 10px 15px;
-border-radius: 5px;
-font-size: 1.2em;
-cursor: pointer;
-display: none;
+  background: #e50914;
+  color: white;
+  border: none;
+  padding: 10px 15px;
+  border-radius: 5px;
+  font-size: 1.2em;
+  cursor: pointer;
+  display: none; /* padrão: escondido */
+}
+
+/* Estilo do container do botão no mobile */
+.mobile-header {
+  display: none;
+  width: 100%;
+  padding: 10px 20px;
+  position: relative;
+  z-index: 100;
 }
 
 /* Mostrar botão só no mobile */
 @media (max-width: 768px) {
 .menu-btn {
   display: block;
+  position: relative; /* NÃO mais fixed! */
+}
+
+.mobile-header {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  background: transparent;
 }
 
 .sidebar {
@@ -266,6 +290,9 @@ display: none;
   margin-left: 0;
   width: 100%;
 }
+
+
+
 }
 
 .divider {
@@ -311,13 +338,14 @@ fill: #e50914;
 }
 
 .eventos-lista {
-background: #222;
-padding: 20px;
-border-radius: 10px;
-width: 300px;
-text-align: left;
-box-shadow: 0 0 10px rgba(0,0,0,0.5);
+  background: #222;
+  padding: 20px;
+  border-radius: 10px;
+  width: 300px;
+  text-align: center; /* <-- adicionar esta linha */
+  box-shadow: 0 0 10px rgba(0,0,0,0.5);
 }
+
 
 .mapa-svg path, .mapa-svg g {
 fill: #fff;
@@ -364,6 +392,46 @@ z-index: 999;
 
 
 
+/*RESPONSIVIDADE DO MAPA MUNDO*/
+/* Ajustes para responsividade do mapa */
+@media (max-width: 1024px) {
+  .mapa-svg svg {
+    width: 800px;
+  }
+}
+
+@media (max-width: 768px) {
+  .mapa-svg svg {
+    width: 100%;
+    max-width: 600px;
+    margin: 0 auto;
+    display: block;
+  }
+
+  .mapa-container {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+
+  .eventos-lista {
+    width: 90%;
+    margin-top: 20px;
+  }
+}
+
+@media (max-width: 480px) {
+  .mapa-svg svg {
+    max-width: 350px;
+  }
+
+  .eventos-lista {
+    width: 95%;
+  }
+}
+
+
+
 
 .user-profile {
 position: fixed;
@@ -388,21 +456,7 @@ transition: transform 0.3s;
 
 
 
-.profile-btn {
-position: fixed;
-top: 20px;
-right: 20px;
-background: white;
-border: 2px solid white;
-border-radius: 8px;
-padding: 5px 10px;
-display: flex;
-align-items: center;
-gap: 8px;
-cursor: pointer;
-transition: border 0.3s, transform 0.3s;
-z-index: 1000;
-}
+
 
 .profile-btn:hover {
 border: 2px solid #e50914;
@@ -423,21 +477,35 @@ letter-spacing: 1px;
 
 
 
-/*RESERVAS BUTTON*/
-.reservas-btn {
-position: fixed;
-top: 20px;
-right: 200px;
-background: white;
-border: 2px solid white;
-border-radius: 8px;
-padding: 5px 10px;
-display: flex;
-align-items: center;
-gap: 8px;
-cursor: pointer;
-transition: border 0.3s, transform 0.3s;
-z-index: 1000;
+.reservas-btn,
+.profile-btn {
+  background: white;
+  border: 2px solid white;
+  border-radius: 8px;
+  padding: 5px 10px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  cursor: pointer;
+  transition: border 0.3s, transform 0.3s;
+}
+
+.reservas-btn:hover,
+.profile-btn:hover {
+  border: 2px solid #e50914;
+  transform: scale(1.05);
+}
+
+.profile-icon {
+  width: 30px;
+  height: 30px;
+}
+
+.profile-text {
+  color: #111;
+  font-weight: bold;
+  font-size: 0.9em;
+  letter-spacing: 1px;
 }
 
 .reservas-btn:hover {
@@ -445,7 +513,14 @@ border: 2px solid #e50914;
 transform: scale(1.05);
 }
 
-
+.top-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 15px;
+  margin: 20px;
+  z-index: 10;
+  position: relative; /* NÃO fixo! */
+}
 
 /*POPUP PROFILE*/
 .modal-overlay {
@@ -582,19 +657,40 @@ background: #c10810;
 
 .menu-favoritos-btn {
   position: fixed;
-  bottom: 15px;
-  left: 15px;
-  background-color: transparent;
+  bottom: 20px;
+  left: 20px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+
+  background-color: #e50914;
+  color: white;
   border: none;
+  border-radius: 8px;
+  padding: 10px 16px;
+  font-size: 0.95em;
+  font-weight: bold;
   cursor: pointer;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
   z-index: 999;
+  transition: background-color 0.3s, transform 0.2s;
 }
+
+.menu-favoritos-btn img {
+  filter: brightness(1.2);
+}
+
+.menu-favoritos-btn:hover {
+  background-color: #b20810;
+  transform: scale(1.05);
+}
+
 
 .menu-favoritos {
   position: fixed;
   bottom: 70px;
   left: 15px;
-  width: 250px;
+  width: 220px;
   background-color: #1a1a1a;
   border: 1px solid #e50914;
   border-radius: 8px;
@@ -700,11 +796,18 @@ background: #c10810;
 
 /*CARROSSELS PARA HIGHLIGHTS DE WWE/UFC/PBR*/
 .highlights-section {
-  margin-left: 250px; /* igual à largura da sidebar */
   padding: 50px 20px;
   background-color: #111;
   color: white;
+  margin: 0 auto;
 }
+
+@media (min-width: 1024px) {
+  .highlights-section {
+    margin-left: 250px; /* para acomodar a sidebar no desktop */
+  }
+}
+
 
 .highlights-section h2 {
   text-align: center;
@@ -752,3 +855,51 @@ background: #c10810;
 }
 
 
+
+
+
+
+
+
+
+
+@media (max-width: 1023px) {
+  .main-content, 
+  .hero,
+  .mapa-section,
+  .eventos,
+  .highlights-section {
+    margin-left: 0;
+    width: 100%;
+    padding: 20px;
+  }
+
+  .sidebar {
+    display: none;
+    width: 100%;
+    height: auto;
+    position: relative;
+    border-right: none;
+    border-bottom: 2px solid #e50914;
+  }
+
+  .sidebar.active {
+    display: block;
+  }
+
+  .menu-btn {
+    display: block;
+    position: relative; /* NÃO mais fixed! */
+  }
+  
+  .mobile-header {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    background: transparent;
+  }
+
+  .menu-favoritos-btn {
+    visibility: hidden;
+  }
+}
