@@ -1581,7 +1581,10 @@ const profileBtn = document.querySelector('.profile-btn');
 // Referência ao popup
 function atualizarPopupPerfil() {
   const user = JSON.parse(localStorage.getItem("userLogado"));
-  const reservas = JSON.parse(localStorage.getItem("reservas")) || [];
+  const todasAsReservas = JSON.parse(localStorage.getItem("reservas")) || [];
+
+  // ✅ Filtrar apenas as reservas do utilizador atual
+  const reservas = todasAsReservas.filter(r => r.email === user.email);
 
   // Nome & Email do utilizador loggado
   document.getElementById("perfil-nome").innerHTML = `<strong>Nome:</strong> ${user.nome || "N/A"}`;

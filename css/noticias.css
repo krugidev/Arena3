@@ -1,17 +1,18 @@
 * {
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
-    font-family: Arial, sans-serif;
-  }
-  
-  body {
-    background: linear-gradient(135deg, rgba(30,30,30,0.95), rgba(51,51,51,0.95));
-    color: #fff;
-    min-height: 100vh;
-    display: flex;
-    flex-direction: column;
-  }
+  box-sizing: border-box; /* Garante que padding e border não expandem o tamanho dos elementos */
+  margin: 0; /* Remove espaçamento padrão */
+  padding: 0;
+  font-family: Arial, sans-serif; /* Fonte padrão */
+}
+
+body {
+  background: linear-gradient(135deg, rgba(30,30,30,0.95), rgba(51,51,51,0.95)); /* Gradiente escuro de fundo */
+  color: #fff; /* Cor do texto */
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
   
 
 
@@ -21,53 +22,57 @@ h1 {
 }
 
 
-.sidebar {
- width: 250px;
- background: #111;
- padding: 20px;
- height: 100vh;
- position: fixed;
- left: 0;
- top: 0;
- overflow-y: auto;
- border-right: 2px solid #e50914;
-}
+/*ESTILIZAÇÃO DA SIDEBAR, DOS SEUS ITEMS (OPÇÕES DE NAVEGAÇÃO) e DIVIDER*/
 
-.sidebar h2 {
- color: #e50914;
- margin-bottom: 20px;
- text-align: center;
+.sidebar {
+  width: 250px;
+  background: #111; /* Preto escuro */
+  padding: 20px;
+  height: 100vh;
+  position: fixed;
+  left: 0;
+  top: 0;
+  overflow-y: auto;
+  border-right: 2px solid #e50914; /* Borda vermelha lateral */
 }
 
 .sidebar .menu > li {
- margin-bottom: 15px;
+  margin-bottom: 15px;
 }
 
 .sidebar .menu > li > strong {
- color: #fff;
- display: block;
- margin-bottom: 5px;
+  color: #fff;
+  display: block;
+  margin-bottom: 5px;
 }
 
 .sidebar ul ul {
- list-style: none;
- padding-left: 15px;
+  list-style: none;
+  padding-left: 15px;
 }
 
 .sidebar ul ul li {
- margin: 5px 0;
+  margin: 5px 0;
 }
 
 .sidebar ul ul li a {
- color: #ccc;
- text-decoration: none;
- font-size: 0.9em;
- transition: color 0.3s;
+  color: #ccc;
+  text-decoration: none;
+  font-size: 0.9em;
+  transition: color 0.3s;
 }
 
 .sidebar ul ul li a:hover {
- color: #e50914;
+  color: #e50914; /* Hover vermelho */
 }
+
+.divider {
+  height: 2px;
+  background: #e50914;
+  margin: 15px 0 20px 0;
+  border-radius: 1px;
+}
+
 
 
 
@@ -91,24 +96,26 @@ h1 {
 }
 
 .menu-btn {
- position: fixed;
- top: 20px;
- left: 20px;
- z-index: 1000;
- background: #e50914;
- color: white;
- border: none;
- padding: 10px 15px;
- border-radius: 5px;
- font-size: 1.2em;
- cursor: pointer;
- display: none;
+  position: fixed;
+  top: 20px;
+  left: 20px;
+  z-index: 1000;
+  background: #e50914;
+  color: white;
+  border: none;
+  padding: 10px 15px;
+  border-radius: 5px;
+  font-size: 1.2em;
+  cursor: pointer;
+  display: none;
 }
 
-/* Mostrar botão só no mobile */
+/*RESPONSIVIDADE DA SIDEBAR EM RESOLUÇÃO TABLET/MOBILE*/
 @media (max-width: 768px) {
  .menu-btn {
    display: block;
+   position: relative; /* NÃO mais fixed! */
+   width: 45px;
  }
 
  .sidebar {
@@ -122,6 +129,8 @@ h1 {
 
  .sidebar.active {
    display: block;
+   position: relative; /* NÃO mais fixed! */
+   margin-top: -50px;
  }
 
  .main-content {
@@ -139,6 +148,7 @@ h1 {
 
 
  /*FOOTER*/
+ /*ESTILIZAÇÃO-BASE DO FOOTER*/
  .footer {
  background: #111;
  color: #ccc;
@@ -157,11 +167,14 @@ h1 {
  margin: auto;
 }
 
+/*SECÇÕES DO FOOTER*/
 .footer-section {
  flex: 1 1 200px;
  margin: 10px;
 }
 
+
+/*TITULOS DAS SECÇÕES DO FOOTER*/
 .footer-section h3, .footer-section h4 {
  color: #e50914;
  margin-bottom: 10px;
@@ -176,6 +189,9 @@ h1 {
  margin-bottom: 8px;
 }
 
+
+
+/*opções de navegação do footer*/
 .footer-section ul li a {
  color: #ccc;
  text-decoration: none;
@@ -186,6 +202,9 @@ h1 {
  color: #e50914;
 }
 
+
+
+/*ICONES DAS REDES SOCIAIS (AJUSTE DE POSIÇÃO, TAMANHO E HOVER)*/
 .social-icons a img {
  width: 24px;
  margin-right: 10px;
@@ -227,6 +246,7 @@ h1 {
   }
 
   
+  /*RESPONSIVIDADE DO CONTAINER DE NOTICIAS*/
   @media (max-width: 768px) {
     .noticias-container {
       margin-left: 0;
@@ -243,6 +263,8 @@ h1 {
     }
   }
 
+
+  /*USAMOS UMA ESTILIZAÇÃO 'GRID' PARA AJUSTAR EM GRELHA, OS VÁRIOS CARDS DE NOTICIAS*/
   .noticias-lista {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
@@ -252,6 +274,8 @@ h1 {
     margin: 0 auto;
   }
   
+
+  /*ESTILIZAÇÃO-BASE DE CADA CARD DE NOTICIAS*/
   .noticia-card {
     background: #1a1a1a;
     padding: 20px;
@@ -260,10 +284,14 @@ h1 {
     transition: transform 0.3s;
   }
   
+
+  /*AO PASSAR O MOUSE POR CIMA DE CADA CARD ESTE AUMENTA LIGEIRAMENTE O SEU TAMANHO*/
   .noticia-card:hover {
     transform: scale(1.02);
   }
   
+
+  /*AJUSTE DA POSIÇÃO DA IMAGEM, TITULO E DESCRIÇÃO DA NOTICIA*/
   .noticia-card img.noticia-img {
     width: 100%;
     border-radius: 8px;
@@ -284,6 +312,8 @@ h1 {
     margin-bottom: 10px;
   }
   
+
+  /*BOTÃO DE 'VER MAIS' EM CADA CARD*/
   .noticia-card a {
     color: #fff;
     background: #e50914;
@@ -309,6 +339,8 @@ h1 {
   }
 
   
+
+  /*ESTILIZAÇÃO DO FILTRO DE MODALIDADES*/
   .filtro-modalidade {
     display: flex;
     justify-content: center;
@@ -322,6 +354,9 @@ h1 {
     font-size: 1.1em;
   }
   
+
+
+  /*ESTILIZAÇÃO DAS OPÇÕES NA LISTA DO SELECT DE MODALIDADES A FILTRAR PARA OBTER NOTICIAS DE UMA CERTA MODALIDADE.*/
   .filtro-modalidade select {
     padding: 6px 10px;
     background: #222;
@@ -334,6 +369,7 @@ h1 {
 
 
 
+  /*ESTILIZAÇÃO DA SECÇÃO DE NAVEGAÇÃO ENTRE PÁGINAS*/
   .paginacao {
     display: flex;
     justify-content: center;
@@ -358,6 +394,10 @@ h1 {
   
 
 
+
+/*ESTILIZAÇÃO DO POPUP PARA OBTER MAIS DETALHES DE UMA NOTICIA ANTES DO UTILIZADOR PROSSEGUIR PARA A FONTE DA NOTICIA
+
+ESTILIZAÇÃO-BASE DO POPUP*/
   .modal {
     position: fixed;
     top: 0;
@@ -382,13 +422,20 @@ h1 {
     position: relative;
   }
   
+
+
+  /*ESTILIZAÇÃO DA IMAGEM DA NOTICIA NO POPUP*/
   .modal-img {
     width: 100%;
     max-height: 300px;
     object-fit: cover;
     border-radius: 5px;
   }
-  
+
+
+
+
+  /*ESTILIZAÇÃO DO BOTÃO DE FECHAR O POPUP*/
   .fechar-modal {
     position: absolute;
     top: 10px;
@@ -398,6 +445,8 @@ h1 {
     cursor: pointer;
   }
   
+
+  /*ESTILIZAÇÃO DE BOTÃO DE REDIRECIONAMENTO DO UTILIZADOR PARA A FONTE DA NOTICIA*/
   .ler-mais {
     display: inline-block;
     margin-top: 20px;
@@ -414,6 +463,7 @@ h1 {
   
   
 
+  /*botão de 'LER MAIS'*/
   .btn-abrir {
     background-color: #e50914;
     color: white;
@@ -431,9 +481,6 @@ h1 {
     background-color: #c40812;
     transform: scale(1.05);
   }
-
-
-
 
 
 

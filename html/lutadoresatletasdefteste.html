@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="pt">
 <head>
+  <!-- Metadados essenciais e link do ficheiro de estilos -->
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <link rel="stylesheet" type="text/css" href="../css/lutadoreseatletas.css" /> 
@@ -8,156 +9,120 @@
 </head>
 <body>
 
-    <button id="toggle-menu" class="menu-btn">☰</button>
+  <!-- Botão de menu tipo "hamburger" para dispositivos móveis -->
+  <button id="toggle-menu" class="menu-btn">☰</button>
 
-      
-    <div class="sidebar" id="sidebar">
-      
-      <a href="../html/homepage.html">
-        <img src="../icons/image-removebg-preview (11).png" style="margin-left: 6%; list-style-type: none;">
-      </a>
-        <div class="divider"></div>
+  <!-- SIDEBAR lateral de navegação por modalidades -->
+  <div class="sidebar" id="sidebar">
 
-        <ul class="menu" style="list-style-type: none;">
-          <li><img src="../icons/2560px-UFC_Logo.svg.png" class="icon"><strong></strong>
-            <ul>
-              <li><a href="../html/reservabilhetesteste.html" onclick="selecionarModalidade('UFC')">Reservar Bilhetes</a></li>
-              <li><a href="../html/lutadoresatletasdefteste.html" onclick="definirModalidade('UFC')">Lutadores</a></li>
-              <li><a href="../html/resultadosteste.html">Resultados</a></li>
-              <li><a href="../html/noticias.html">Notícias</a></li>
-            </ul>
-          </li>
-          <li><img src="../icons/WWE_Logo.svg.png" class="icon"><strong></strong>
-            <ul>
-              <li><a href="../html/reservabilhetesteste.html" onclick="selecionarModalidade('WWE')">Reservar Bilhetes</a></li>
-              <li><a href="../html/lutadoresatletasdefteste.html" onclick="definirModalidade('WWE')">Lutadores</a></li>
-              <li><a href="../html/resultadosteste.html">Resultados</a></li>
-              <li><a href="../html/noticias.html">Notícias</a></li>
-            </ul>
-          </li>
-          <li><img src="../icons/Professional_Bull_Riders_logo.png" class="icon"><strong></strong>
-            <ul>
-              <li><a href="../html/reservabilhetesteste.html" onclick="selecionarModalidade('PBR')">Reservar Bilhetes</a></li>
-              <li><a href="../html/lutadoresatletasdefteste.html" onclick="definirModalidade('PBR')">Atletas</a></li>
-              <li><a href="../html/resultadosteste.html">Resultados</a></li>
-              <li><a href="../html/noticias.html">Notícias</a></li>
-            </ul>
-          </li>
-          <li><strong>Lojas Oficiais</strong>
-          
-            <ul>
-              <li><a href="../html/testesotres.html">Lojas</a></li>
-            </ul>
-          </li>
-        </ul>
-      </div>
+    <!-- Logotipo da plataforma -->
+    <a href="../html/homepage.html">
+      <img src="../icons/image-removebg-preview (11).png" style="margin-left: 6%;">
+    </a>
 
-    
+    <!-- Linha divisória estilística -->
+    <div class="divider"></div>
 
+    <!-- Menu lateral com links para cada modalidade e suas opções -->
+    <ul class="menu" style="list-style-type: none;">
 
-
-
-
-      <div class="main-content">
-
-      <header class="empresa-header">
-        <img src="../icons/WWE_Logo.svg.png" alt="WWE Logo" class="empresa-logo" />
-        <h1>LUTADORES</h1>
-        <hr class="header-divider" />
-      </header>
-    
-      <p class="modalidade-label">Escolha um atleta para ver detalhes</p>
-
-      <div class="athlete-grid">
-        <div class="athlete-card" onclick="abrirPopup()">
-          <img src="../images/Brock_Lesnar_09102021rf_056_Profile--c2d758d7cd3478c2aaa0fe79120b673e.png" alt="Brock Lesnar">
-          <div class="name-overlay">Brock Lesnar</div>
-        </div>
-        <div class="athlete-card" onclick="abrirPopup()">
-            <img src="../images/Brinley-Rice_02062024br_6514_Profile--9a9125353ce26d3d34f69f1598f04bfb.png" alt="Brinley Reece">
-            <div class="name-overlay">Brinley Reece</div>
-          </div>
-      
-          <div class="athlete-card" onclick="abrirPopup()">
-            <img src="../images/Bron_Breaker_Profile--013ff6d04b736086cc15a92c68eccd84.png" alt="Bron Breakker">
-            <div class="name-overlay">Bron Breakker</div>
-          </div>
-      
-          <div class="athlete-card" onclick="abrirPopup()">
-            <img src="../images/Bronco_Nima_PROFILE--202bbd77e17b0c41967e8a2a66870412.png" alt="Bronco Nima">
-            <div class="name-overlay">Bronco Nima</div>
-          </div>
-      
-          <div class="athlete-card" onclick="abrirPopup()">
-            <img src="../images/TIFFANY_01032025sb_0110_Profile--0a672dbe496c3cbdc45e9d0dce132bf4.png" alt="Tiffany Stratton">
-            <div class="name-overlay">Tiffany Stratton</div>
-          </div>
-      
-          <div class="athlete-card" onclick="abrirPopup()">
-            <img src="../images/Bronson_Reed_PROFILE--0ff0270b2431f0938140d6dbaf76f203.png" alt="Bronson Reed">
-            <div class="name-overlay">Bronson Reed</div>
-          </div>
-      
-          <div class="athlete-card" onclick="abrirPopup()">
-            <img src="../images/Brooks_Jensen_PROFILE--71d9cb260015c0e223c78af680224849.png" alt="Brooks Jensen">
-            <div class="name-overlay">Brooks Jensen</div>
-          </div>
-        <!-- ... Outros cards semelhantes ... -->
-      </div>
-    
-      <div id="popup-lutador" class="popup hidden">
-        <div class="popup-content">
-          <span class="close-btn" onclick="fecharPopup()">×</span>
-          <img src="../images/Brock_Lesnar_09102021rf_056_Profile--c2d758d7cd3478c2aaa0fe79120b673e.png" alt="Brock Lesnar" class="popup-img">
-          <h2>Brock Lesnar</h2>
-          <p><strong>Idade:</strong> 46 anos</p>
-          <p><strong>Peso:</strong> 130kg</p>
-          <p><strong>Altura:</strong> 1.91m</p>
-          <p><strong>Estreia:</strong> 2002</p>
-          <p><strong>Títulos:</strong> 10x Campeão Mundial</p>
-          <p><strong>Finalizador:</strong> F-5</p>
-          <p><strong>Brand:</strong> SmackDown</p>
-        </div>
-      </div>
-
-
-
-  <!--FOOTER-->
-  <footer class="footer">
-    <div class="footer-container">
-      <div class="footer-section">
-        <h3>Arena 360</h3>
-        <p>&copy; 2025 — Todos os direitos reservados.</p>
-      </div>
-      
-      <div class="footer-section">
-        <h4>Links</h4>
+      <!-- UFC -->
+      <li><img src="../icons/2560px-UFC_Logo.svg.png" class="icon">
         <ul>
-          <li><a href="#">Política de Privacidade</a></li>
-          <li><a href="#">Termos de Uso</a></li>
-          <li><a href="#">FAQ</a></li>
-          <li><a href="#">Suporte</a></li>
+          <li><a href="../html/reservabilhetesteste.html" onclick="selecionarModalidade('UFC')">Reservar Bilhetes</a></li>
+          <li><a href="../html/lutadoresatletasdefteste.html" onclick="definirModalidade('UFC')">Lutadores</a></li>
+          <li><a href="../html/resultadosteste.html">Resultados</a></li>
+          <li><a href="../html/noticias.html">Notícias</a></li>
         </ul>
-      </div>
-      
-      <div class="footer-section">
-        <h4>Contactos</h4>
-        <p>📧 suporte@arena360.com</p>
-        <p>📞 +351 912 345 678</p>
-      </div>
-      
-      <div class="footer-section">
-        <h4>Segue-nos</h4>
-        <div class="social-icons">
-          <a href="#"><img src="../icons/instagram-new--v2.png" alt="Instagram"></a>
-          <a href="#"><img src="../icons/twitterx--v2.png" alt="Twitter"></a>
-          <a href="#"><img src="../icons/youtube-play.png" alt="YouTube"></a>
-        </div>
+      </li>
+
+      <!-- WWE -->
+      <li><img src="../icons/WWE_Logo.svg.png" class="icon">
+        <ul>
+          <li><a href="../html/reservabilhetesteste.html" onclick="selecionarModalidade('WWE')">Reservar Bilhetes</a></li>
+          <li><a href="../html/lutadoresatletasdefteste.html" onclick="definirModalidade('WWE')">Lutadores</a></li>
+          <li><a href="../html/resultadosteste.html">Resultados</a></li>
+          <li><a href="../html/noticias.html">Notícias</a></li>
+        </ul>
+      </li>
+
+      <!-- PBR -->
+      <li><img src="../icons/Professional_Bull_Riders_logo.png" class="icon">
+        <ul>
+          <li><a href="../html/reservabilhetesteste.html" onclick="selecionarModalidade('PBR')">Reservar Bilhetes</a></li>
+          <li><a href="../html/lutadoresatletasdefteste.html" onclick="definirModalidade('PBR')">Atletas</a></li>
+          <li><a href="../html/resultadosteste.html">Resultados</a></li>
+          <li><a href="../html/noticias.html">Notícias</a></li>
+        </ul>
+      </li>
+
+      <!-- Loja -->
+      <li><strong>Lojas Oficiais</strong>
+        <ul>
+          <li><a href="../html/testesotres.html">Lojas</a></li>
+        </ul>
+      </li>
+    </ul>
+  </div>
+
+  <!-- CONTEÚDO PRINCIPAL -->
+  <div class="main-content">
+
+    <!-- Cabeçalho dinâmico da modalidade -->
+    <header class="empresa-header">
+      <img src="../icons/WWE_Logo.svg.png" alt="WWE Logo" class="empresa-logo" />
+      <h1>LUTADORES</h1>
+      <hr class="header-divider" />
+    </header>
+
+    <!-- Legenda explicativa -->
+    <p class="modalidade-label">Escolha um atleta para ver detalhes</p>
+
+    <!-- Grelha que será preenchida dinamicamente com os cards dos lutadores -->
+    <div class="athlete-grid">
+      <!-- (cards são inseridos dinamicamente via JS) -->
+    </div>
+
+    <!-- POPUP DETALHADO DO ATLETA -->
+    <div id="popup-lutador" class="popup hidden">
+      <div class="popup-content">
+        <!-- Conteúdo substituído dinamicamente pelo JS -->
       </div>
     </div>
-  </footer>
 
-      </div> <!--DIV DO MAIN CONTENT-->
+    <!-- FOOTER -->
+    <footer class="footer">
+      <div class="footer-container">
+        <div class="footer-section">
+          <h3>Arena 360</h3>
+          <p>&copy; 2025 — Todos os direitos reservados.</p>
+        </div>
+        <div class="footer-section">
+          <h4>Links</h4>
+          <ul>
+            <li><a href="#">Política de Privacidade</a></li>
+            <li><a href="#">Termos de Uso</a></li>
+            <li><a href="#">FAQ</a></li>
+            <li><a href="#">Suporte</a></li>
+          </ul>
+        </div>
+        <div class="footer-section">
+          <h4>Contactos</h4>
+          <p>📧 suporte@arena360.com</p>
+          <p>📞 +351 912 345 678</p>
+        </div>
+        <div class="footer-section">
+          <h4>Segue-nos</h4>
+          <div class="social-icons">
+            <a href="#"><img src="../icons/instagram-new--v2.png" alt="Instagram"></a>
+            <a href="#"><img src="../icons/twitterx--v2.png" alt="Twitter"></a>
+            <a href="#"><img src="../icons/youtube-play.png" alt="YouTube"></a>
+          </div>
+        </div>
+      </div>
+    </footer>
+  </div>
+
 
 </body>
 
@@ -170,6 +135,8 @@
      PBR: "../icons/Professional_Bull_Riders_logo.png"
     };
 
+
+    //Ao abrir a página, é definido o background de acordo com a modalidade e um 'overlay' mais escurecido sobre esse background.
 window.addEventListener("DOMContentLoaded", () => {
     const modalidade = localStorage.getItem("modalidadeSelecionada") || "WWE"; //fallback
     const bgImg = backgroundsPorModalidade[modalidade];
@@ -189,13 +156,20 @@ window.addEventListener("DOMContentLoaded", () => {
     }
   });
 
+
+
+// Ao carregar a página completamente...
 window.onload = () => {
   const modalidade = localStorage.getItem("modalidadeSelecionada") || "WWE";
 
+  // Elementos a atualizar dinamicamente conforme a respetiva modalidade selecionada
   const headerLogo = document.querySelector(".empresa-logo");
   const tituloHeader = document.querySelector("header h1");
   const label = document.querySelector(".modalidade-label");
 
+
+
+  //Simulação de atletas numa base de dados por meio de um array.
   const dadosModalidades = {
     UFC: {
       titulo: "LUTADORES",
@@ -366,14 +340,16 @@ window.onload = () => {
 
   const atual = dadosModalidades[modalidade];
 
-  // Atualiza header
+  // Atualiza título, logo e legenda
   tituloHeader.textContent = atual.titulo;
-  label.textContent = atual.titulo === "ATLETAS" ? "Escolha um atleta para ver detalhes" : "Escolha um lutador para ver detalhes";
+  label.textContent = atual.titulo === "ATLETAS"
+    ? "Escolha um atleta para ver detalhes"
+    : "Escolha um lutador para ver detalhes";
   headerLogo.src = atual.logo;
 
-  // Geração dos cards
+  // Gera os cards dinamicamente
   const container = document.querySelector(".athlete-grid");
-  container.innerHTML = ""; // limpa os cards anteriores
+  container.innerHTML = ""; // limpa cards antigos
 
   atual.atletas.forEach(atleta => {
     const card = document.createElement("div");
@@ -388,22 +364,23 @@ window.onload = () => {
 };
 
 
-    const toggleBtn = document.getElementById('toggle-menu');
-    const sidebar = document.getElementById('sidebar');
-  
-    toggleBtn.addEventListener('click', () => {
-      sidebar.classList.toggle('active');
-    });
+// Toggle para abrir e fechar o menu lateral (principalmente para resoluções menores)
+const toggleBtn = document.getElementById('toggle-menu');
+const sidebar = document.getElementById('sidebar');
 
-    const links = document.querySelectorAll('.sidebar a');
-      links.forEach(link => {
-        link.addEventListener('click', () => {
-        sidebar.classList.remove('active');
-        });
-      });
+toggleBtn.addEventListener('click', () => {
+  sidebar.classList.toggle('active');
+});
+
+document.querySelectorAll('.sidebar a').forEach(link => {
+  link.addEventListener('click', () => {
+    sidebar.classList.remove('active');
+  });
+});
 
 
-      function abrirPopup(atleta) {
+// Função para abrir popup detalhado do atleta/lutador | a função recebe o objeto do atleta e cria uma estrutura HTMl de um card, ajustando as suas infos de acordo com o atleta/lutador
+function abrirPopup(atleta) {
   const popup = document.getElementById("popup-lutador");
   const conteudo = popup.querySelector(".popup-content");
 
@@ -423,13 +400,12 @@ window.onload = () => {
   popup.classList.remove("hidden");
 }
 
+// Fecha o popup
+function fecharPopup() {
+  document.getElementById('popup-lutador').classList.add('hidden');
+}
 
-    function fecharPopup() {
-      document.getElementById('popup-lutador').classList.add('hidden');
-    }
-
-
-//Página de seleção de eventos.
+// Funções usadas ao clicar em links da sidebar
 function selecionarModalidade(modalidade) {
   localStorage.setItem("modalidadeSelecionada", modalidade);
 }

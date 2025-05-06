@@ -267,10 +267,13 @@ h1 {
 }
 
 /* Mostrar botão só no mobile */
-@media (max-width: 768px) {
- .menu-btn {
-   display: block;
- }
+@media (max-width: 1768px) {
+  .menu-btn {
+    display: block;
+    position: relative; /* NÃO mais fixed! */
+    width: 45px;
+  }
+  
 
  .sidebar {
    display: none;
@@ -283,6 +286,8 @@ h1 {
 
  .sidebar.active {
    display: block;
+   position: relative; /* NÃO mais fixed! */
+   margin-top: -50px;
  }
 
  .main-content {

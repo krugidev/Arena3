@@ -3,23 +3,28 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <link rel="stylesheet" type="text/css" href="../css/signuplogin.css" /> 
+  <link rel="stylesheet" type="text/css" href="../css/signuplogin.css" />
   <title>Login / Registro - TKO Sports</title>
 </head>
 <body>
 
+  <!-- Container principal do formulário -->
   <div id="login-box" class="container">
 
+    <!-- Logotipo no topo -->
     <img src="../images/image-removebg-preview (10).png" style="margin-left: 9%;">
 
+    <!-- Tabs para alternar entre login e registo -->
     <div class="tabs">
       <div style="color: white;" class="tab active" id="login-tab"><b>LOGIN</b></div>
       <div style="color: white;" class="tab" id="register-tab"><b>REGISTO</b></div>
     </div>
 
-    <!-- Login Form -->
+    <!-- Formulário de Login -->
     <form id="login-form" class="active">
       <input type="email" placeholder="Email" required />
+      
+      <!-- Campo de password com botão de visualização -->
       <div class="password-container">
         <input type="password" placeholder="Password" id="login-password" required />
         <span class="toggle-password"
@@ -32,10 +37,12 @@
       <button style="color: white;" type="submit"><b>ENTRAR</b></button>
     </form>
 
-    <!-- Register Form -->
+    <!-- Formulário de Registo -->
     <form id="register-form">
-      <input type="text" placeholder="Nome" required style="width: 100%;"/>
-      <input type="email" placeholder="Email" required style="width: 100%;"/>
+      <input type="text" placeholder="Nome" required />
+      <input type="email" placeholder="Email" required />
+      
+      <!-- Campo de password com botão de visualização -->
       <div class="password-container">
         <input type="password" placeholder="Senha" id="register-password" required />
         <span class="toggle-password"
@@ -44,14 +51,14 @@
           onmouseleave="esconderPassword('register-password')"
         >👁️</span>
       </div>
-      <button type="submit" style="width: 100%;">REGISTAR</button>
+      <button type="submit">REGISTAR</button>
     </form>
   </div>
-
   
+ <!-- Secção com imagens e slogan -->
   <div class="experience-section">
-    <h2><span class="white-bold" style="font-size: 50px;">EXPERIENCE</span> <span class="red-italic" style="font-size: 50px;">GREATNESS</span></h2>
-  
+    <h2><span class="white-bold">EXPERIENCE</span> <span class="red-italic">GREATNESS</span></h2>
+
     <div class="modalities">
       <div class="image-box">
         <img src="../images/Captura de ecrã 2025-03-21 154356.png" alt="WWE">
@@ -67,7 +74,7 @@
     </div>
   </div>
 
-  
+  <!-- Secção de newsletter -->
   <div class="ticket-section">
     <h2>GARANTE O TEU LUGAR NA ARENA!</h2>
     <p>Compra bilhetes para eventos da <strong>UFC</strong>, <strong>WWE</strong> e <strong>PBR</strong> diretamente pela Arena 360. <br>Simples, rápido e seguro.</p>
@@ -77,11 +84,13 @@
       <button id="newsletter-submit" type="submit">Quero Saber Mais</button>
     </form>
     
-  
+    <!-- Botão de call-to-action -->
     <button class="cta-button">Ver Eventos Disponíveis</button>
   </div>
   
 
+
+  <!--FOOTER-->
   <footer class="site-footer">
     <div class="footer-content">
       <p><strong>Arena 360</strong> © 2025 — Todos os direitos reservados.</p>
@@ -101,144 +110,131 @@
 
   <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
-
   <script>
-    $(document).ready(function () {
-    
-      // Alternar entre as tabs de Login e Registo
-      $(".tab").click(function () {
-        $(".tab").removeClass("active");
-        $(this).addClass("active");
-    
-        if ($(this).attr("id") === "login-tab") {
-          $("#register-form").hide();
-          $("#login-form").show();
-        } else {
-          $("#login-form").hide();
-          $("#register-form").show();
-        }
-      });
-    
-      // Inicializar com login visível e registo oculto
-      $("#register-form").hide();
-    
-      // Registo
-      $("#register-form").submit(function (e) {
-        e.preventDefault();
-        const name = $(this).find('input[type="text"]').val();
-        const email = $(this).find('input[type="email"]').val();
-        const password = $(this).find('input[type="password"]').val();
-    
-        // Guardar no localStorage
-        
-        // Gerar ID simples (timestamp)
-        const userId = Date.now();
-
-        // Criar utilizador
-        const novoUtilizador = {
-           id: userId,
-           nome: name,
-           email: email,
-           password: password
-        };
-
-// Buscar utilizadores existentes (se houver)
-let utilizadores = JSON.parse(localStorage.getItem("utilizadores")) || [];
-
-// Adicionar novo
-utilizadores.push(novoUtilizador);
-
-// Guardar no localStorage
-localStorage.setItem("utilizadores", JSON.stringify(utilizadores));
-
-// Guardar info do utilizador atualmente logado
-localStorage.setItem("userLogado", JSON.stringify(novoUtilizador));
-
-
-        alert("Registo efetuado com sucesso! Pode agora iniciar sessão.");
-        
-        // Trocar para o formulário de login
-        $("#register-tab").removeClass("active");
-        $("#login-tab").addClass("active");
-        $("#register-form").hide();
-        $("#login-form").show();
-      });
-    
-      // Login
-
-
-       $("#login-form").submit(function (e) {
-         e.preventDefault();
-
-         const email = $(this).find('input[type="email"]').val();
-         const password = $(this).find('input[type="password"]').val();
-
-        // Buscar utilizadores do localStorage
-        const utilizadores = JSON.parse(localStorage.getItem("utilizadores")) || [];
-
-        // Verificar se existe algum utilizador com estas credenciais
-        const userEncontrado = utilizadores.find(
-          (user) => user.email === email && user.password === password
-        );
-
+  $(document).ready(function () {
   
-        if (userEncontrado) {
-        // Guardar utilizador logado
-           localStorage.setItem("userLogado", JSON.stringify(userEncontrado));
-
-           alert("Login efetuado com sucesso!");
-           window.location.href = "homepage.html";
-        } else {
-           alert("Email ou password incorretos.");
-        }
-      });
-
-
-      //NEWSLETTER DE NOVIDADES
-
-      $("#newsletter-submit").click(function (e) {
+    // Alternar entre tabs de login e registo
+    $(".tab").click(function () {
+      $(".tab").removeClass("active"); // Remove classe ativa de todas
+      $(this).addClass("active"); // Adiciona à tab clicada
+  
+      if ($(this).attr("id") === "login-tab") {
+        $("#register-form").hide();  // Esconde o registo
+        $("#login-form").show();     // Mostra login
+      } else {
+        $("#login-form").hide();     // Esconde login
+        $("#register-form").show();  // Mostra registo
+      }
+    });
+  
+    // Inicializa com o formulário de registo escondido
+    $("#register-form").hide();
+  
+    // SUBMISSÃO DO FORMULÁRIO DE REGISTO
+    $("#register-form").submit(function (e) {
+      e.preventDefault();
+  
+      // Recolher dados do formulário
+      const name = $(this).find('input[type="text"]').val();
+      const email = $(this).find('input[type="email"]').val();
+      const password = $(this).find('input[type="password"]').val();
+  
+      // Criar ID único (timestamp)
+      const userId = Date.now();
+  
+      // Criar objeto do novo utilizador
+      const novoUtilizador = {
+        id: userId,
+        nome: name,
+        email: email,
+        password: password
+      };
+  
+      // Obter lista de utilizadores ou array vazio
+      let utilizadores = JSON.parse(localStorage.getItem("utilizadores")) || [];
+  
+      // Adicionar novo utilizador e guardar novamente
+      utilizadores.push(novoUtilizador);
+      localStorage.setItem("utilizadores", JSON.stringify(utilizadores));
+  
+      // Guardar este utilizador como logado
+      localStorage.setItem("userLogado", JSON.stringify(novoUtilizador));
+  
+      alert("Registo efetuado com sucesso! Pode agora iniciar sessão.");
+  
+      // Alternar para formulário de login
+      $("#register-tab").removeClass("active");
+      $("#login-tab").addClass("active");
+      $("#register-form").hide();
+      $("#login-form").show();
+    });
+  
+    // SUBMISSÃO DO FORMULÁRIO DE LOGIN
+    $("#login-form").submit(function (e) {
+      e.preventDefault();
+  
+      const email = $(this).find('input[type="email"]').val();
+      const password = $(this).find('input[type="password"]').val();
+  
+      // Buscar utilizadores registados
+      const utilizadores = JSON.parse(localStorage.getItem("utilizadores")) || [];
+  
+      // Verificar se email + password coincidem com algum utilizador
+      const userEncontrado = utilizadores.find(
+        (user) => user.email === email && user.password === password
+      );
+  
+      if (userEncontrado) {
+        localStorage.setItem("userLogado", JSON.stringify(userEncontrado));
+        alert("Login efetuado com sucesso!");
+        window.location.href = "homepage.html"; // Redireciona
+      } else {
+        alert("Email ou password incorretos.");
+      }
+    });
+  
+    // NEWSLETTER — Submissão
+    $("#newsletter-submit").click(function (e) {
       e.preventDefault();
       const email = $("#newsletter-email").val().trim();
-
+  
       if (email === "") {
         alert("Por favor, insere o teu email para receber novidades.");
       } else if (!validateEmail(email)) {
         alert("Insere um email válido.");
       } else {
         alert("Obrigado por te inscreveres!");
-        $("#newsletter-email").val(""); // limpar o campo
+        $("#newsletter-email").val(""); // Limpa o campo
       }
     });
-
+  
+    // Função auxiliar para validar formato do email
     function validateEmail(email) {
-      // Verificação simples de formato de email - ajuda do CHATGPT para a formatação
       const regex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
       return regex.test(email);
     }
-
-    });
-
-
-
-    $(".cta-button").click(function () {
-      $("html, body").animate(
-        {
-          scrollTop: $("#login-box").offset().top,
-        },
-        800 // duração em ms
-      );
-    });
-
-
-    function mostrarPassword(id) {
-  const input = document.getElementById(id);
-  input.type = "text";
-}
-
-function esconderPassword(id) {
-  const input = document.getElementById(id);
-  input.type = "password";
-}
+  });
+  
+  // BOTÃO "VER EVENTOS DISPONÍVEIS" — Scroll suave até ao topo do formulário
+  $(".cta-button").click(function () {
+    $("html, body").animate(
+      {
+        scrollTop: $("#login-box").offset().top,
+      },
+      800 // duração em milissegundos do scroll
+    );
+  });
+  
+  // Funções para mostrar e esconder a password (ao pressionar o ícone do olho 👁️)
+  function mostrarPassword(id) {
+    const input = document.getElementById(id);
+    input.type = "text"; // Mostra o texto
+  }
+  
+  function esconderPassword(id) {
+    const input = document.getElementById(id);
+    input.type = "password"; // Oculta o texto
+  }
 
 
     </script>

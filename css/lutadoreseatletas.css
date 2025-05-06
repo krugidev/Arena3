@@ -1,39 +1,39 @@
+/* Reset básico e definição da fonte para todo o projeto */
 * {
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
-    font-family: Arial, sans-serif;
-  }
-  
-  body {
-    background: linear-gradient(135deg, rgba(30,30,30,0.95), rgba(51,51,51,0.95)), 
-                url('../icons/WWE_Logo.svg.png') no-repeat center center/cover;
-    color: #fff;
-    min-height: 100vh;
-    display: flex;
-    flex-direction: column;
-  }
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: Arial, sans-serif;
+}
 
-  
-  /* Overlay escurecido com blur */
+/* Estilo base do body com imagem de fundo dinâmica + gradiente escurecido */
+body {
+  background: linear-gradient(135deg, rgba(30,30,30,0.95), rgba(51,51,51,0.95)),
+              url('../icons/WWE_Logo.svg.png') no-repeat center center/cover;
+  color: #fff;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Overlay escurecido para o fundo */
 .background-overlay {
   position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-color: rgba(0, 0, 0, 0.65); /* escurece */
-  backdrop-filter: blur(3px);           /* aplica blur */
-  z-index: -1;                           /* fica atrás do conteúdo */
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  background-color: rgba(0, 0, 0, 0.65); /* escurece a imagem de fundo */
+  backdrop-filter: blur(3px); /* aplica blur */
+  z-index: -1; /* fica atrás do conteúdo */
 }
 
 
-  h1 {
-      text-align: center;
-    }
+/* Título geral */
+h1 {
+  text-align: center;
+}
 
-
-    .sidebar {
+/* SIDEBAR */
+.sidebar {
   width: 250px;
   background: #111;
   padding: 20px;
@@ -43,12 +43,6 @@
   top: 0;
   overflow-y: auto;
   border-right: 2px solid #e50914;
-}
-
-.sidebar h2 {
-  color: #e50914;
-  margin-bottom: 20px;
-  text-align: center;
 }
 
 .sidebar .menu > li {
@@ -85,7 +79,6 @@
 
 
 
-
     /* FOOTER */
     .site-footer {
       background: #111;
@@ -102,6 +95,7 @@
   margin-right: 5px;
 }
 
+/* BOTÃO MENU BURGER PARA MOBILE */
 .menu-btn {
   position: fixed;
   top: 20px;
@@ -117,10 +111,12 @@
   display: none;
 }
 
-/* Mostrar botão só no mobile */
+/* Responsividade - Sidebar em mobile */
 @media (max-width: 768px) {
   .menu-btn {
     display: block;
+    position: relative;
+    width: 45px;
   }
 
   .sidebar {
@@ -134,6 +130,7 @@
 
   .sidebar.active {
     display: block;
+    margin-top: -50px;
   }
 
   .main-content {
@@ -142,25 +139,26 @@
   }
 }
 
+/* Linha divisória na sidebar */
 .divider {
   height: 2px;
   background: #e50914;
-  margin: 15px 0 20px 0;
+  margin: 15px 0 20px;
   border-radius: 1px;
 }
 
 
-  /*FOOTER*/
-  .footer {
-    background: #111;
-    color: #ccc;
-    padding: 30px 20px;
-    margin-top: 35px; /* ❌ margin-top fixa */
-    width: 100%;
-    margin-left: -1%;
-    border-top: 2px solid #e50914;
-  }
-  
+/* FOOTER */
+.footer {
+  background: #111;
+  color: #ccc;
+  padding: 30px 20px;
+  margin-top: 35px;
+  width: 100%;
+  margin-left: -1%;
+  border-top: 2px solid #e50914;
+}
+
 .footer-container {
   display: flex;
   justify-content: space-between;
@@ -211,151 +209,50 @@
 
 
 
-/*header info*/
-/* Header da Empresa */
+/* HEADER DA MODALIDADE */
+
+/*BASE DAS INFOS DO HEADER DA MODALIDADE*/
 .empresa-header {
-    text-align: center;
-    padding: 30px 20px 20px;
-  }
-  
-  .empresa-logo {
-    width: 150px;
-    margin-bottom: 10px;
-  }
-  
-  .empresa-header h1 {
-    font-size: 2em;
-    color: #e50914;
-    margin-bottom: 10px;
-  }
-  
-  .empresa-header p {
-    font-size: 1em;
-    color: #ccc;
-    max-width: 600px;
-    margin: 0 auto 20px;
-  }
-  
-  .header-divider {
-    border: none;
-    height: 3px;
-    background-color: #e50914;
-    width: 80%;
-    margin: 0 auto;
-  }
-  
-
-
-   /* Container de Eventos */
-   .eventos-container {
-    display: flex;
-    justify-content: center;
-    flex-wrap: wrap;
-    gap: 20px;
-    padding: 40px 20px;
-  }
-  
-  /* Card do Evento */
-  .evento-card {
-    background: #1a1a1a;
-    border-radius: 10px;
-    padding: 20px;
-    width: 300px;
-    box-shadow: 0 0 10px rgba(0,0,0,0.5);
-    border: 2px solid #e50914;
-    text-align: center;
-    transition: transform 0.3s, box-shadow 0.3s;
-  }
-  
-  .evento-card:hover {
-    transform: scale(1.03);
-    box-shadow: 0 0 15px #e50914;
-  }
-  
-  .evento-card h2 {
-    color: #e50914;
-    margin-bottom: 10px;
-  }
-  
-  .evento-card p {
-    color: #ccc;
-    margin-bottom: 10px;
-    font-size: 0.95em;
-  }
-  
-  .evento-card button {
-    padding: 10px;
-    width: 100%;
-    background: #e50914;
-    border: none;
-    border-radius: 5px;
-    color: white;
-    font-weight: bold;
-    cursor: pointer;
-  }
-  
-  .evento-card button:hover {
-    background: #c10810;
-  }
-
-
-   /* Footer */
-   .site-footer {
-    background: #111;
-    color: #ccc;
-    text-align: center;
-    padding: 20px;
-    border-top: 2px solid #e50914;
-    margin-top: auto;
-  }
-  
-
-
-  .filtros-container {
-  display: flex;
-  justify-content: center;
-  gap: 10px;
-  margin-top: 30px;
-  flex-wrap: wrap;
+  text-align: center;
+  padding: 30px 20px 20px;
 }
 
-.filtros-container input,
-.filtros-container select {
-  padding: 10px;
-  border: 1px solid #e50914;
-  border-radius: 5px;
-  background: #1a1a1a;
-  color: #fff;
+
+/*LOGOTIPO DA MODALIDADE*/
+.empresa-logo {
+  width: 150px;
+  margin-bottom: 10px;
 }
 
-.filtros-container button {
-  padding: 10px 15px;
-  background: #e50914;
+
+/*TEXTO EM DESTAQUE 'LUTADORES'/'ATLETAS'*/
+.empresa-header h1 {
+  font-size: 2em;
+  color: #e50914;
+  margin-bottom: 10px;
+}
+
+.empresa-header p {
+  font-size: 1em;
+  color: #ccc;
+  max-width: 600px;
+  margin: 0 auto 20px;
+}
+
+
+/*DIVISOR ENTRE O HEADER DA MODALIDADE E O CONTAINER QUE EXIBIRÁ OS CARDS DOS LUTADORES*/
+.header-divider {
   border: none;
-  border-radius: 5px;
-  color: white;
-  cursor: pointer;
-  font-weight: bold;
+  height: 3px;
+  background-color: #e50914;
+  width: 80%;
+  margin: 0 auto;
 }
-
-.filtros-container button:hover {
-  background: #c10810;
-}
+  
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
+/*RESPONSIVIDADE DO GRID QUE EXIBE OS CARDS DOS LUTADORES PARA RESOLUÇÕES MENORES*/
 @media (max-width: 768px) {
     .fade-logo {
       background-size: 90%;
@@ -405,7 +302,7 @@
 }
 
  
-      
+      /* Ajustes responsivos para dispositivos móveis dos cards dos atletas/lutadores*/
       @media (max-width: 600px) {
         .athlete-grid {
           grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
@@ -430,6 +327,7 @@
       }
       
   
+      /* Nome sobreposto no fundo da imagem */
       .name-overlay {
         position: absolute;
         bottom: 0;
@@ -443,6 +341,7 @@
       }
            
   
+      /* Label acima da grid */
       .modalidade-label {
         text-align: center;
         margin-bottom: 20px;
@@ -450,53 +349,55 @@
         color: #ccc;
       }
 
+      /* POPUP DE DETALHES DO ATLETA */
+.popup {
+  position: fixed;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  background: rgba(0,0,0,0.85);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 999;
+}
 
-      .popup {
-        position: fixed;
-        top: 0; left: 0;
-        width: 100%; height: 100%;
-        background: rgba(0,0,0,0.85);
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        z-index: 999;
-      }
+.popup.hidden {
+  display: none;
+}
+
+.popup-content {
+  background: #1a1a1a;
+  padding: 25px;
+  border-radius: 10px;
+  border: 2px solid #e50914;
+  text-align: center;
+  color: white;
+  width: 90%;
+  max-width: 400px;
+  position: relative;
+  box-shadow: 0 0 20px #e50914;
+}
+
+.popup-img {
+  width: 100px;
+  border-radius: 50%;
+  border: 3px solid #e50914;
+  margin-bottom: 15px;
+}
+
+.popup-content h2 {
+  margin-bottom: 15px;
+  color: #e50914;
+}
+
+.popup-content p {
+  margin: 6px 0;
+  font-size: 0.95em;
+  color: #ccc;
+}
       
-      .popup.hidden {
-        display: none;
-      }
-      
-      .popup-content {
-        background: #1a1a1a;
-        padding: 25px;
-        border-radius: 10px;
-        border: 2px solid #e50914;
-        text-align: center;
-        color: white;
-        width: 90%;
-        max-width: 400px;
-        position: relative;
-        box-shadow: 0 0 20px #e50914;
-      }
-      
-      .popup-img {
-        width: 100px;
-        border-radius: 50%;
-        border: 3px solid #e50914;
-        margin-bottom: 15px;
-      }
-      
-      .popup-content h2 {
-        margin-bottom: 15px;
-        color: #e50914;
-      }
-      
-      .popup-content p {
-        margin: 6px 0;
-        font-size: 0.95em;
-        color: #ccc;
-      }
-      
+
+      /*botão de fechar o popup de detalhes do lutador/atleta*/
       .close-btn {
         position: absolute;
         top: 12px;
@@ -526,8 +427,9 @@
 
 
 
+      /* MAIN CONTENT — ajusta-se conforme o tamanho da sidebar */
       .main-content {
-        flex: 1; /* ⚡ Faz o main-content crescer até ocupar o espaço disponível */
+        flex: 1;
         margin-left: 250px;
         padding: 20px;
       }

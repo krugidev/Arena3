@@ -134,11 +134,11 @@ width: calc(100% - 250px);
 
   .cards {
     display: flex;
-    justify-content: center;
+    justify-content: left;/* <-- era 'center' */
     gap: 20px;
     flex-wrap: wrap;
-    margin-left: 10%;
   }
+  
 
 
   .eventos-wrapper {
@@ -290,6 +290,14 @@ margin-right: 5px;
   margin-left: 0;
   width: 100%;
 }
+
+.cards {
+  display: flex;
+  justify-content: center;/* <-- era 'center' */
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
 
 
 
@@ -901,5 +909,16 @@ background: #c10810;
 
   .menu-favoritos-btn {
     visibility: hidden;
+  }
+
+
+  .top-actions {
+    display: flex;
+    justify-content: flex-end;
+    gap: 15px;
+    margin: 20px;
+    z-index: 10;
+    margin-top: -55px;
+    position: relative; /* NÃO fixo! */
   }
 }

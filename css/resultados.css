@@ -161,17 +161,17 @@ margin-right: 5px;
 @media (max-width: 768px) {
   .sidebar {
     display: none;
-    width: 102%;
-    position: static; /* <- IMPORTANTE: deixe de ser absoluta/fixa */
-    background-color: #111;
-    z-index: 1000;
-    padding: 20px;
-    border-top: 2px solid #e50914;
+    width: 103%;
+    height: auto;
+    position: relative;
+    border-right: none;
     border-bottom: 2px solid #e50914;
   }
 
   .sidebar.active {
     display: block;
+    position: relative; /* NÃO mais fixed! */
+    margin-top: -50px;
   }
 
   body {
@@ -180,6 +180,8 @@ margin-right: 5px;
 
   .menu-btn {
     display: block;
+    position: relative; /* NÃO mais fixed! */
+    width: 45px;
   }
 
   .footer {

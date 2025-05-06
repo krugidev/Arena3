@@ -9,19 +9,31 @@
 <body>
 
   <!-- Botão do menu -->
-  <button id="toggle-menu" class="menu-btn">☰</button>
+  <button id="toggle-menu" class="menu-btn">☰</button> <!--BOTÃO QUE REPRESENTA O SIMBOLO DO 'BURGER MENU', QUE ESTÁ PROGRAMADO PARA ABRIR E FECHAR A SIDEBAR, BEM COMO SURGIR APENAS EM RESOLUÇÕES MOBILE E TABLET-->
 
   <!-- Sidebar -->
+  <!--A DIV ABAIXO REPRESENTA A SIDEBAR (MENU LATERAL), QUE ESTARÁ VISIVEL EM RESOLUÇÕES DESKTOP e 'FECHADA' (COM A POSSIBILIDADE DE SER EXPANDIDA) EM RESOLUÇÕES MOBILE/TABLET-->
+
   <div class="sidebar" id="sidebar">
       
-    <a href="../html/homepage.html">
-      <img src="../icons/image-removebg-preview (11).png" style="margin-left: 6%; list-style-type: none;">
-    </a>
+      <!--A SIDEBAR COMEÇA SEMPRE COM O LOGOTIPO DE SIDEBAR DA PLATAFORMA 'ARENA 360'-->
+      <a href="../html/homepage.html"> <!--O LOGOTIPO É CLICÁVEL. AO CLICAR NESSE LOGOTIPO, O UTILIZADOR É REDIRECIONADO PARA A PÁGINA REFERIDA NO 'a href', que neste caso será a HOMEPAGE da plataforma.-->
+        <img src="../icons/image-removebg-preview (11).png" style="margin-left: 6%; list-style-type: none;">
+      </a>
+      
+      <!--O DIV 'DIVIDER' representa apenas a estilização do 'separador' vermelho encontrado logo abaixo do logotipo da sidebar-->
       <div class="divider"></div>
 
+
+      <!--No Menu Lateral teremos 3 secções, cada uma delas representando uma modalidade. Cada secção terá várias opções de navegação. Tudo isto encapsulado permitiu criar um menu lateral organizado e consistente.-->
       <ul class="menu" style="list-style-type: none;">
+        <!--As modalidades são no fundo, secções de items de uma lista de um menu, e onde, dentro de cada elemento da lista 'MENU', temos mais elementos destinados às opções de navegação de cada item-parent, que é a respetiva modalidade.-->
         <li><img src="../icons/2560px-UFC_Logo.svg.png" class="icon"><strong></strong>
           <ul>
+            
+            <!--Cada modalidade no menu lateral, tem 4 opções: Reservar Bilhetes para a modalidade, obter lutadores/atletas da modalidade, resultados de ultimos eventos e Noticias relacionadas com a mesma.-->
+
+            <!--As páginas de RESERVA DE BILHETES e de LUTADORES/ATLETAS, além de alterarem o seu conteudo, também alteram a sua estilização conforme a modalidade respetiva, daí a utilização das funções 'selecionarModalidade()' e 'definirModalidade()', passando uma string com o nome da modalidade que será associada às suas respetivas estilizações.-->
             <li><a href="../html/reservabilhetesteste.html" onclick="selecionarModalidade('UFC')">Reservar Bilhetes</a></li>
             <li><a href="../html/lutadoresatletasdefteste.html" onclick="definirModalidade('UFC')">Lutadores</a></li>
             <li><a href="../html/resultadosteste.html">Resultados</a></li>
@@ -54,37 +66,45 @@
     </div>
 
 
+
+  <!--DIV QUE VAI ARMAZENAR OPÇÃO DE FILTRAGEM DE NOTICIAS POR MODALIDADE-->
+
   <div class="filtro-modalidade">
-    <label for="seletor-modalidade">Seleciona a modalidade:</label>
-    <select id="seletor-modalidade">
-      <option value="UFC">UFC</option>
+    
+    <label for="seletor-modalidade">Seleciona a modalidade:</label> <!--INDICAÇÃO DA ZONA DE FILTRAGEM-->
+    <select id="seletor-modalidade"> <!--PARA LISTAR AS OPÇÕES (ESTRUTURALMENTE FALANDO), USAREMOS UM SELECT COM VÁRIAS OPTIONS, CADA UMA CORRESPONDENTE A UMA MODALIDADE-->
+      <option value="UFC">UFC</option>  
       <option value="WWE">WWE</option>
       <option value="PBR">PBR</option>
     </select>
   </div>
   
 
-  <!-- Conteúdo Principal -->
+  <!-- Conteúdo Principal (onde serão listadas as noticias) -->
   <main class="noticias-container">
     <h1>Notícias Recentes</h1>
     <p class="sub">As últimas novidades sobre UFC, WWE e PBR</p>
    <div class="noticias-wrapper">
     <div id="noticias-lista" class="noticias-lista">
-      <!-- Aqui serão carregadas as notícias via JS -->
+      <!-- Aqui serão carregadas as notícias via JS (api de noticias) -->
     </div>
    </div>
   </main>
 
+
+  <!--Usaremos esta div para iniciar o sistema de paginação de artigos de noticias-->
   <div class="paginacao">
-    <button id="anterior">Anterior</button>
-    <span id="pagina-atual">1</span>
-    <button id="proximo">Próxima</button>
+    <button id="anterior">Anterior</button> <!--Será um botão usado para regredir na paginação-->
+    <span id="pagina-atual">1</span> <!--Contador que exibe a página atual de noticias-->
+    <button id="proximo">Próxima</button> <!--Será um botão usado para avançar para a próxima página-->
   </div>
   
 
+
+  <!--Popup que surge quando um artigo de noticia é selecionado. Exibe mais algumas infos da noticia como titulo, descrição, e um botão para ler a noticia completa que, via JS, redirecionará o utilizador para a respetiva noticia.-->
   <div id="modal-noticia" class="modal hidden">
     <div class="modal-content">
-      <span class="fechar-modal" onclick="fecharModal()">×</span>
+      <span class="fechar-modal" onclick="fecharModal()">×</span> <!--FECHAR O POPUP-->
       <img id="modal-img" src="" alt="" class="modal-img">
       <h2 id="modal-titulo"></h2>
       <p id="modal-desc"></p>
@@ -93,7 +113,7 @@
   </div>
   
 
-  <!-- Footer -->
+  <!-- ESTRUTURA DO FOOTER -->
   <footer class="footer">
     <div class="footer-container">
       <div class="footer-section">
@@ -126,106 +146,125 @@
   </footer>
 
   <script>
-    const toggleBtn = document.getElementById('toggle-menu');
-    const sidebar = document.getElementById('sidebar');
+    const toggleBtn = document.getElementById('toggle-menu'); // Referência ao botão de abrir/fechar o menu (☰)
+    const sidebar = document.getElementById('sidebar'); // Referência à sidebar
 
+    // Alternar visibilidade da sidebar ao clicar no botão
     toggleBtn.addEventListener('click', () => {
       sidebar.classList.toggle('active');
     });
 
+    // Fechar sidebar ao clicar em qualquer link do menu (em dispositivos móveis/tablets)
     document.querySelectorAll('.sidebar a').forEach(link => {
       link.addEventListener('click', () => {
-        sidebar.classList.remove('active');
-      });
+      sidebar.classList.remove('active');
+     });
     });
 
 
+
     document.addEventListener("DOMContentLoaded", () => {
+  // Referências aos elementos de UI
   const container = document.getElementById("noticias-lista");
   const seletor = document.getElementById("seletor-modalidade");
   const anterior = document.getElementById("anterior");
   const proximo = document.getElementById("proximo");
   const pagEl = document.getElementById("pagina-atual");
 
+  // API Key da NewsAPI que será usada para obter o JSON das noticias (valores reais devem ser mantidos em segurança)
   const apiKey = "72ee178667a9439f8c43dd2b2ce048bc";
+
+  // Página e modalidade atual (modalidade recuperada do localStorage ou default = UFC)
   let paginaAtual = 1;
   let modalidadeAtual = localStorage.getItem("modalidadeSelecionada") || "UFC";
 
+  // Termos de pesquisa por modalidade (para enriquecer os resultados)
   const termos = {
     UFC: "UFC OR MMA OR 'Ultimate Fighting Championship'",
     WWE: "WWE OR wrestling OR SmackDown OR Raw",
     PBR: "PBR OR rodeio OR 'Professional Bull Riders'"
   };
 
+
+  // Função principal responsável por buscar e carregar as notícias
   function carregarNoticias() {
-    const query = encodeURIComponent(termos[modalidadeAtual]);
-    container.innerHTML = `<p style="text-align:center;">Carregando...</p>`;
+    const query = encodeURIComponent(termos[modalidadeAtual]); // Codifica o termo de busca para URL com base nos termos de pesquisa.
+    container.innerHTML = `<p style="text-align:center;">Carregando...</p>`; // Exibe uma mensagem de carregamento...
 
-    fetch(`https://newsapi.org/v2/everything?q=${query}&language=en&sortBy=publishedAt&pageSize=50&page=${paginaAtual}&apiKey=${apiKey}`)
-      .then(res => res.json())
+    // Fetch para obter dados da API de notícias
+    fetch(`https://newsapi.org/v2/everything?q=${query}&language=en&sortBy=publishedAt&pageSize=50&page=${paginaAtual}&apiKey=${apiKey}`) //Fetch para obter o JSON das noticias. É utilizado um path que inclui uma query (traduzida por meio dos termos dependendo da modalidade filtrada, contador da página atual e a API Key)
+      .then(res => res.json()) // Converte a resposta em JSON
       .then(data => {
-        container.innerHTML = "";
-        const termo = modalidadeAtual.toLowerCase();
+        container.innerHTML = ""; // Limpa o container antes de inserir novos cards
+        const termo = modalidadeAtual.toLowerCase(); // Termo base para filtrar resultados relevantes
 
+        // Filtra apenas os artigos que têm imagem, descrição e link válido
         const artigos = data.articles.filter(a =>
-          a.title?.toLowerCase().includes(termo) &&
+          a.title?.toLowerCase().includes(termo) && //O titulo deve incluir algum dos termos definidos, dependendo da modalidade...além disso, o que obtemos do 'data' (json convertido), são os artigos que contenham um titulo, descrição e um link válido para a imagem da noticia.
           a.description &&
           a.urlToImage &&
           a.url
         );
 
+        // Caso não haja artigos válidos....
         if (artigos.length === 0) {
-          container.innerHTML = `<p style="text-align:center;">Sem notícias específicas nesta página.</p>`;
+          container.innerHTML = `<p style="text-align:center;">Sem notícias específicas nesta página.</p>`; //....é exibida a mensagem de aviso.
           return;
         }
 
+        // Criação dos cards de notícia...para cada artigo obtido (forEach), o HTML do card será estruturado e ajustado com as informações que vêm com essa instancia de objeto do artigo..tais como o link da imagem (imagem da noticia), titulo e descrição.
         artigos.forEach(article => {
           const card = document.createElement("div");
           card.className = "noticia-card";
           card.innerHTML = `
-  <img src="${article.urlToImage}" alt="Notícia" class="noticia-img">
-  <h3>${article.title}</h3>
-  <p>${article.description}</p>
-  <button class="btn-abrir">Ler mais</button>
-`;
+            <img src="${article.urlToImage}" alt="Notícia" class="noticia-img">
+            <h3>${article.title}</h3>
+            <p>${article.description}</p>
+            <button class="btn-abrir">Ler mais</button>
+          `;
 
+          //Depois de criado, o card é adicionado.
           container.appendChild(card);
+
+          // Evento para abrir modal ao clicar no botão "Ler mais"
           card.querySelector(".btn-abrir").addEventListener("click", (e) => {
-              e.stopPropagation(); // Impede que o clique no botão feche o modal
-                abrirModal(article);
-            });
-
-         // card.addEventListener("click", () => abrirModal(article));
-
+            e.stopPropagation(); // Impede propagação do clique
+            abrirModal(article); // Abre o modal com os dados da notícia
+          });
         });
 
+        // Atualiza o número da página atual exibido
         pagEl.textContent = paginaAtual;
       })
       .catch(() => {
+        // Em caso de erro na requisição de noticias
         container.innerHTML = `<p style="text-align:center;">Erro ao carregar notícias.</p>`;
       });
   }
 
-  function abrirModal(article) {
-  document.getElementById("modal-img").src = article.urlToImage || "";
-  document.getElementById("modal-titulo").textContent = article.title || "Sem título";
-  document.getElementById("modal-desc").textContent = article.description || "Sem descrição disponível.";
-  document.getElementById("modal-link").href = article.url;
+   // Função que preenche e exibe o modal com os detalhes da notícia
+   function abrirModal(article) {
+    document.getElementById("modal-img").src = article.urlToImage || "";
+    document.getElementById("modal-titulo").textContent = article.title || "Sem título";
+    document.getElementById("modal-desc").textContent = article.description || "Sem descrição disponível.";
+    document.getElementById("modal-link").href = article.url;
 
-  document.getElementById("modal-noticia").classList.remove("hidden");
-}
+    // Remove a classe que oculta o modal
+    document.getElementById("modal-noticia").classList.remove("hidden");
+  }
 
-
-
+  // Inicializa o seletor de modalidade com o valor atual
   seletor.value = modalidadeAtual;
 
+  // Evento ao trocar a modalidade no seletor
   seletor.addEventListener("change", () => {
     modalidadeAtual = seletor.value;
-    paginaAtual = 1;
-    localStorage.setItem("modalidadeSelecionada", modalidadeAtual);
+    paginaAtual = 1; // Volta sempre para a página 1
+    localStorage.setItem("modalidadeSelecionada", modalidadeAtual); // Guarda a modalidade no localStorage para associá-la posteriormente a novos termos relacionados à pesquisa de noticias envolvendo essa modalidade, carregando-as.
     carregarNoticias();
   });
 
+  // Evento ao clicar no botão "Anterior"
   anterior.addEventListener("click", () => {
     if (paginaAtual > 1) {
       paginaAtual--;
@@ -233,26 +272,28 @@
     }
   });
 
+  // Evento ao clicar no botão "Próxima"
   proximo.addEventListener("click", () => {
     paginaAtual++;
     carregarNoticias();
   });
 
+  // Carrega as notícias assim que a página for carregada
   carregarNoticias();
 });
 
 
-
+// Função que oculta o modal de notícia
 function fecharModal() {
   document.getElementById("modal-noticia").classList.add("hidden");
 }
 
-
-//Página de seleção de eventos.
+// Salva a modalidade escolhida para a página de bilhetes
 function selecionarModalidade(modalidade) {
   localStorage.setItem("modalidadeSelecionada", modalidade);
 }
 
+// Salva a modalidade escolhida para a página de lutadores/atletas
 function definirModalidade(modalidade) {
   localStorage.setItem("modalidadeSelecionada", modalidade);
 }

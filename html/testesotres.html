@@ -1,32 +1,46 @@
+<!--INDICAÇÃO DO COMEÇO DE UM DOCUMENTO HTML-->
 <!DOCTYPE html>
 <html lang="pt">
 <head>
+  <!--METADADOS DA PÁGINA: INCLUEM TITULO DA PÁGINA, LINKAGEM DA ESTILIZAÇÃO DA PÁGINA A UMA CSS SHEET, etc.-->
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <link rel="stylesheet" type="text/css" href="../css/stores.css" /> 
   <title>Arena 360 — Home</title>
   <style>
  
+   /*A ESTILIZAÇÃO ENCONTRA-SE NUMA CSS SHEET APARTE*/
 
   </style>
 </head>
 <body>
 
-    <button id="toggle-menu" class="menu-btn">☰</button>
+
+    <button id="toggle-menu" class="menu-btn">☰</button> <!--BOTÃO QUE REPRESENTA O SIMBOLO DO 'BURGER MENU', QUE ESTÁ PROGRAMADO PARA ABRIR E FECHAR A SIDEBAR, BEM COMO SURGIR APENAS EM RESOLUÇÕES MOBILE E TABLET-->
 
 
-      
+    <!--A DIV ABAIXO REPRESENTA A SIDEBAR (MENU LATERAL), QUE ESTARÁ VISIVEL EM RESOLUÇÕES DESKTOP e 'FECHADA' (COM A POSSIBILIDADE DE SER EXPANDIDA) EM RESOLUÇÕES MOBILE/TABLET-->
     <div class="sidebar" id="sidebar">
       
-      <a href="../html/homepage.html">
+      <!--A SIDEBAR COMEÇA SEMPRE COM O LOGOTIPO DE SIDEBAR DA PLATAFORMA 'ARENA 360'-->
+      <a href="../html/homepage.html"> <!--O LOGOTIPO É CLICÁVEL. AO CLICAR NESSE LOGOTIPO, O UTILIZADOR É REDIRECIONADO PARA A PÁGINA REFERIDA NO 'a href', que neste caso será a HOMEPAGE da plataforma.-->
         <img src="../icons/image-removebg-preview (11).png" style="margin-left: 6%; list-style-type: none;">
       </a>
+
+        <!--O DIV 'DIVIDER' representa apenas a estilização do 'separador' vermelho encontrado logo abaixo do logotipo da sidebar-->
         <div class="divider"></div>
   
+
+        <!--No Menu Lateral teremos 3 secções, cada uma delas representando uma modalidade. Cada secção terá várias opções de navegação. Tudo isto encapsulado permitiu criar um menu lateral organizado e consistente.-->
         <ul class="menu" style="list-style-type: none;">
+
+          <!--As modalidades são no fundo, secções de items de uma lista de um menu, e onde, dentro de cada elemento da lista 'MENU', temos mais elementos destinados às opções de navegação de cada item-parent, que é a respetiva modalidade.-->
           <li><img src="../icons/2560px-UFC_Logo.svg.png" class="icon"><strong></strong>
             <ul>
-              <li><a href="../html/reservabilhetesteste.html" onclick="selecionarModalidade('UFC')">Reservar Bilhetes</a></li>
+              <!--Cada modalidade no menu lateral, tem 4 opções: Reservar Bilhetes para a modalidade, obter lutadores/atletas da modalidade, resultados de ultimos eventos e Noticias relacionadas com a mesma.-->
+              
+              <!--As páginas de RESERVA DE BILHETES e de LUTADORES/ATLETAS, além de alterarem o seu conteudo, também alteram a sua estilização conforme a modalidade respetiva, daí a utilização das funções 'selecionarModalidade()' e 'definirModalidade()', passando uma string com o nome da modalidade que será associada às suas respetivas estilizações.-->
+              <li><a href="../html/reservabilhetesteste.html" onclick="selecionarModalidade('UFC')">Reservar Bilhetes</a></li> 
               <li><a href="../html/lutadoresatletasdefteste.html" onclick="definirModalidade('UFC')">Lutadores</a></li>
               <li><a href="../html/resultadosteste.html">Resultados</a></li>
               <li><a href="../html/noticias.html">Notícias</a></li>
@@ -62,11 +76,19 @@
       
 
   <!-- HERO SECTION -->
+
+
+  <!--Esta secção armazenará os cards que representarão as 3 lojas oficiais das modalidades.-->
   <section class="hero">
+    <!--O titulo 'LOJAS OFICIAIS'. Aqui utilizei o 'span' para reforçar e destacar a palavra 'OFICIAIS' com a cor vermelha.-->
     <h1>LOJAS <span>OFICIAIS</span></h1>
 
+    <!--Esta div armazenará os cards das lojas.-->
     <div class="store-wrapper">
+
+      <!--Cada 'store-card' representará um card de uma loja diferente-->
       <div class="store-card">
+        <!--Cada card terá o logo da modalidade e um botão que redireciona o utilizador para cada loja-->
         <img src="../icons/2560px-UFC_Logo.svg.png" alt="UFC">
         <a href="https://ufcstore.com" target="_blank">Visitar Loja UFC</a>
       </div>
@@ -87,23 +109,58 @@
 
 
 
-  <!-- FOOTER -->
-  <footer class="site-footer">
-    <p><strong>Arena 360</strong> © 2025 — Todos os direitos reservados.</p>
-  </footer>
+  <!-- FOOTER - BOOTSTRAP | Estilização feita no CSS -->
+ <!--FOOTER-->
+ <footer class="footer">
+  <div class="footer-container">
+    <div class="footer-section">
+      <h3>Arena 360</h3>
+      <p>&copy; 2025 — Todos os direitos reservados.</p>
+    </div>
+    
+    <div class="footer-section">
+      <h4>Links</h4>
+      <ul>
+        <li><a href="#">Política de Privacidade</a></li>
+        <li><a href="#">Termos de Uso</a></li>
+        <li><a href="#">FAQ</a></li>
+        <li><a href="#">Suporte</a></li>
+      </ul>
+    </div>
+    
+    <div class="footer-section">
+      <h4>Contactos</h4>
+      <p>📧 suporte@arena360.com</p>
+      <p>📞 +351 912 345 678</p>
+    </div>
+    
+    <div class="footer-section">
+      <h4>Segue-nos</h4>
+      <div class="social-icons">
+        <a href="#"><img src="../icons/instagram-new--v2.png" alt="Instagram"></a>
+        <a href="#"><img src="../icons/twitterx--v2.png" alt="Twitter"></a>
+        <a href="#"><img src="../icons/youtube-play.png" alt="YouTube"></a>
+      </div>
+    </div>
+  </div>
+</footer>
 
 
 
 </body>
 
 <script>
-    const toggleBtn = document.getElementById('toggle-menu');
-    const sidebar = document.getElementById('sidebar');
+
+    const toggleBtn = document.getElementById('toggle-menu'); /*O 'toggleBtn é uma variavel const associada ao elemento do HTML 'toggle-menu', que é o simbolo do 'burger menu*/
+    const sidebar = document.getElementById('sidebar'); /*O 'sidebar' é uma variável const associada ao elemento do HTML 'sidebar', que é a div que representa o elemento do menu lateral*/
   
+    /*Event Listener no simbolo do 'burger menu', para ABRIR e FECHAR a sidebar.*/
     toggleBtn.addEventListener('click', () => {
       sidebar.classList.toggle('active');
     });
 
+
+    /*Função para fechar a sidebar em modo mobile.*/
     const links = document.querySelectorAll('.sidebar a');
       links.forEach(link => {
         link.addEventListener('click', () => {
@@ -112,11 +169,14 @@
       });
 
 
-    //Página de seleção de eventos.
+    //Página de seleção de eventos. Redireciona o utilizador para página de seleção de eventos e chama esta função, que utilizará o valor da modalidade respetiva passada na função (WWE,UFC e PBR).
+    //A modalidade será armazenada no localStorage para poder ser passada entre as páginas.
     function selecionarModalidade(modalidade) {
       localStorage.setItem("modalidadeSelecionada", modalidade);
     }
 
+
+    /*O mesmo acima acontece para a página de lutadores/atletas*/
     function definirModalidade(modalidade) {
       localStorage.setItem("modalidadeSelecionada", modalidade);
     }

@@ -1,19 +1,19 @@
 * {
-  box-sizing: border-box;
+  box-sizing: border-box; /* Inclui padding e border no cálculo de largura/altura */
   margin: 0;
   padding: 0;
-  font-family: Arial, sans-serif;
+  font-family: Arial, sans-serif; /* Fonte padrão do site */
 }
 
 body {
-  background: linear-gradient(135deg, #1e1e1e, #333);
-  color: #fff;
+  background: linear-gradient(135deg, #1e1e1e, #333); /* Fundo com gradiente escuro */
+  color: #fff; /* Cor base do texto */
 }
 
 
 
-
-
+/*CSS DA SIDEBAR*/
+/*CSS DA ESTRUTURA GERAL DA SIDEBAR*/
 .sidebar {
 width: 250px;
 background: #111;
@@ -26,21 +26,15 @@ overflow-y: auto;
 border-right: 2px solid #e50914;
 }
 
-.sidebar h2 {
-color: #e50914;
-margin-bottom: 20px;
-text-align: center;
-}
 
+/*AJUSTAR A POSIÇÃO DAS SECÇÕES (que são, estruturalmente falando, elementos da lista do menu lateral de um modo mais abstrato)*/
 .sidebar .menu > li {
 margin-bottom: 15px;
 }
 
-.sidebar .menu > li > strong {
-color: #fff;
-display: block;
-margin-bottom: 5px;
-}
+
+
+
 
 .sidebar ul ul {
 list-style: none;
@@ -51,6 +45,8 @@ padding-left: 15px;
 margin: 5px 0;
 }
 
+
+/*Cor do texto (branco), das opções das várias secções do menu lateral*/
 .sidebar ul ul li a {
 color: #ccc;
 text-decoration: none;
@@ -58,6 +54,8 @@ font-size: 0.9em;
 transition: color 0.3s;
 }
 
+
+/*Hover vermelho sobre as opções das várias secções do menu lateral*/
 .sidebar ul ul li a:hover {
 color: #e50914;
 }
@@ -81,7 +79,7 @@ border-bottom: 2px solid #e50914;
 }
 
 
-/* HERO SECTION */
+/* AJUSTE DA POSIÇÃO, TAMANHO e DISPOSIÇÃO da secção que armazena os cards das lojas*/
 .hero {
   background: url('../images/arena-hero.jpg') no-repeat center center/cover;
   min-height: 100vh;
@@ -94,6 +92,7 @@ border-bottom: 2px solid #e50914;
 }
 
 
+/*Responsividade MOBILE*/
 @media (min-width: 769px) {
   .hero {
     padding-left: 270px; /* 250px sidebar + 20px de respiro */
@@ -101,6 +100,8 @@ border-bottom: 2px solid #e50914;
 }
 
 
+
+/*TITULO 'LOJAS OFICIAIS'*/
 .hero h1 {
   font-size: 3em;
   color: #fff;
@@ -113,109 +114,13 @@ border-bottom: 2px solid #e50914;
   margin-bottom: 30px;
 }
 
-.hero button {
-  padding: 15px 25px;
-  font-size: 1em;
-  background: #e50914;
-  border: none;
-  color: white;
-  border-radius: 5px;
-  cursor: pointer;
-  transition: background 0.3s;
-}
 
-.hero button:hover {
-  background: #c10810;
-}
-
-/* EVENTOS DESTAQUE */
-.eventos {
-  padding: 50px 20px;
-  text-align: center;
-}
-
-.eventos h2 {
-  font-size: 2em;
-  margin-bottom: 30px;
-  color: #e50914;
-}
-
-.cards {
-  display: flex;
-  justify-content: center;
-  gap: 20px;
-  flex-wrap: wrap;
-  margin-left: 10%;
-}
-
-.card {
-background: #111;
-padding: 20px;
-border-radius: 12px;
-width: 280px;
-height: 400px; /* Altura fixa */
-box-shadow: 0 0 10px rgba(0,0,0,0.5);
-display: flex;
-flex-direction: column;
-justify-content: space-between; /* Importante! */
-transition: transform 0.3s, box-shadow 0.3s;
-min-height: 400px; 
-}
-
-
-.card img {
-  width: 100%;
-  border-radius: 5px;
-  margin-bottom: 15px;
-}
-
-.card h3 {
-  margin-bottom: 10px;
-  font-size: 1.2em;
-}
-
-.card p {
-  font-size: 0.9em;
-  margin-bottom: 15px;
-  color: #ccc;
-}
-
-.card button {
-  padding: 10px;
-  width: 100%;
-  background: #e50914;
-  border: none;
-  border-radius: 5px;
-  color: white;
-  font-weight: bold;
-  cursor: pointer;
-}
-
-.card button:hover {
-  background: #c10810;
-}
-
-
-.logo-evento {
-width: 80px;
-margin: 0 auto 15px auto;
-display: block;
-filter: drop-shadow(0 0 4px rgba(0,0,0,0.5));
-transition: transform 0.3s;
-background: #111;
-border-radius: 10px;
-padding: 5px;
-border-color: #c10810;
-}
-
-.card:hover .logo-evento {
-transform: scale(1.1);
-}
 
 
 
 
 /* FOOTER */
+/*ESTILIZAÇÃO-BASE DO FOOTER*/
 .site-footer {
   background: #111;
   color: #ccc;
@@ -225,12 +130,86 @@ transform: scale(1.1);
   margin-top: 40px;
 }
 
+/*FOOTER*/
+.footer {
+  background: #111;
+  color: #ccc;
+  padding: 30px 20px;
+  margin-top: 35px; /* ❌ margin-top fixa */
+  width: 100%;
+  margin-left: -1%;
+  border-top: 2px solid #e50914;
+}
+
+.footer-container {
+display: flex;
+justify-content: space-between;
+flex-wrap: wrap;
+max-width: 1200px;
+margin: auto;
+}
+
+
+/*SECÇÕES DO FOOTER*/
+.footer-section {
+flex: 1 1 200px;
+margin: 10px;
+}
+
+
+/*TITULOS DAS SECÇÕES DO FOOTER*/
+.footer-section h3, .footer-section h4 {
+color: #e50914;
+margin-bottom: 10px;
+}
+
+.footer-section ul {
+list-style: none;
+padding: 0;
+}
+
+.footer-section ul li {
+margin-bottom: 8px;
+}
+
+
+/*opções de navegação do footer*/
+.footer-section ul li a {
+color: #ccc;
+text-decoration: none;
+transition: color 0.3s;
+}
+
+.footer-section ul li a:hover {
+color: #e50914;
+}
+
+
+
+/*ICONES DAS REDES SOCIAIS (AJUSTE DE POSIÇÃO, TAMANHO E HOVER)*/
+.social-icons a img {
+width: 24px;
+margin-right: 10px;
+filter: grayscale(1);
+transition: filter 0.3s;
+}
+
+.social-icons a img:hover {
+filter: grayscale(0) brightness(1.2);
+}
+
+
+
+
+
 .icon {
 width: 35px;
 vertical-align: middle;
 margin-right: 5px;
 }
 
+
+/*SIMBOLO DO 'BURGER MENU*/
 .menu-btn {
 position: fixed;
 top: 20px;
@@ -250,6 +229,8 @@ display: none;
 @media (max-width: 768px) {
 .menu-btn {
 display: block;
+position: relative; /* NÃO mais fixed! */
+width: 45px;
 }
 
 .sidebar {
@@ -263,6 +244,8 @@ border-bottom: 2px solid #e50914;
 
 .sidebar.active {
 display: block;
+position: relative; /* NÃO mais fixed! */
+margin-top: -50px;
 }
 
 .main-content {
@@ -280,283 +263,18 @@ border-radius: 1px;
 
 
 
-/*MAPA 2D PARA SELECIONAR EVENTOS*/
-.mapa-section {
-padding: 50px 20px;
-text-align: center;
-}
-
-.mapa-section h2 {
-font-size: 2em;
-color: #e50914;
-margin-bottom: 30px;
-}
-
-.mapa-container {
-display: flex;
-justify-content: center;
-gap: 40px;
-flex-wrap: wrap;
-}
-
-.mapa-svg svg {
-width: 1000px;
-height: auto;
-cursor: pointer;
-}
-
-.mapa-svg path {
-transition: fill 0.3s;
-}
-
-.mapa-svg path:hover {
-fill: #e50914;
-}
-
-.eventos-lista {
-background: #222;
-padding: 20px;
-border-radius: 10px;
-width: 300px;
-text-align: left;
-box-shadow: 0 0 10px rgba(0,0,0,0.5);
-}
-
-.mapa-svg path, .mapa-svg g {
-fill: #fff;
-stroke: #e50914;
-transition: fill 0.3s;
-cursor: pointer;
-}
-
-.mapa-svg path:hover, .mapa-svg g:hover {
-fill: #e50914;
-}
-
-
-.mapa-svg g {
-fill: #fff; /* Branco base */
-stroke: #e50914; /* Borda vermelha */
-transition: fill 0.3s, transform 0.3s;
-cursor: pointer;
-}
-
-.mapa-svg g:hover {
-fill: #e50914; /* Vermelho ao hover */
-transform: scale(1.02); /* Pequeno zoom ao passar */
-}
-
-.mapa-svg {
-background: rgba(0,0,0,0.2); /* leve escurecido */
-padding: 20px;
-border-radius: 10px;
-}
-
-.tooltip {
-position: absolute;
-background: #e50914;
-color: white;
-padding: 5px 10px;
-border-radius: 5px;
-pointer-events: none;
-opacity: 0;
-transition: opacity 0.2s;
-font-size: 0.9em;
-z-index: 999;
-}
-
-
-
-
-.user-profile {
-position: fixed;
-top: 20px;
-right: 20px;
-cursor: pointer;
-}
-
-
-
-.user-profile {
-position: fixed;
-top: 20px;
-right: 20px;
-cursor: pointer;
-}
-
-.profile-icon {
-width: 40px;
-transition: transform 0.3s;
-}
-
-
-
-.profile-btn {
-position: fixed;
-top: 20px;
-right: 20px;
-background: white;
-border: 2px solid white;
-border-radius: 8px;
-padding: 5px 10px;
-display: flex;
-align-items: center;
-gap: 8px;
-cursor: pointer;
-transition: border 0.3s, transform 0.3s;
-z-index: 1000;
-}
-
-.profile-btn:hover {
-border: 2px solid #e50914;
-transform: scale(1.05);
-}
-
-.profile-icon {
-width: 30px;
-height: 30px;
-}
-
-.profile-text {
-color: #111;
-font-weight: bold;
-font-size: 0.9em;
-letter-spacing: 1px;
-}
-
-
-
-/*RESERVAS BUTTON*/
-.reservas-btn {
-position: fixed;
-top: 20px;
-right: 200px;
-background: white;
-border: 2px solid white;
-border-radius: 8px;
-padding: 5px 10px;
-display: flex;
-align-items: center;
-gap: 8px;
-cursor: pointer;
-transition: border 0.3s, transform 0.3s;
-z-index: 1000;
-}
-
-.reservas-btn:hover {
-border: 2px solid #e50914;
-transform: scale(1.05);
-}
-
-
-/*POPUP PROFILE*/
-.modal-overlay {
-position: fixed;
-top: 0;
-left: 0;
-width: 100%;
-height: 100%;
-background: rgba(0, 0, 0, 0.8);
-display: none; /* Oculto por padrão */
-justify-content: center;
-align-items: center;
-z-index: 2000;
-}
-
-.modal-content {
-background: #1e1e1e;
-border: 2px solid #e50914;
-border-radius: 10px;
-padding: 30px;
-width: 500px;
-color: white;
-box-shadow: 0 0 20px rgba(229, 9, 20, 0.5);
-position: relative;
-text-align: center;
-}
-
-.modal-content h2 {
-color: #e50914;
-margin-bottom: 20px;
-}
-
-.profile-details p {
-margin: 10px 0;
-font-size: 1em;
-}
-
-.logout-btn {
-margin-top: 20px;
-padding: 10px 20px;
-background: #e50914;
-border: none;
-color: white;
-border-radius: 5px;
-cursor: pointer;
-transition: background 0.3s;
-}
-
-.logout-btn:hover {
-background: #c10810;
-}
-
-.close-btn {
-position: absolute;
-top: 10px;
-right: 15px;
-font-size: 1.5em;
-color: #e50914;
-cursor: pointer;
-}
-
-.modal-content h2 {
-color: #e50914;
-margin-bottom: 10px;
-}
-
-.modal-divider {
-width: 60%;
-height: 3px;
-background-color: #e50914;
-margin: 0 auto 20px auto;
-border-radius: 2px;
-}
-
-.profile-field {
-border: 1px solid #e50914;
-border-radius: 5px;
-padding: 10px;
-margin: 10px 0;
-background-color: #111;
-font-size: 0.95em;
-}
-
-.event-btn {
-margin-top: 10px;
-padding: 6px 12px;
-background: #e50914;
-color: white;
-border: none;
-border-radius: 4px;
-cursor: pointer;
-font-size: 0.85em;
-}
-
-.event-btn:hover {
-background: #c10810;
-}
-
-
 
 /*STORE*/
 
-
+/*ESTILIZAÇÃO DO TITULO 'LOJAS OFICIAIS'*/
 h1 {
   text-align: center;
   margin-bottom: 40px;
   font-size: 2em;
 }
 
+
+/*DESTAQUE A VERMELHO DO 'OFICIAIS'*/
 h1 span {
   color: #e50914;
   font-style: italic;
@@ -564,6 +282,8 @@ h1 span {
 }
 
 
+
+/*AJUSTE DA SECÇÃO QUE CONTÉM OS CARDS DAS LOJAS*/
 .store-wrapper {
   display: flex;
   justify-content: center;
@@ -574,6 +294,9 @@ h1 span {
 }
 
 
+
+
+/*ESTILIZAÇÃO DE CADA CARD E DE COMO ESTES ESTÃO DISPOSTOS*/
 .store-card {
   background: #111;
   border-left: 4px solid #e50914;
@@ -589,6 +312,8 @@ h1 span {
   align-items: center;
 }
 
+
+/*AJUSTE DO TAMANHO E POSIÇÃO DO LOGOTIPO DE CADA CARD*/
 .store-card img {
   height: 80px;
   object-fit: contain;
@@ -596,7 +321,7 @@ h1 span {
 }
 
 
-
+/*ESTILIZAÇÃO DO BOTÃO E DO TEXTO DENTRO DO BOTÃO (BACKGROUND VERMELHO, COR BRANCA DO TEXTO)*/
 .store-card a {
   background: #e50914;
   color: white;
@@ -607,6 +332,8 @@ h1 span {
   transition: background 0.3s;
 }
 
+
+/*HOVER DO BOTÃO EM CADA CARD QUE ESCURECE O VERMELHO DO BOTÃO*/
 .store-card a:hover {
   background: #c10810;
 }
@@ -617,6 +344,9 @@ h1 span {
   width: 90%;
   margin: 30px 0;
 }
+
+
+/*RESPONSIVIDADE MOBILE PARA SECÇÃO DOS CARDS E DOS CARDS EM SI*/
 
 @media (max-width: 768px) {
   .store-wrapper {

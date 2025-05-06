@@ -1,23 +1,23 @@
+/*CSS-BASE DA PÁGINA*/
 * {
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
-    font-family: Arial, sans-serif;
-  }
+  box-sizing: border-box; /* Inclui padding e border no cálculo de largura/altura */
+  margin: 0;
+  padding: 0;
+  font-family: Arial, sans-serif; /* Fonte base para toda a página */
+}
 
-  body {
-background: linear-gradient(135deg, #1e1e1e, #333);
-color: #fff;
-display: flex;
-flex-direction: column;  /* Faz os elementos ficarem empilhados verticalmente */
-align-items: center;
-padding: 20px;
-/* REMOVER ISSO SE QUISER SCROLL NATURAL */
-height: 100vh;
-
+body {
+  background: linear-gradient(135deg, #1e1e1e, #333); /* Fundo com gradiente escuro */
+  color: #fff; /* Cor de texto padrão */
+  display: flex;
+  flex-direction: column; /* Organiza os elementos em coluna */
+  align-items: center;
+  padding: 20px;
+  height: 100vh; /* Altura total da viewport (pode ser removido para scroll natural) */
 }
 
 
+/*CONTAINER BASE DO REGISTO/LOGIN*/
   .container {
     background: #222;
     padding: 30px;
@@ -27,12 +27,16 @@ height: 100vh;
     max-width: 400px;
   }
 
+
+  /*ESTILIZAÇÃO DA SECÇÃO DE TABS DE ALTERNAR ENTRE AS OPÇÕES DE REGISTO/LOGIN*/
   .tabs {
     display: flex;
     justify-content: space-between;
     margin-bottom: 20px;
   }
 
+
+  /*ESTILIZAÇÃO DE CADA TAB DE ALTERNÂNCIA ENTRE AS OPÇÕES DE REGISTO/LOGIN*/
   .tab {
     cursor: pointer;
     flex: 1;
@@ -47,36 +51,49 @@ height: 100vh;
     background: #e50914;
   }
 
-  form {
-    display: none;
-    flex-direction: column;
-  }
 
-  form.active {
-    display: flex;
-  }
 
-  input {
-    padding: 10px;
-    margin-bottom: 15px;
-    border: none;
-    border-radius: 5px;
-    font-size: 1em;
-  }
 
-  button {
-    padding: 10px;
-    background: #e50914;
-    border: none;
-    border-radius: 5px;
-    font-size: 1em;
-    cursor: pointer;
-    transition: background 0.3s;
-  }
+/*ESTADO PADRÃO DE ATIVO/DESATIVO DOS 2 FORMULÁRIOS (REGISTO e LOGIN)*/
+form {
+  display: none; /* Escondido por padrão */
+  flex-direction: column;
+}
 
-  button:hover {
-    background: #c10810;
-  }
+form.active {
+  display: flex; /* Exibe o formulário ativo */
+}
+
+
+/*ESTILIZAÇÃO DOS CAMPOS DE INPUT */
+input {
+  padding: 10px;
+  margin-bottom: 15px;
+  border: none;
+  border-radius: 5px;
+  font-size: 1em;
+}
+
+
+/*ESTILIZAÇÃO DO BOTÃO DE REGISTO/LOGIN, DEPENDENDO DO FORMULÁRIO*/
+button {
+  padding: 10px;
+  background: #e50914;
+  border: none;
+  border-radius: 5px;
+  font-size: 1em;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+button:hover {
+  background: #c10810; /* Escurece ao passar o rato */
+}
+
+
+/*RESPONSIVIDADE MOBILE*/
+
+
 
   @media (max-width: 500px) {
     .container {
@@ -84,6 +101,8 @@ height: 100vh;
     }
   }
 
+
+  /*SECÇÃO 'EXPERIENCE GREATNESS', COM AS IMAGENS DAS MODALIDADES E O TITULO DE DESTAQUE 'EXPERIENCE GREATNESS'*/
   .experience-section h2 {
     font-size: 2.2em;
     text-align: center;
@@ -130,6 +149,10 @@ color: #e50914;
 font-style: italic;
 }
 
+
+
+
+/*IMAGENS LADO-A-LADO E RESPONSIVIDADE DAS IMAGENS DA SECÇÃO 'EXPERIENCE GREATNESS'*/
 .modalities {
   display: flex;
   justify-content: center;
@@ -158,7 +181,7 @@ font-style: italic;
 
 
 
-/* Responsivo - empilhar apenas em ecrãs pequenos */
+/* Responsivo - empilhar as imagens de forma centralizada apenas em ecrãs pequenos */
 @media (max-width: 768px) {
   .modalities {
     flex-direction: column;
@@ -177,6 +200,9 @@ font-style: italic;
 }
 
 
+
+
+/*ESTILIZAÇÃO DA SECÇÃO DE NEWSLETTER DE BILHETES PARA NOVOS EVENTOS*/
 .ticket-section {
 margin-top: 60px;
 text-align: center;
@@ -251,6 +277,7 @@ color: white;
 
 
 
+/*FOOTER*/
 .site-footer {
   width: 103%;
 background: #111;
@@ -313,6 +340,8 @@ transform: scale(1.2);
 }
 
 
+
+/*ESTILIZAÇÃO DO CAMPO DE INPUT DE PASSWORD PARA A FUNCIONALIDADE DE 'SHOW' e 'HIDE' PASSWORD*/
 .password-container {
   position: relative;
   width: 100%;
