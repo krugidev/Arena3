@@ -1,23 +1,26 @@
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: Arial, sans-serif;
-  }
+  /* Reset geral */
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: Arial, sans-serif;
+}
 
-  body {
-    background: linear-gradient(135deg, #1e1e1e, #333);
-    color: white;
-    min-height: 100vh;
-    display: flex;
-    flex-direction: column;
-    padding: 20px;
-    padding-top: 0;
-  }
+body {
+  /* Gradiente escuro como fundo + layout vertical com espaço flexível */
+  background: linear-gradient(135deg, #1e1e1e, #333);
+  color: white;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  padding: 20px;
+  padding-top: 0;
+}
 
-  .main-content {
-    flex: 1;
-  }
+
+.main-content {
+  flex: 1; /* Ocupa o restante espaço entre header e footer */
+}
 
   /* Espaço para a sidebar no desktop */
 @media (min-width: 769px) {
@@ -36,16 +39,17 @@
 
 
   .sidebar {
-width: 250px;
-background: #111;
-padding: 20px;
-height: 100vh;
-position: fixed;
-left: 0;
-top: 0;
-overflow-y: auto;
-border-right: 2px solid #e50914;
-}
+    /* Menu lateral fixo no desktop */
+    width: 250px;
+    background: #111;
+    padding: 20px;
+    height: 100vh;
+    position: fixed;
+    left: 0;
+    top: 0;
+    overflow-y: auto;
+    border-right: 2px solid #e50914;
+  }
 
 .sidebar h2 {
 color: #e50914;
@@ -73,12 +77,13 @@ margin: 5px 0;
 }
 
 .sidebar ul ul li a {
-color: #ccc;
-text-decoration: none;
-font-size: 0.9em;
-transition: color 0.3s;
+  /* Estilo dos links do submenu */
+  color: #ccc;
+  text-decoration: none;
+  transition: color 0.3s;
 }
 
+/*hover nos links do submeno lateral*/
 .sidebar ul ul li a:hover {
 color: #e50914;
 }
@@ -141,6 +146,7 @@ vertical-align: middle;
 margin-right: 5px;
 }
 
+/* Botão "☰" que mostra o menu em resoluções mobile, podendo ser expandido para a versão mobile da sidebar */
 .menu-btn {
   position: fixed;
   top: 10px;
@@ -157,6 +163,8 @@ margin-right: 5px;
 }
 
 
+
+/*RESPONSIVIDADE DA SIDEBAR PARA RESOLUÇÕES MOBILE*/
 
 @media (max-width: 768px) {
   .sidebar {
@@ -193,7 +201,7 @@ margin-right: 5px;
 
 
 
-
+/*divider da sidebar abaixo do logotipo da sidebar*/
 .divider {
 height: 2px;
 background: #e50914;
@@ -267,7 +275,7 @@ filter: grayscale(0) brightness(1.2);
 
 
 
-
+/*secção de filtragens de eventos para ver os resultados, POR MODALIDADE*/
 .tabs {
     display: flex;
     justify-content: center;
@@ -282,6 +290,8 @@ filter: grayscale(0) brightness(1.2);
     margin-right: auto;
   }
 
+
+  /*SELEÇÃO DA MODALIDADE PARA QUE OS EVENTOS (COM OBJETIVO DE VER OS RESULTADOS) POSSAM SER FILTRADOS PELA MODALIDADE.*/
   .tab-btn {
     padding: 10px 18px;
     border: none;
@@ -296,11 +306,15 @@ filter: grayscale(0) brightness(1.2);
     gap: 8px;
   }
 
+
+  /*LOGOTIPO DA MODALIDADE AO ALDO DOS SEUS RESPETIVOS NOMES EM CADA OPÇÃO DE FILTRAGEM*/
   .tab-btn img {
     width: 20px;
     height: 20px;
   }
 
+
+  /*A MODALDIADE QUE FOR SELECIONADA PARA SER FILTRADA FICA DESTACADA A VERMELHO*/
   .tab-btn.active {
     background: #e50914;
     color: #fff;
@@ -312,6 +326,8 @@ filter: grayscale(0) brightness(1.2);
     color: #e50914;
   }
 
+
+  /*CARD DE RESULTADOS*/
   .result-card {
     background: #111;
     border-left: 4px solid #e50914;
@@ -399,7 +415,7 @@ filter: grayscale(0) brightness(1.2);
   gap: 20px;
   justify-content: center;
   padding: 20px;
-  margin-left: 0; /* Garantimos centralização no mobile */
+  margin-left: 0; /*centralização no mobile */
 }
 
 
@@ -417,6 +433,9 @@ filter: grayscale(0) brightness(1.2);
   color: #e60000;
 }
 
+
+
+/*POPUP DE RESULTADOS*/
 .popup {
   position: fixed;
   top: 0; left: 0;
@@ -562,6 +581,8 @@ textarea#novo-comentario {
 
 
 
+
+/*ESPAÇO PARA A INTRODUÇÃO DE EMOJIS EM COMENTÁRIOS*/
 .emoji-wrapper {
   position: relative;
   display: flex;

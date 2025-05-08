@@ -1,22 +1,27 @@
+/* Reset geral e tipografia padrão */
 * {
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
-    font-family: Arial, sans-serif;
-  }
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: Arial, sans-serif;
+}
 
-  body {
-    background: linear-gradient(135deg, #1e1e1e, #333);
-    color: #fff;
-  }
-
-
-  h1 {
-    text-align: center;
-  }
+/* Fundo com gradiente escuro para ambiente de arena */
+body {
+  background: linear-gradient(135deg, #1e1e1e, #333);
+  color: #fff;
+}
 
 
-  .sidebar {
+/* Título centralizado */
+h1 {
+  text-align: center;
+}
+
+
+
+/* Menu lateral (sidebar) fixo à esquerda */
+.sidebar {
 width: 250px;
 background: #111;
 padding: 20px;
@@ -25,8 +30,9 @@ position: fixed;
 left: 0;
 top: 0;
 overflow-y: auto;
-border-right: 2px solid #e50914;
+border-right: 2px solid #e50914;  /* Destaque da borda lateral */
 }
+
 
 .sidebar h2 {
 color: #e50914;
@@ -53,6 +59,9 @@ padding-left: 15px;
 margin: 5px 0;
 }
 
+
+
+/* Estilização dos links do menu lateral */
 .sidebar ul ul li a {
 color: #ccc;
 text-decoration: none;
@@ -61,7 +70,7 @@ transition: color 0.3s;
 }
 
 .sidebar ul ul li a:hover {
-color: #e50914;
+color: #e50914;  /* Cor de destaque ao passar o rato */
 }
 
 
@@ -85,6 +94,8 @@ vertical-align: middle;
 margin-right: 5px;
 }
 
+
+/* Botão de menu para resoluções menores */
 .menu-btn {
 position: fixed;
 top: 20px;
@@ -132,15 +143,19 @@ margin: 15px 0 20px 0;
 border-radius: 1px;
 }
 
+
+/* Container geral com flexbox e espaçamento entre elementos */
 .page-container {
     display: flex;
     justify-content: center;
     align-items: flex-start;
     gap: 40px;
     margin-top: 30px;
-    flex-wrap: wrap;
+    flex-wrap: wrap; /* Permite quebra em telas menores */
   }
 
+
+  /* Arena visual com três anéis concêntricos */
   .arena-wrapper {
     position: relative;
     width: 500px;
@@ -150,6 +165,9 @@ border-radius: 1px;
     box-shadow: 0 0 15px rgba(0,0,0,0.5);
   }
 
+
+
+  /* Cada anel tem uma opacidade diferente */
   .ring {
     position: absolute;
     border-radius: 50%;
@@ -176,6 +194,8 @@ border-radius: 1px;
     background: rgba(0,0,0,0.6);
   }
 
+
+  /* O centro da arena (RING ou ARENA, dependendo da modalidade) */
   .ringue {
     position: absolute;
     width: 80px;
@@ -199,6 +219,8 @@ border-radius: 1px;
     margin: 0 10px;
   }
 
+
+  /* Legenda de cores com blocos visuais associados a cores (disponibilidade dos anéis)*/
   .legend .box {
     width: 20px;
     height: 20px;
@@ -207,10 +229,16 @@ border-radius: 1px;
     margin-right: 5px;
   }
 
+
+
+  /* Cores associadas aos estados */
   .available { background: #28a745; }
   .premium { background: #e50914; }
   .occupied { background: #6c757d; }
 
+
+
+  /* Painel lateral direito com filtros */
   .filters-panel {
     background: #222;
     padding: 20px;
@@ -230,6 +258,8 @@ border-radius: 1px;
     margin: 10px 0 15px;
   }
 
+
+  /* Labels e inputs de filtro */
   .filters-panel label {
     display: block;
     margin-top: 10px;
@@ -246,6 +276,9 @@ border-radius: 1px;
     border: none;
   }
 
+
+
+  /* Botão para reservar o lugar selecionado */
   .reserve-btn {
     width: 100%;
     padding: 12px;
@@ -262,6 +295,8 @@ border-radius: 1px;
     background: #c10810;
   }
 
+
+  /* Texto com informações do evento */
   .event-info {
     background: #111;
     padding: 15px;
@@ -354,7 +389,7 @@ filter: grayscale(0) brightness(1.2);
 
 
 
-
+/* Popup de resumo de reserva */
 .popup {
 position: fixed;
 top: 0;
@@ -390,6 +425,8 @@ color: #e50914;
 margin-bottom: 20px;
 }
 
+
+/*Botão e POPUP de confirmação da reserva (resumo e confirmação da reserva)*/
 .confirm-btn {
 background: #e50914;
 color: white;
@@ -410,6 +447,8 @@ color: #00ff88;
 }
 
 
+
+/* Contador regressivo para o inicio do evento */
 .countdown {
 position: absolute;
 right: 20px;
@@ -428,18 +467,18 @@ z-index: 10;
 display: flex;
 flex-direction: column;
 justify-content: center;
-line-height: 1.2; /* Aproxima as linhas */
+line-height: 1.2; 
 }
 
 .countdown span {
-margin: 0; /* Remove espaçamento extra */
+margin: 0; 
 }
 
 #timer {
 color: #e50914;
 font-size: 1.2em;
 font-weight: bold;
-margin-top: 4px; /* Tira esse valor se quiser ainda mais perto */
+margin-top: 4px; 
 }
 
 /* Responsividade refinada */

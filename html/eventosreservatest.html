@@ -1,3 +1,4 @@
+<!-- Cabeçalho básico com meta tags e link ao CSS -->
 <!DOCTYPE html>
 <html lang="pt">
 <head>
@@ -11,11 +12,13 @@
 
   <!--CONTEUDO-->
   
+    <!-- Botão para abrir o menu lateral (sidebar) em mobile -->
     <button id="toggle-menu" class="menu-btn">☰</button>
 
     
-      
+    <!-- Sidebar com as modalidades (UFC, WWE, PBR) e opções de navegação -->
     <div class="sidebar" id="sidebar">
+
       
       <a href="../html/homepage.html">
         <img src="../icons/image-removebg-preview (11).png" style="margin-left: 6%; list-style-type: none;">
@@ -25,6 +28,7 @@
         <ul class="menu" style="list-style-type: none;">
           <li><img src="../icons/2560px-UFC_Logo.svg.png" class="icon"><strong></strong>
             <ul>
+              <!-- As funções onclick abaixo guardam a modalidade escolhida no localStorage (o mesmo se aplica a todas as 3 modalidades) -->
               <li><a href="../html/reservabilhetesteste.html" onclick="selecionarModalidade('UFC')">Reservar Bilhetes</a></li>
               <li><a href="../html/lutadoresatletasdefteste.html" onclick="definirModalidade('UFC')">Lutadores</a></li>
               <li><a href="../html/resultadosteste.html">Resultados</a></li>
@@ -60,12 +64,14 @@
 
 
 
-  
+  <!-- Título principal da página -->
   <h1>RESERVA DE BILHETES</h1>
     
+  <!-- Início do container principal da página -->
   <div class="page-container">
 
 
+    <!-- Contador regressivo para o início do evento (atualizado em JS) -->
     <div id="countdown" class="countdown">
         <p>Começa em:</p>
         <span id="timer">12d 06h 23m</span>
@@ -74,21 +80,24 @@
 
     <!-- Arena Visual -->
     <div>
-      <div class="arena-wrapper">
-        <div class="ring ring1"></div>
-        <div class="ring ring2"></div>
-        <div class="ring ring3"></div>
-        <div class="ringue">RING</div>
-      </div>
+  <!-- Ilustração circular da arena com três anéis -->
+  <div class="arena-wrapper">
+    <div class="ring ring1"></div> <!-- Anel 1 -->
+    <div class="ring ring2"></div> <!-- Anel 2 -->
+    <div class="ring ring3"></div> <!-- Anel 3 -->
+    <div class="ringue">RING</div> <!-- Centro (tipo depende da modalidade) -->
+  </div>
 
-      <div class="legend">
-        <span><div class="box available"></div>Disponível</span>
-        <span><div class="box premium"></div>Premium</span>
-        <span><div class="box occupied"></div>Ocupado</span>
-      </div>
+<!-- Legenda visual com as cores dos lugares -->
+<div class="legend">
+  <span><div class="box available"></div>Disponível</span>
+  <span><div class="box premium"></div>Premium</span>
+  <span><div class="box occupied"></div>Ocupado</span>
+</div>
+
     </div>
 
-    <!-- Filtros e Info -->
+    <!-- Painel de filtros (seleção de anel e lugar específico) + resumo de lugares disponíveis -->
     <div class="filters-panel">
       <div class="event-info info-evento">
         <!-- Os dados do evento selecionado serão preenchidos via JS -->
@@ -98,6 +107,7 @@
 
       <h2>Filtrar Lugares</h2>
 
+      <!-- Dropdown para seleção de anel -->
       <label for="anel">Anel</label>
       <select id="anel">
         <option value="ring1">Anel 1</option>
@@ -105,11 +115,16 @@
         <option value="ring3">Anel 3</option>
       </select>
 
+      <!-- Campo para escrever número do lugar -->
       <label for="lugar">Lugar</label>
       <input type="text" id="lugar" style="width: 95%;" placeholder="Digite número do lugar"/>
 
+
+      <!-- Botão para reservar lugar -->
       <button class="reserve-btn">Confirmar Reserva</button>
 
+
+      <!-- Visualização atual de lugares disponíveis -->
       <div class="available-spots">
         <span><strong>Anel 1:</strong> 40 disponíveis</span>
         <span><strong>Anel 2:</strong> 35 disponíveis</span>
@@ -154,7 +169,7 @@
     </div>
   </footer>
 
-  <!-- Popup Resumo da Reserva -->
+  <!-- Pop-up: Resumo da reserva antes de confirmar -->
   <div id="resumoPopup" class="popup hidden">
     <div class="popup-content">
       <span class="close-btn" onclick="fecharPopup()">&times;</span>
@@ -162,15 +177,20 @@
       <p><strong>Anel:</strong> Anel 2</p>
       <p><strong>Lugar:</strong> 15B</p>
       <p><strong>Preço:</strong> €120</p>
+
+      <!-- Confirmar pagamento chama a função `finalizarReserva()` -->
       <button class="confirm-btn" onclick="mostrarSucesso()">Finalizar Pagamento</button>
     </div>
   </div>
   
-  <!-- Popup Sucesso -->
+
+  <!-- Pop-up: Mensagem de sucesso -->
   <div id="sucessoPopup" class="popup hidden">
     <div class="popup-content sucesso">
       <h2>✅ Compra Confirmada!</h2>
       <p>O teu lugar está garantido.</p>
+
+      <!-- Redireciona para a página de reservas que atualizará com a reserva mais recente feita após a compra dos bilhetes -->
       <button class="confirm-btn">Ver Reservas</button>
     </div>
   </div>
@@ -212,7 +232,7 @@ let capacidadeAtual = {};
 let idEvento = "";
 
 //OBTER EVENTO SELECIONADO//
-
+// Ao carregar a página, ler os dados do evento guardado no localStorage
 document.addEventListener("DOMContentLoaded", () => {
   evento = JSON.parse(localStorage.getItem("eventoSelecionado"));
   
@@ -238,6 +258,8 @@ document.addEventListener("DOMContentLoaded", () => {
 
   const ringue = document.querySelector(".ringue");
 
+
+// Configuração do ringue central (texto e formato visual) dependendo da modalidade
 switch (evento.modalidade) {
   case "UFC":
     ringue.innerHTML = "RING";
@@ -269,6 +291,7 @@ switch (evento.modalidade) {
   //Aneis INTERATIVOS
 let anelSelecionado = null;
 
+// Eventos de hover, click e sincronização dos anéis com o dropdown
 document.querySelectorAll(".ring").forEach(ring => {
   const id = ring.classList[1]; // ring1, ring2, ring3
 
@@ -321,7 +344,7 @@ document.getElementById("anel").addEventListener("change", (e) => {
 });
 
 
-
+// Atualiza o texto que mostra os lugares disponíveis para cada anel
 function atualizarCapacidadesUI() {
   const container = document.querySelector(".available-spots");
   container.innerHTML = "";
@@ -334,7 +357,9 @@ function atualizarCapacidadesUI() {
   }
 }
 
-// Abrir Resumo
+
+
+// Abre o popup de resumo da reserva
 function abrirResumo(anel, lugar, preco) {
   const popup = document.querySelector("#resumoPopup .popup-content");
   popup.innerHTML = `
@@ -354,12 +379,15 @@ function abrirResumo(anel, lugar, preco) {
 }
 
 
+
+// Fecha o popup de resumo
   function fecharPopup() {
    document.getElementById('resumoPopup').classList.add('hidden');
   }
 
 
 
+// Finaliza a reserva e guarda no localStorage associando-a ao utilizador que está atualmente logado.
   function finalizarReserva(anel, lugar, preco) {
     console.log("Finalizar reserva chamada ✅");
 
@@ -370,6 +398,8 @@ function abrirResumo(anel, lugar, preco) {
   }
 
 
+
+  //Estrutura do objeto de uma nova reserva.
   const novaReserva = {
   nome: evento.nome,
   data: evento.data,
@@ -379,7 +409,7 @@ function abrirResumo(anel, lugar, preco) {
   lugar,
   preco,
   modalidade: evento.modalidade,
-  email: user.email  // ← ISTO É ESSENCIAL
+  email: user.email  // ← ISTO É ESSENCIAL para associar uma reserva ao utilizador logado via email que está registado na sua conta.
 };
 
 console.log("Reserva a guardar:", novaReserva);
@@ -400,7 +430,7 @@ console.log("Reserva a guardar:", novaReserva);
  }
 
 
- // Ao clicar em "Ver Reservas"
+// Quando clica em "Ver Reservas", redireciona para a página de reservas
  document.querySelector('#sucessoPopup .confirm-btn').addEventListener('click', () => {
    window.location.href = "reservas.html";
  });
@@ -429,6 +459,8 @@ document.querySelector('.reserve-btn').addEventListener('click', () => {
 
 
 //COUNTDOWN REGRESSIVO PARA O EVENTO
+// Função de contador regressivo com base na data do evento
+
 function iniciarCountdown(dataEventoStr) {
   const timerEl = document.getElementById("timer");
   const partes = dataEventoStr.split("/"); // Esperado: "DD/MM/YYYY"
@@ -452,7 +484,7 @@ function iniciarCountdown(dataEventoStr) {
   }
 
   atualizarCountdown();
-  setInterval(atualizarCountdown, 1000);
+  setInterval(atualizarCountdown, 1000); // Atualiza a cada segundo
 }
 
 

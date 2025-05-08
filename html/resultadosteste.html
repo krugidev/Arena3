@@ -1,16 +1,20 @@
+<!-- ESTRUTURA BASE -->
 <!DOCTYPE html>
 <html lang="pt">
 <head>
+  <!-- METADADOS -->
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" type="text/css" href="../css/resultados.css" /> 
+  <link rel="stylesheet" href="../css/resultados.css" /> 
   <title>Resultados | Arena 360</title>
-
 </head>
 <body>
 
+    <!-- BOTÃO MENU BURGER PARA MOBILE -->
     <button id="toggle-menu" class="menu-btn">☰</button>
 
+
+    <!-- SIDEBAR NAVEGAÇÃO -->
     <div class="sidebar" id="sidebar">
       
       <a href="../html/homepage.html">
@@ -19,6 +23,9 @@
         <div class="divider"></div>
   
         <ul class="menu" style="list-style-type: none;">
+
+          <!-- Cada item representa uma modalidade com submenus -->
+          <!-- onClick guarda no localStorage qual foi a modalidade selecionada para passar esse valor para as diversas páginas -->
           <li><img src="../icons/2560px-UFC_Logo.svg.png" class="icon"><strong></strong>
             <ul>
               <li><a href="../html/reservabilhetesteste.html" onclick="selecionarModalidade('UFC')">Reservar Bilhetes</a></li>
@@ -52,9 +59,12 @@
         </ul>
       </div>
   
+
+<!-- CONTEÚDO PRINCIPAL -->
 <div class="main-content">
       <h1>RESULTADOS</h1>
 
+       <!-- TABS PARA ESCOLHER MODALIDADE para filtrar os eventos. Cada um chama a função de obter os resultados (cards de resultados a exibir), mas filtrados de acordo com a modalidade selecionada no filtro-->
       <div class="tabs">
         <button class="tab-btn active" onclick="mostrarResultados('ufc', this)">
           <img src="../icons/2560px-UFC_Logo.svg.png" alt="UFC" style="width: 20px; height: 10px;"> UFC
@@ -67,30 +77,36 @@
         </button>
       </div>
     
+
+
+      <!-- CONTAINERS DE RESULTADOS POR MODALIDADE -->
       <div class="resultados-container" id="ufc"></div>
       <div class="resultados-container" id="wwe" style="display:none"></div>
       <div class="resultados-container" id="pbr" style="display:none"></div>
     
 
+      <!-- MENSAGEM QUANDO NÃO HÁ RESULTADOS A SEREM EXIBIDOS-->
       <div id="mensagem-sem-resultados" style="display: none; text-align: center; margin-top: 30px; color: #aaa; font-size: 1.2em;">
         Atualmente não existem resultados disponíveis para esta modalidade.
       </div>
       
-      <!-- Popup -->
-      <div id="popupResultados" class="popup hidden">
-        <div class="popup-content">
-          <span class="close-btn" onclick="fecharPopup()">&times;</span>
-          <h2 id="tituloEvento"></h2>
-          <div id="combatesContainer" class="combates-grid"></div>
-        </div>
-      </div>
+
+  <!-- POPUP DOS RESULTADOS DO EVENTO -->
+  <div id="popupResultados" class="popup hidden">
+    <div class="popup-content">
+      <span class="close-btn" onclick="fecharPopup()">&times;</span>
+      <h2 id="tituloEvento"></h2>
+      <div id="combatesContainer" class="combates-grid"></div>
+    </div>
+  </div>
+</div>
 
 
 </div>
 
 
 
-    <!----------------------------------------------->
+    <!------------ FOOTER ----------------------------------->
 
 
     <footer class="footer">
@@ -127,9 +143,13 @@
         </div>
       </footer>
 
+
+      
       <!-- Popup de Comentários -->
 <div id="popupComentarios" class="popup hidden">
   <div class="popup-content">
+
+    <!--BOTÃO PARA FECHAR O POPUP DE COMENTÁRIOS-->
     <span class="close-btn" onclick="fecharComentarios()">&times;</span>
     <h2 id="tituloComentarios">Comentários</h2>
     <div id="lista-comentarios" class="comentarios-container"></div>  
@@ -137,8 +157,10 @@
 
     <div class="emoji-wrapper">
       <button onclick="publicarComentario()">Publicar</button>
+      <!--BOTÃO PARA ABRIR A DIV DA SELEÇÃO DE EMOJIS-->
       <button id="toggle-emoji" title="Emojis">😀</button>
       <div id="emoji-popup" class="emoji-popup hidden">
+        <!--EMOJIS DISPONIVEIS PARA UTILIZAR-->
         <span>😍</span><span>😎</span><span>😂</span><span>👍</span><span>👎</span>
         <span>🔥</span><span>💯</span><span>🤯</span><span>🎯</span><span>🤡</span>
       </div>
@@ -189,15 +211,15 @@ const resultadosMock = [
 ];
 
 
+
+// ARMAZENA OS RESULTADOS NO LOCALSTORAGE
 localStorage.setItem("resultados", JSON.stringify(resultadosMock));
 
 
 
     document.addEventListener("DOMContentLoaded", () => {
 
-
-
-
+      // LÊ RESULTADOS E PREENCHE OS CARDS POR MODALIDADE
       const resultados = JSON.parse(localStorage.getItem("resultados")) || [];
       const hoje = new Date();
 
@@ -208,8 +230,9 @@ localStorage.setItem("resultados", JSON.stringify(resultadosMock));
       resultados.forEach(evento => {
         const [dia, mes, ano] = evento.data.split("/");
         const dataEvento = new Date(`${ano}-${mes}-${dia}`);
-        if (dataEvento > hoje) return;
+        if (dataEvento > hoje) return; //VERIFICAR SE O EVENTO JÁ OCORREU PARA QUE POSSA EXIBIR OS SEUS RESULTADOS.
 
+        //SE O EVENTO JÁ TIVER OCORRIDO, É CONSTRUIDO UM CARD PARA ELE..ATUALIZANDO AS INFOS.
         const card = document.createElement("div");
         card.className = "evento-card";
         card.innerHTML = `
@@ -238,6 +261,8 @@ localStorage.setItem("resultados", JSON.stringify(resultadosMock));
     }*/
 
 
+
+  // MOSTRA CONTAINER CORRESPONDENTE E ESCONDE OS OUTROS (fruto da filtragem por modalidade)
     function mostrarResultados(modalidade, btn) {
   ['ufc', 'wwe', 'pbr'].forEach(id => {
     const container = document.getElementById(id);
@@ -260,6 +285,8 @@ localStorage.setItem("resultados", JSON.stringify(resultadosMock));
 }
 
     
+
+// MOSTRA POPUP COM DETALHES DOS COMBATES (INCLUI VENCEDORES E DERROTADOS BEM COMO O MÉTODO DE VITORIA/DERROTA)
     function abrirResultados(nomeEvento) {
       const resultados = JSON.parse(localStorage.getItem("resultados")) || [];
       const evento = resultados.find(ev => ev.nomeEvento === nomeEvento);
@@ -269,6 +296,8 @@ localStorage.setItem("resultados", JSON.stringify(resultadosMock));
       const container = document.getElementById("combatesContainer");
       container.innerHTML = "";
 
+
+      //Os resultados são subcards dentro dum card de cada evento e que se ajusta ao vencedor, nome do vencedor, nome do derrotado e o método de vitória/derrota.
       evento.combates.forEach(combate => {
         const card = document.createElement("div");
         card.className = "combate-card";
@@ -323,6 +352,9 @@ localStorage.setItem("resultados", JSON.stringify(resultadosMock));
   </script>
 
 <script>
+
+
+  // SISTEMA DE COMENTÁRIOS
   let eventoAtualComentarios = "";
   
   // Abre o popup e mostra os comentários
@@ -330,7 +362,7 @@ localStorage.setItem("resultados", JSON.stringify(resultadosMock));
     const nomeEvento = decodeURIComponent(eventoCodificado);
     eventoAtualComentarios = nomeEvento;
 
-    const user = JSON.parse(localStorage.getItem("userLogado")); // ADICIONAR ESTA LINHA
+    const user = JSON.parse(localStorage.getItem("userLogado")); 
     const comentarios = JSON.parse(localStorage.getItem("comentarios_evento_" + nomeEvento)) || [];
     const container = document.getElementById("lista-comentarios");
     container.innerHTML = "";
@@ -376,6 +408,8 @@ localStorage.setItem("resultados", JSON.stringify(resultadosMock));
       return;
     }
   
+
+    //Estrutura do objeto de um comentário
     const novo = {
      nome: user.nome,
      texto,
@@ -388,7 +422,7 @@ localStorage.setItem("resultados", JSON.stringify(resultadosMock));
   
     const key = "comentarios_evento_" + eventoAtualComentarios;
     const comentarios = JSON.parse(localStorage.getItem(key)) || [];
-    comentarios.push(novo);
+    comentarios.push(novo); //Publicação de um comentário
     localStorage.setItem(key, JSON.stringify(comentarios));
   
     abrirComentarios(encodeURIComponent(eventoAtualComentarios)); // Reabre para atualizar
@@ -422,6 +456,8 @@ localStorage.setItem("resultados", JSON.stringify(resultadosMock));
   }
 
 
+
+  /*VERIFICAR SE UM COMENTÁRIO JÁ TEVE LIKE DE UM CERTO UTILIZADOR, GARANTINDO QUE 1 UTILIZADOR ESPECIFICO SÓ PODE DAR LIKE A 1 COMENTÁRIO ESPECIFICO*/
   document.getElementById("lista-comentarios").addEventListener("click", function(e) {
   if (e.target.classList.contains("like-btn")) {
     const nome = e.target.getAttribute("data-nome");
